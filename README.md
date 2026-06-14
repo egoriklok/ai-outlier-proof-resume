@@ -5,6 +5,7 @@ Employer-facing proof page for Egor Loktionov.
 This repository exists separately from the commercial RouteOps landing. It contains a static GitHub Pages resume dossier with:
 
 - public project repository links;
+- profile photo and Telegram account ID `209498707`;
 - screenshots and visual proof artifacts;
 - deep links for each project section;
 - an explicit note that the resume packaging was prepared by an AI agent delegated by Egor.

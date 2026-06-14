@@ -214,7 +214,51 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.hero-proof-panel div {
+.identity-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.identity-card img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+}
+
+.identity-card figcaption {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.identity-card strong {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.identity-card span {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+}
+
+.identity-card .telegram-id {
+  color: #5df1b8;
+  font-weight: 800;
+}
+
+.identity-card .telegram-id b {
+  color: #fff;
+}
+
+.hero-proof-panel > div {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -223,7 +267,7 @@ h3 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.hero-proof-panel div:last-of-type {
+.hero-proof-panel > div:last-of-type {
   border-bottom: 0;
 }
 
