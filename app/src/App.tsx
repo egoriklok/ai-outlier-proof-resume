@@ -371,7 +371,7 @@ function App() {
 
               <Alert className="border-lime-300 bg-lime-50 text-slate-950 [&>svg]:text-primary">
                 <ShieldCheckIcon aria-hidden="true" />
-                <AlertTitle>Проверка для работодателя за 3 минуты</AlertTitle>
+                <AlertTitle>Проверка для рекрутера за 3 минуты</AlertTitle>
                 <AlertDescription className="text-slate-700">
                   <ol className="mt-2 grid gap-1 sm:grid-cols-3">
                     {checkRoute.map((item, index) => (
@@ -449,7 +449,7 @@ function App() {
                   ))}
                 </div>
                 <div className="rounded-md border border-lime-300 bg-lime-50 p-4 text-sm leading-6 text-slate-700">
-                  <b className="text-foreground">Для работодателя:</b>{" "}
+                  <b className="text-foreground">Для рекрутера:</b>{" "}
                   CRM-демо, Telegram-боты, публичный GitHub и вклад
                   ИИ-агента в упаковку этой страницы.
                 </div>
@@ -710,7 +710,7 @@ function App() {
               <AlertDescription>
                 Егор сделал продукты и решения. ИИ-агент помог собрать ссылки,
                 QR-коды, демо и GitHub в понятный маршрут проверки для
-                работодателя.
+                рекрутера.
               </AlertDescription>
             </Alert>
             <div className="grid gap-4 md:grid-cols-2">
@@ -728,7 +728,7 @@ function App() {
                   <CardTitle>ИИ-агент</CardTitle>
                   <CardDescription>
                     Упаковал открытые ссылки, QR-коды, демо, GitHub и короткие
-                    проверки в одну страницу для работодателя.
+                    проверки в одну страницу для рекрутера.
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -760,7 +760,7 @@ function App() {
           <SectionHeading
             eyebrow="Код, демо и прямые ссылки"
             title="Все ссылки для проверки"
-            description="Все ссылки открываются без внутреннего доступа. Страница оставляет работодателю короткий путь от резюме к демо, ботам, GitHub и страницам проектов."
+            description="Все ссылки открываются без внутреннего доступа. Страница дает короткий путь от резюме к демо, ботам, GitHub и страницам проектов."
           />
           <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4 md:grid-cols-2">
             <Card>
