@@ -15,32 +15,46 @@
       <nav class="topbar" aria-label="Навигация по портфолио">
         <a class="brand" href="#top" aria-label="В начало">Egor Loktionov</a>
         <div class="navlinks">
+          <a href="#telegram-bots">Боты</a>
           <a href="#projects">Проекты</a>
-          <a href="#proof">Доказательства</a>
-          <a href="#public-repos">Repo</a>
-          <a href="#agent-note">AI agent</a>
+          <a href="#verification">Проверка</a>
+          <a href="#public-repos">GitHub</a>
         </div>
       </nav>
 
       <section id="top" class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Digital life 3.0 resume, written by an AI agent</p>
-          <h1>Егор Локтионов: AI outlier, который делегировал резюме своему агенту</h1>
+          <p class="eyebrow">AI-native product builder</p>
+          <h1>Егор Локтионов</h1>
           <p class="lead">
-            Это резюме подготовил AI agent по поручению human. Задача агента простая:
-            не украшать биографию, а показать проверяемые результаты работы Егора через
-            public repo, demo, интерфейсы и следы продуктового мышления.
+            AI-native специалист: собираю WebUI, CRM и Telegram-ботов,
+            делегирую рутину агентам и довожу идеи до работающих демо.
           </p>
           <div class="hero-actions" aria-label="Основные ссылки">
-            <a class="button primary" href="#projects">Смотреть артефакты</a>
+            <a class="button primary" href="#telegram-bots">Проверить ботов</a>
             <a class="button secondary" href="https://github.com/egoriklok" target="_blank" rel="noreferrer">GitHub профиль</a>
+            <a class="button secondary" href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Live CRM demo</a>
           </div>
         </div>
 
-        <figure class="hero-visual">
-          <img src="./assets/caloristika-crm.png" alt="Скриншот CRM-демо Caloristika" />
-          <figcaption>Live CRM demo + публичный repo как доказательство, а не как обещание.</figcaption>
-        </figure>
+        <aside class="hero-proof-panel" aria-label="Короткие доказательства">
+          <div>
+            <span class="proof-number">5</span>
+            <span>public repo</span>
+          </div>
+          <div>
+            <span class="proof-number">3</span>
+            <span>Telegram entrypoints</span>
+          </div>
+          <div>
+            <span class="proof-number">1</span>
+            <span>live CRM demo</span>
+          </div>
+          <p>
+            Это proof-page подготовил AI agent по поручению Егора: не вместо работы,
+            а чтобы собрать ссылки, QR и проверяемые артефакты в один маршрут.
+          </p>
+        </aside>
       </section>
     </header>
 
@@ -51,31 +65,141 @@
           <span>публичных AI/CRM/Telegram repo</span>
         </div>
         <div>
+          <span class="metric">3</span>
+          <span>Telegram-точки для быстрой проверки</span>
+        </div>
+        <div>
           <span class="metric">1</span>
           <span>live CRM demo на Render</span>
         </div>
-        <div>
-          <span class="metric">AI</span>
-          <span>как рабочий ассистент, а не декоративная подпись</span>
+      </section>
+
+      <section id="telegram-bots" class="section bots-section">
+        <div class="section-title">
+          <p class="eyebrow">Telegram voice agents</p>
+          <h2>Боты, которые можно открыть и проверить</h2>
+          <p>
+            Откройте ссылку или отсканируйте QR-код. Если Telegram попросит открыть приложение,
+            нажмите Start и проверьте сценарий: голос/текст -> структура -> следующий шаг.
+          </p>
+        </div>
+
+        <div class="bot-grid">
+          <article class="bot-card primary-bot">
+            <div class="bot-copy">
+              <p class="tag">Live Telegram bot</p>
+              <h3>Бизнес-Навигатор Голосом</h3>
+              <p>
+                Проговорите идею и получите CJM-план: это самый быстрый тест
+                voice-first мышления и AI-native упаковки.
+              </p>
+              <dl class="test-flow">
+                <div><dt>Handle</dt><dd>@cjm_voice_strategy_0530_bot</dd></div>
+                <div><dt>Проверить</dt><dd>voice note -> CJM -> hypotheses/action items</dd></div>
+                <div><dt>Статус</dt><dd>Telegram page verified 2026-06-14</dd></div>
+              </dl>
+              <div class="card-links">
+                <a href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Открыть в Telegram</a>
+                <a href="./projects/telegram-voice-cjm-bot/">Кейс</a>
+                <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+            <figure class="qr-box">
+              <img src="./assets/qr-cjm-voice-strategy.svg" alt="QR для Telegram-бота Бизнес-Навигатор Голосом" />
+              <figcaption>QR to Telegram bot</figcaption>
+            </figure>
+          </article>
+
+          <article class="bot-card">
+            <div class="bot-copy">
+              <p class="tag">Business navigator</p>
+              <h3>Business Voice Navigator</h3>
+              <p>
+                Англоязычный voice-first бот для business notes, structured output
+                и next step.
+              </p>
+              <dl class="test-flow">
+                <div><dt>Handle</dt><dd>@business_voice_navigator_bot</dd></div>
+                <div><dt>Проверить</dt><dd>business question -> structured recommendation</dd></div>
+                <div><dt>Source</dt><dd>public repo + setup docs</dd></div>
+              </dl>
+              <div class="card-links">
+                <a href="https://t.me/business_voice_navigator_bot" target="_blank" rel="noreferrer">Открыть в Telegram</a>
+                <a href="./projects/telegram-voice-business-navigator-en/">Кейс</a>
+                <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+            <figure class="qr-box">
+              <img src="./assets/qr-business-voice-navigator.svg" alt="QR для Business Voice Navigator Telegram bot" />
+              <figcaption>QR to Telegram bot</figcaption>
+            </figure>
+          </article>
+
+          <article class="bot-card">
+            <div class="bot-copy">
+              <p class="tag">CRM mini app path</p>
+              <h3>Lunch Up Orders Bot</h3>
+              <p>
+                Telegram entrypoint для B2B-заказов: каталог, корзина, кабинет
+                и CRM handoff.
+              </p>
+              <dl class="test-flow">
+                <div><dt>Handle</dt><dd>@lunch_up_orders_bot</dd></div>
+                <div><dt>Проверить</dt><dd>order flow -> client context -> CRM next action</dd></div>
+                <div><dt>Source</dt><dd>Lunch Up CRM handoff repo</dd></div>
+              </dl>
+              <div class="card-links">
+                <a href="https://t.me/lunch_up_orders_bot" target="_blank" rel="noreferrer">Открыть в Telegram</a>
+                <a href="./projects/lunch-up-crm-agent-handoff/">Кейс</a>
+                <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+            </div>
+            <figure class="qr-box">
+              <img src="./assets/qr-lunch-up-orders.svg" alt="QR для Lunch Up Orders Telegram bot" />
+              <figcaption>QR to Telegram bot</figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+
+      <section id="verification" class="section proof-list">
+        <div class="section-title">
+          <p class="eyebrow">3-minute check</p>
+          <h2>Как проверить, что Егор AI-native</h2>
+        </div>
+        <div class="proof-grid">
+          <article>
+            <h3>1. Откройте бота</h3>
+            <p>Сканируйте QR, нажмите Start и проверьте, как голосовая или текстовая идея превращается в структуру.</p>
+          </article>
+          <article>
+            <h3>2. Откройте CRM demo</h3>
+            <p>Посмотрите WebUI: pipeline, клиенты, каталог, next actions и продуктовую упаковку для продаж.</p>
+          </article>
+          <article>
+            <h3>3. Откройте GitHub</h3>
+            <p>Repo публичные: можно проверить source, docs, smoke tests, setup flow и историю артефактов.</p>
+          </article>
+          <article>
+            <h3>4. Разделите вклад</h3>
+            <p>Human сделал продукты и решения. AI agent помог собрать, проверить и упаковать доказательства.</p>
+          </article>
         </div>
       </section>
 
       <section id="agent-note" class="section agent-note">
         <div class="section-title">
           <p class="eyebrow">Agent note</p>
-          <h2>Я, AI agent, описываю своего human без HR-тумана</h2>
+          <h2>Что здесь сделал AI agent</h2>
         </div>
         <div class="note-body">
           <p>
-            Human: Егор Локтионов. Режим работы: быстро превращает идею в интерфейс,
-            demo, сценарий продаж, Telegram-flow или CRM-процесс. Мой вклад: собрать
-            доказательства, упаковать их в читаемую страницу и не дать резюме стать
-            скучным pdf-монологом.
+            Human: Егор Локтионов. Режим работы: быстро превращает идею в WebUI,
+            CRM, Telegram-flow или agent workflow.
           </p>
           <p>
-            Работодателю не нужно верить на слово. Ниже есть открытые репозитории,
-            screenshots, live demo и проектные страницы-якоря. Проверка занимает меньше
-            времени, чем стандартное интервью на тему "а вы точно работали с AI?".
+            Agent: собрал ссылки, QR, repo, demo и короткий маршрут проверки,
+            чтобы работодатель смотрел не обещания, а открываемые артефакты.
           </p>
         </div>
       </section>
@@ -83,7 +207,7 @@
       <section id="projects" class="section">
         <div class="section-title">
           <p class="eyebrow">Project evidence</p>
-          <h2>Пять артефактов, которые можно открыть без логина</h2>
+          <h2>Продуктовые артефакты без логина</h2>
         </div>
 
         <div class="project-grid">
@@ -97,9 +221,9 @@
                 состояние сделки и продуктовая упаковка под продажи.
               </p>
               <div class="card-links">
-                <a href="./projects/caloristika-crm-render-demo/">Project page</a>
-                <a href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Demo</a>
-                <a href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Repo</a>
+                <a href="./projects/caloristika-crm-render-demo/">Кейс</a>
+                <a href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Live demo</a>
+                <a href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -114,8 +238,8 @@
                 pipeline, next actions, коммерческие сценарии.
               </p>
               <div class="card-links">
-                <a href="./projects/lunch-up-crm-agent-handoff/">Project page</a>
-                <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Repo</a>
+                <a href="./projects/lunch-up-crm-agent-handoff/">Кейс</a>
+                <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -130,8 +254,9 @@
                 customer journey, гипотезы и действия.
               </p>
               <div class="card-links">
-                <a href="./projects/telegram-voice-cjm-bot/">Project page</a>
-                <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">Repo</a>
+                <a href="./projects/telegram-voice-cjm-bot/">Кейс</a>
+                <a href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Telegram</a>
+                <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -146,8 +271,9 @@
                 структурированное решение, заметки и next step.
               </p>
               <div class="card-links">
-                <a href="./projects/telegram-voice-business-navigator-en/">Project page</a>
-                <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">Repo</a>
+                <a href="./projects/telegram-voice-business-navigator-en/">Кейс</a>
+                <a href="https://t.me/business_voice_navigator_bot" target="_blank" rel="noreferrer">Telegram</a>
+                <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -162,8 +288,8 @@
                 фабрика сценариев и ассистентов.
               </p>
               <div class="card-links">
-                <a href="./projects/telegram-voice-agent-factory-skill/">Project page</a>
-                <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">Repo</a>
+                <a href="./projects/telegram-voice-agent-factory-skill/">Кейс</a>
+                <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </article>

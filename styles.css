@@ -47,7 +47,7 @@ img {
 }
 
 .hero {
-  min-height: 92vh;
+  min-height: 74vh;
   background:
     linear-gradient(115deg, rgba(21, 25, 31, 0.92), rgba(21, 25, 31, 0.74)),
     url("./assets/caloristika-crm.png") center / cover no-repeat;
@@ -92,16 +92,16 @@ img {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.64fr);
   gap: 54px;
   align-items: center;
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 92px 0 86px;
+  padding: 74px 0 76px;
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 820px;
 }
 
 .eyebrow,
@@ -127,8 +127,8 @@ p {
 
 h1 {
   margin: 0;
-  font-size: clamp(42px, 8vw, 86px);
-  line-height: 0.95;
+  font-size: clamp(52px, 9vw, 118px);
+  line-height: 0.92;
   letter-spacing: 0;
   max-width: 900px;
 }
@@ -151,7 +151,7 @@ h3 {
   max-width: 760px;
   margin: 28px 0 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(18px, 2vw, 23px);
 }
 
 .hero-actions {
@@ -201,6 +201,43 @@ h3 {
   padding: 14px 16px 16px;
   color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
+}
+
+.hero-proof-panel {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.hero-proof-panel div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hero-proof-panel div:last-of-type {
+  border-bottom: 0;
+}
+
+.hero-proof-panel p {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 15px;
+}
+
+.proof-number {
+  color: #5df1b8;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .strip {
@@ -272,6 +309,95 @@ h3 {
   gap: 18px;
 }
 
+.bots-section .section-title p:not(.eyebrow) {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.bot-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.bot-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 24px;
+  align-items: center;
+  min-height: 270px;
+  padding: 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.bot-card.primary-bot {
+  background: var(--dark);
+  color: #fff;
+}
+
+.bot-card.primary-bot p,
+.bot-card.primary-bot dd {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.bot-copy > p:not(.tag) {
+  max-width: 720px;
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.test-flow {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.test-flow div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.primary-bot .test-flow div {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.test-flow dt {
+  color: var(--coral);
+  font-weight: 900;
+}
+
+.test-flow dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.qr-box {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin: 0;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.qr-box img {
+  width: 160px;
+  height: 160px;
+}
+
+.qr-box figcaption {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .project-card {
   display: grid;
   grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr);
@@ -289,11 +415,15 @@ h3 {
 
 .project-card img {
   width: 100%;
-  height: 100%;
-  min-height: 210px;
+  height: 230px;
+  min-height: 0;
   object-fit: cover;
   border-radius: 6px;
   border: 1px solid var(--line);
+}
+
+.project-card:first-child img {
+  height: 280px;
 }
 
 .project-card p {
@@ -377,8 +507,8 @@ h3 {
 
 .detail img {
   width: 100%;
-  height: 100%;
-  min-height: 330px;
+  height: 430px;
+  min-height: 0;
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -446,7 +576,8 @@ footer p {
   .hero-grid,
   .agent-note,
   .detail,
-  .project-page-grid {
+  .project-page-grid,
+  .bot-card {
     grid-template-columns: 1fr;
   }
 
@@ -467,6 +598,10 @@ footer p {
   .proof-grid {
     grid-template-columns: 1fr;
   }
+
+  .qr-box {
+    justify-self: start;
+  }
 }
 
 @media (max-width: 640px) {
@@ -483,16 +618,33 @@ footer p {
     padding-top: 58px;
   }
 
+  h1 {
+    font-size: clamp(48px, 15vw, 64px);
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
   .project-card {
     grid-template-columns: 1fr;
   }
 
   .project-card img,
   .detail img {
-    min-height: 220px;
+    height: 220px;
   }
 
   .section {
     padding-top: 68px;
+  }
+
+  .test-flow div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .qr-box {
+    justify-self: stretch;
   }
 }

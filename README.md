@@ -21,6 +21,12 @@ Public proof links:
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-business-navigator-en/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-agent-factory-skill/
 
+Telegram test entrypoints:
+
+- https://t.me/cjm_voice_strategy_0530_bot
+- https://t.me/business_voice_navigator_bot
+- https://t.me/lunch_up_orders_bot
+
 Public repositories:
 
 - https://github.com/egoriklok/caloristika-crm-render-demo
