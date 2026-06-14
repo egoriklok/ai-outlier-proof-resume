@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,8 +13,15 @@
     />
     <title>Agent Fiscal Autonomy Pack | аудит оплаты ИИ-агентами</title>
     <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../language.js" defer></script>
   </head>
   <body>
+    <div class="language-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+    </div>
+
+    <div data-lang="ru">
     <header class="project-page-hero">
       <nav class="topbar">
         <a class="brand" href="../../">Егор Локтионов</a>
@@ -160,5 +167,150 @@
         </p>
       </section>
     </main>
+    </div>
+
+    <div data-lang="en">
+      <header class="project-page-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Egor Loktionov</a>
+          <div class="navlinks">
+            <a href="../../?lang=en#projects">All projects</a>
+            <a href="https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html" target="_blank" rel="noreferrer">Original page</a>
+            <a href="https://github.com/egoriklok/agent-fiscal-autonomy-pack" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">AI-agent payment readiness</p>
+            <h1>Audit framework for safe AI-agent payments</h1>
+            <p class="lead">
+              Agent Fiscal Autonomy Pack evaluates whether a service can safely sell
+              access to an AI agent: visible price, budget limit, receipt/status,
+              action log, revocation path and a verifiable delivered result.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html" target="_blank" rel="noreferrer">Open product</a>
+              <a class="button secondary" href="https://github.com/egoriklok/agent-fiscal-autonomy-pack" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </div>
+          <img src="../../assets/agent-fiscal-autonomy-pack.png" alt="Agent Fiscal Autonomy Pack screenshot" />
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section class="section">
+          <div class="section-title">
+            <p class="eyebrow">Audit scope</p>
+            <h2>Not an agent wallet, but a readiness check for controlled payment flows</h2>
+            <p>
+              The product focuses on the operating model around AI-agent payments.
+              Before an agent is allowed to buy an action or access, the service must
+              expose rules, constraints and an auditable trail.
+            </p>
+          </div>
+          <div class="proof-grid proof-grid-wide">
+            <article>
+              <h3>Price and terms</h3>
+              <p>Is the paid action clear before execution, and is the price visible at the decision point?</p>
+            </article>
+            <article>
+              <h3>Budget limit</h3>
+              <p>Who approves spending, where does the flow stop, and when is human confirmation required?</p>
+            </article>
+            <article>
+              <h3>Confirmation</h3>
+              <p>Is there a receipt, status, transaction reference or other trace without exposing private data?</p>
+            </article>
+            <article>
+              <h3>Action log</h3>
+              <p>Can a reviewer later understand who requested the action, what was paid for and what was delivered?</p>
+            </article>
+            <article>
+              <h3>Revocation</h3>
+              <p>Can the owner stop a subscription, revoke a token, reduce a limit or close access?</p>
+            </article>
+            <article>
+              <h3>Delivered result</h3>
+              <p>After payment, there must be a verifiable output: report, file, access, link or another artifact.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="detail">
+            <div class="detail-copy">
+              <p class="eyebrow">Client deliverable</p>
+              <h2>A compact audit without asking for private systems</h2>
+              <p>
+                The R1 version is intentionally narrow. It does not store funds,
+                manage private keys or take over payment accounts. The client receives
+                a practical view of what is ready, where the risk is and what should be fixed first.
+              </p>
+              <ul>
+                <li>Short report on payment-path readiness.</li>
+                <li>Structured summary for CRM or an AI-agent layer.</li>
+                <li>Authority map: who approves payment and which limits apply.</li>
+                <li>Gap list: missing price, receipt, log, revocation or delivery proof.</li>
+              </ul>
+            </div>
+            <img src="../../assets/agent-fiscal-autonomy-pack.png" alt="Agent Fiscal Autonomy Pack product screen" />
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <p class="eyebrow">Current public status</p>
+            <h2>What is public and where the claims stop</h2>
+            <p>
+              The source page frames the product as preparation for a first verifiable
+              paid case. Revenue is not claimed; a sale counts only after confirmed payment
+              and delivered output.
+            </p>
+          </div>
+          <div class="evidence-grid">
+            <article>
+              <h3>Public artifacts</h3>
+              <ul>
+                <li>Open GitHub repository with product framing.</li>
+                <li>Portfolio page with a verification route.</li>
+                <li>README, roadmap, offer, retention map and pull request history.</li>
+                <li>R1 logic from public signal to verifiable delivery.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Claim boundaries</h3>
+              <ul>
+                <li>This is not custody of funds or private-key management.</li>
+                <li>This is not a revenue claim; current public status remains 0 USDC.</li>
+                <li>External outreach and sales require manual verification.</li>
+                <li>Access, payments and data remain under the budget owner's control.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section repo-section">
+          <div class="section-title">
+            <p class="eyebrow">Why it matters for product teams</p>
+            <h2>Product thinking for agentic commerce</h2>
+            <p>
+              This case shows product design beyond screens and bots: it defines how
+              an AI agent can be allowed to act financially, where the limit is, where
+              the receipt lives, how access can be revoked and how delivery is proven.
+            </p>
+          </div>
+          <div class="repo-list page-list">
+            <a href="https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html" target="_blank" rel="noreferrer">Open original page</a>
+            <a href="https://github.com/egoriklok/agent-fiscal-autonomy-pack" target="_blank" rel="noreferrer">Open GitHub</a>
+            <a href="https://github.com/egoriklok/agent-fiscal-autonomy-pack/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
+            <a href="../../?lang=en#projects">Back to portfolio</a>
+          </div>
+          <p class="source-note">
+            This page was prepared by an AI agent as an English product adaptation
+            for Egor Loktionov's portfolio. Product decisions and direction belong to Egor.
+          </p>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

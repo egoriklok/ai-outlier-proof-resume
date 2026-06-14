@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,8 +13,15 @@
     />
     <title>Голосовые Telegram-боты | описание продукта</title>
     <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../language.js" defer></script>
   </head>
   <body>
+    <div class="language-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+    </div>
+
+    <div data-lang="ru">
     <header class="project-page-hero voice-proof-hero">
       <nav class="topbar">
         <a class="brand" href="../../">Егор Локтионов</a>
@@ -359,5 +366,345 @@
         Егору.
       </p>
     </footer>
+    </div>
+
+    <div data-lang="en">
+      <header class="project-page-hero voice-proof-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Egor Loktionov</a>
+          <div class="navlinks">
+            <a href="#check-en">Proof path</a>
+            <a href="#russian-bot-en">RU bot</a>
+            <a href="#result-en">Output</a>
+            <a href="#evidence-en">Code and boundaries</a>
+            <a href="../../?lang=en#verification">Portfolio</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">Product proof page</p>
+            <h1>Telegram Voice Agents for Business Discovery</h1>
+            <p class="lead">
+              A bilingual product line that turns spoken or typed business notes into
+              customer journey context, hypotheses, risks, metrics and practical next actions.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Open Russian bot</a>
+              <a class="button secondary" href="https://t.me/BusinessNavigatorVoiceEnBot" target="_blank" rel="noreferrer">Open English bot</a>
+              <a class="button secondary" href="#result-en">Review output</a>
+            </div>
+          </div>
+          <aside class="voice-hero-card" aria-label="Voice bot product summary">
+            <p class="tag">Executive summary</p>
+            <div>
+              <strong>Input</strong>
+              <span>voice note or typed business idea in Telegram</span>
+            </div>
+            <div>
+              <strong>Agent behavior</strong>
+              <span>guided interview, memory, adaptive questions and review before generation</span>
+            </div>
+            <div>
+              <strong>Output</strong>
+              <span>customer journey, hypotheses, validation plan, HTML report and Excel workbook</span>
+            </div>
+            <div>
+              <strong>Verification</strong>
+              <span>run the bots, inspect GitHub, review tests, setup notes and QR entrypoints</span>
+            </div>
+          </aside>
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section id="check-en" class="section">
+          <div class="section-title">
+            <p class="eyebrow">3-minute verification</p>
+            <h2>How to evaluate the product without a meeting</h2>
+            <p>
+              The proof path is designed for recruiters, product leads and technical reviewers:
+              open the Telegram bots, inspect the public repositories and check the stated limits.
+            </p>
+          </div>
+          <div class="proof-grid proof-grid-wide">
+            <article>
+              <span class="step-number">1</span>
+              <h3>Open Telegram</h3>
+              <p>Start the Russian or English bot and send a short business idea by voice or text.</p>
+            </article>
+            <article>
+              <span class="step-number">2</span>
+              <h3>Test the workflow</h3>
+              <p>Commands such as `/mode`, `/memory`, `/edit`, `/review` and `/finish` show that this is a guided interview, not a generic chat.</p>
+            </article>
+            <article>
+              <span class="step-number">3</span>
+              <h3>Review artifacts</h3>
+              <p>The result can be reviewed as a Telegram mini page, browser report and Excel workbook.</p>
+            </article>
+            <article>
+              <span class="step-number">4</span>
+              <h3>Open GitHub</h3>
+              <p>README files, specifications, tests, launch notes and the factory skill show how the approach can be repeated.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="detail">
+            <div class="detail-copy">
+              <p class="eyebrow">Product workflow</p>
+              <h2>From raw voice to structured business context</h2>
+              <p>
+                The bot captures business context in the lowest-friction interface:
+                a founder, expert or seller explains an idea in Telegram. The agent
+                turns it into customer segments, pain points, journey stages, demand
+                validation, metrics, risks and the next practical step.
+              </p>
+              <ul>
+                <li>Voice or text input instead of a long form.</li>
+                <li>Speech recognition and step-by-step interview logic.</li>
+                <li>Adaptive next questions based on collected answers.</li>
+                <li>`/review` exposes gaps before final generation.</li>
+                <li>`/finish` packages the output into multiple usable formats.</li>
+              </ul>
+            </div>
+            <img src="../../assets/voice-bot-product-interface.png" alt="Voice bot product interface" />
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <p class="eyebrow">System behavior</p>
+            <h2>What the bot actually does</h2>
+          </div>
+          <div class="voice-flow">
+            <article>
+              <span>01</span>
+              <h3>Capture</h3>
+              <p>User sends a voice note or typed answer in Telegram.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Memory</h3>
+              <p>Answers are saved into temporary project context; voice is transcribed before interpretation.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Interview logic</h3>
+              <p>The next question depends on the current answers, depth mode and missing information.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Review</h3>
+              <p>The user can inspect gaps and edit responses before final generation.</p>
+            </article>
+            <article>
+              <span>05</span>
+              <h3>Output</h3>
+              <p>Customer journey, validation plan, metrics, risks and recommendations are packaged for action.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="russian-bot-en" class="section bot-proof-section">
+          <div class="section-title">
+            <p class="eyebrow">Core product</p>
+            <h2>Business Navigator by Voice</h2>
+            <p>
+              Russian Telegram bot for business owners, experts and early teams.
+              It helps turn a spoken idea into a structured product discovery artifact.
+            </p>
+          </div>
+          <article class="bot-card primary-bot bot-proof-card">
+            <div class="bot-copy">
+              <p class="tag">Test in Telegram</p>
+              <h3>From idea to business map</h3>
+              <p>
+                The bot asks about the customer, problem, product and journey. The final
+                output includes mission, audience, hypotheses, a 30/60/90-day plan,
+                content ideas, metrics, risks and AI-assisted recommendations.
+              </p>
+              <dl class="test-flow">
+                <div>
+                  <dt>Handle</dt>
+                  <dd>@cjm_voice_strategy_0530_bot</dd>
+                </div>
+                <div>
+                  <dt>Commands</dt>
+                  <dd>/preview, /mode, /memory, /edit, /review, /finish, /privacy, /export_data, /delete_me</dd>
+                </div>
+                <div>
+                  <dt>Code and tests</dt>
+                  <dd>README, interview flow, speech recognition setup, Excel generation, tests and launch notes.</dd>
+                </div>
+              </dl>
+              <div class="card-links">
+                <a href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Open Telegram</a>
+                <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">View GitHub</a>
+              </div>
+            </div>
+            <figure class="qr-box">
+              <img src="../../assets/qr-cjm-voice-strategy.svg" alt="QR code for Business Navigator by Voice" />
+              <figcaption>QR code to launch the bot</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section id="result-en" class="section">
+          <div class="section-title">
+            <p class="eyebrow">Output</p>
+            <h2>What the user receives after the interview</h2>
+            <p>
+              The output is not a chat answer. It is a set of artifacts that can
+              support product discussion, demand validation and immediate planning.
+            </p>
+          </div>
+          <div class="proof-grid proof-grid-wide">
+            <article>
+              <h3>Customer map</h3>
+              <p>Who buys, what problem appears and where the decision happens.</p>
+            </article>
+            <article>
+              <h3>Demand validation</h3>
+              <p>Hypotheses to test, market questions and signals of success.</p>
+            </article>
+            <article>
+              <h3>Action plan</h3>
+              <p>Clear next steps for the next 30, 60 and 90 days.</p>
+            </article>
+            <article>
+              <h3>Report and Excel</h3>
+              <p>A short report for discussion and a workbook for further work.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="english-bot-en" class="section bot-proof-section">
+          <div class="section-title">
+            <p class="eyebrow">English version</p>
+            <h2>Business Voice Navigator</h2>
+            <p>
+              English version of the same product mechanics: a founder describes an
+              idea and receives a structured output for validation and follow-up.
+            </p>
+          </div>
+          <article class="bot-card bot-proof-card">
+            <div class="bot-copy">
+              <p class="tag">English-language proof</p>
+              <h3>Business idea -> actionable next steps</h3>
+              <p>
+                The repository shows English copy, depth modes, temporary project memory,
+                adaptive questions, answer review, local telemetry and three output formats:
+                mobile page, report and Excel workbook.
+              </p>
+              <dl class="test-flow">
+                <div>
+                  <dt>Handle</dt>
+                  <dd>@BusinessNavigatorVoiceEnBot</dd>
+                </div>
+                <div>
+                  <dt>Monetization hooks</dt>
+                  <dd>Donations, paid review and B2B pilot hooks exist in code but are hidden by default.</dd>
+                </div>
+                <div>
+                  <dt>Boundary</dt>
+                  <dd>Public deployment requires Telegram token, model access, secure public mini-page URL and payment validation.</dd>
+                </div>
+              </dl>
+              <div class="card-links">
+                <a href="https://t.me/BusinessNavigatorVoiceEnBot" target="_blank" rel="noreferrer">Open Telegram</a>
+                <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">View GitHub</a>
+              </div>
+            </div>
+            <figure class="qr-box">
+              <img src="../../assets/qr-business-voice-navigator.svg" alt="QR code for Business Voice Navigator" />
+              <figcaption>English bot QR code</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section id="factory-en" class="section">
+          <div class="section-title">
+            <p class="eyebrow">Reusable delivery</p>
+            <h2>Factory pattern for new voice agents</h2>
+            <p>
+              The third repository shows that the work was converted from a single bot
+              into a repeatable pattern for new domains and product discovery scenarios.
+            </p>
+          </div>
+          <div class="proof-grid proof-grid-wide">
+            <article>
+              <h3>Agent instructions</h3>
+              <p>The agent receives a reusable playbook for adapting a Telegram voice bot to a new topic.</p>
+            </article>
+            <article>
+              <h3>Project intake</h3>
+              <p>Forms capture topic, expected output, monetization, server assumptions and checks.</p>
+            </article>
+            <article>
+              <h3>Implementation plan</h3>
+              <p>`render_agent_plan.py` turns the intake into a clear implementation plan.</p>
+            </article>
+            <article>
+              <h3>Kit validation</h3>
+              <p>`validate_agent_kit.py` verifies that required files and instructions are present.</p>
+            </article>
+          </div>
+          <div class="card-links wide-links">
+            <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">View GitHub</a>
+            <a href="../telegram-voice-agent-factory-skill/?lang=en">Short project page</a>
+          </div>
+        </section>
+
+        <section id="evidence-en" class="section repo-section">
+          <div class="section-title">
+            <p class="eyebrow">Evidence and boundaries</p>
+            <h2>What this page proves and what it does not claim</h2>
+            <p>
+              The goal is a verifiable proof path. Claims are limited to what can be
+              inspected in Telegram, README files, code, tests, instructions and public links.
+            </p>
+          </div>
+          <div class="evidence-grid">
+            <article>
+              <h3>What it proves</h3>
+              <ul>
+                <li>Egor can turn a voice-first idea into structured business output.</li>
+                <li>The product connects Telegram, speech recognition, model logic, reports and Excel output.</li>
+                <li>Public repositories include specs, tests, launch instructions and QR entrypoints.</li>
+                <li>The approach is packaged as a reusable factory for new voice agents.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>What it does not claim</h3>
+              <ul>
+                <li>It is not a managed enterprise service with 24/7 support.</li>
+                <li>It does not claim revenue or paid users without separate metrics.</li>
+                <li>It is not a real-time phone agent; the interface is Telegram.</li>
+                <li>Public deployment and payments require separate access and validation.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="repo-list page-list">
+            <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">Russian bot GitHub</a>
+            <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">English bot GitHub</a>
+            <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">Factory GitHub</a>
+            <a href="../../?lang=en#telegram-bots">Back to portfolio</a>
+          </div>
+          <p class="source-note">
+            Last checked: GitHub projects opened on 2026-06-14. Versions:
+            RU `b8fdb54`, EN `6b689c1`, Factory `601bd59`.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          This page was prepared by an AI agent delegated by Egor Loktionov
+          to package proof artifacts. Product direction and decisions belong to Egor.
+        </p>
+      </footer>
+    </div>
   </body>
 </html>

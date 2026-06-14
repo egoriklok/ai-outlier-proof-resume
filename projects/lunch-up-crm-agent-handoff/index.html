@@ -1,59 +1,117 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Lunch Up CRM Agent Handoff proof page for Egor Loktionov." />
     <title>Lunch Up CRM Agent Handoff | Egor Loktionov proof</title>
     <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../language.js" defer></script>
   </head>
   <body>
-    <header class="project-page-hero">
-      <nav class="topbar">
-        <a class="brand" href="../../">Egor Loktionov</a>
-        <div class="navlinks">
-          <a href="../../#projects">Все проекты</a>
-          <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Repo</a>
-        </div>
-      </nav>
-      <section class="project-page-grid">
-        <div>
-          <p class="eyebrow">Project proof page</p>
-          <h1>Lunch Up CRM Agent Handoff</h1>
-          <p class="lead">
-            CRM + sales workflow + AI handoff: проект показывает, как не терять контекст
-            между менеджером, клиентом, next action и agent runtime.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Открыть repo</a>
-            <a class="button secondary" href="../../#lunch-up-crm-agent-handoff">Общий proof-site</a>
-          </div>
-        </div>
-        <img src="../../assets/lunch-up-agent-runtime.png" alt="Lunch Up AI agent runtime screenshot" />
-      </section>
-    </header>
+    <div class="language-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+    </div>
 
-    <main class="project-page-main">
-      <section class="section proof-list">
-        <div class="proof-grid">
-          <article>
-            <h3>Что проверять</h3>
-            <p>CRM UI, agent runtime artifact, source repo и коммерческий сценарий передачи контекста.</p>
-          </article>
-          <article>
-            <h3>Роль Егора</h3>
-            <p>Сборка продуктового handoff между продажами, CRM и AI-ассистентом.</p>
-          </article>
-          <article>
-            <h3>Бизнес-смысл</h3>
-            <p>Менеджер видит следующий шаг, руководитель видит процесс, агент не теряет историю.</p>
-          </article>
-          <article>
-            <h3>AI agent note</h3>
-            <p>Проект доказывает не разговоры об AI, а рабочую связку human + CRM + agent.</p>
-          </article>
-        </div>
-      </section>
-    </main>
+    <div data-lang="ru">
+      <header class="project-page-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Егор Локтионов</a>
+          <div class="navlinks">
+            <a href="../../#projects">Все проекты</a>
+            <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">Страница продукта</p>
+            <h1>Lunch Up CRM Agent Handoff</h1>
+            <p class="lead">
+              CRM + sales workflow + AI handoff: проект показывает, как не терять контекст
+              между менеджером, клиентом, next action и agent runtime.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Открыть repo</a>
+              <a class="button secondary" href="../../#projects">Общий proof-site</a>
+            </div>
+          </div>
+          <img src="../../assets/lunch-up-agent-runtime.png" alt="Скриншот Lunch Up AI agent runtime" />
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section class="section proof-list">
+          <div class="proof-grid">
+            <article>
+              <h3>Что проверять</h3>
+              <p>CRM UI, agent runtime artifact, source repo и коммерческий сценарий передачи контекста.</p>
+            </article>
+            <article>
+              <h3>Роль Егора</h3>
+              <p>Сборка продуктового handoff между продажами, CRM и AI-ассистентом.</p>
+            </article>
+            <article>
+              <h3>Бизнес-смысл</h3>
+              <p>Менеджер видит следующий шаг, руководитель видит процесс, агент не теряет историю.</p>
+            </article>
+            <article>
+              <h3>AI agent note</h3>
+              <p>Проект доказывает не разговоры об AI, а рабочую связку human + CRM + agent.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div data-lang="en">
+      <header class="project-page-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Egor Loktionov</a>
+          <div class="navlinks">
+            <a href="../../#projects">All projects</a>
+            <a href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Repo</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">Product proof page</p>
+            <h1>Lunch Up CRM Agent Handoff</h1>
+            <p class="lead">
+              A CRM and sales workflow prototype that keeps context intact between
+              orders, clients, managers, AI tasks and the agent runtime.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">View repo</a>
+              <a class="button secondary" href="../../?lang=en#projects">Back to portfolio</a>
+            </div>
+          </div>
+          <img src="../../assets/lunch-up-agent-runtime.png" alt="Lunch Up AI agent runtime screenshot" />
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section class="section proof-list">
+          <div class="proof-grid">
+            <article>
+              <h3>What to verify</h3>
+              <p>CRM UI, agent runtime artifact, source repository and the commercial context-handoff scenario.</p>
+            </article>
+            <article>
+              <h3>Egor's role</h3>
+              <p>Designed the product handoff between sales workflow, CRM state and AI-assistant next actions.</p>
+            </article>
+            <article>
+              <h3>Product value</h3>
+              <p>Managers see the next step, leads keep context, and the AI layer does not lose operational history.</p>
+            </article>
+            <article>
+              <h3>AI-agent angle</h3>
+              <p>The repo demonstrates a working human + CRM + agent handoff rather than generic AI positioning.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

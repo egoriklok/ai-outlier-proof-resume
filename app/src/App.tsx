@@ -7,6 +7,7 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
 } from "lucide-react"
+import { useEffect, useState } from "react"
 import type { ComponentProps, ReactNode } from "react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -26,201 +27,705 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
 
+type Lang = "ru" | "en"
+
+type LinkItem = {
+  value: string
+  label: string
+  href: string
+}
+
+type TelegramBot = {
+  badge: string
+  title: string
+  description: string
+  handle: string
+  check: string
+  status: string
+  qr: string
+  qrAlt: string
+  telegramUrl: string
+  telegramLabel: string
+  caseUrl: string
+  repoUrl: string
+}
+
+type Project = {
+  id: string
+  badge: string
+  title: string
+  description: string
+  image: string
+  imageFit?: "contain"
+  alt: string
+  caseUrl: string
+  primaryUrl: string
+  primaryLabel: string
+  repoUrl: string
+  contribution: string
+  verify: string
+  status: string
+}
+
 const githubProfileUrl = "https://github.com/egoriklok"
 const liveCrmUrl = "https://caloristika-crm-demo.onrender.com/demo"
 const russianVoiceBotUrl = "https://t.me/cjm_voice_strategy_0530_bot"
 const englishVoiceBotUrl = "https://t.me/BusinessNavigatorVoiceEnBot"
 const voiceBotsPageUrl = "./projects/voice-bots-product-proof/"
+const languageStorageKey = "aiOutlierProofLang"
 
-const roleKeywords = [
-  "CRM-прототипы",
-  "Telegram-боты",
-  "ИИ-сценарии",
-]
+function getInitialLanguage(): Lang {
+  if (typeof window === "undefined") {
+    return "ru"
+  }
 
-const stats = [
-  { value: "CRM", label: "демо без логина", href: liveCrmUrl },
-  {
-    value: "2",
-    label: "Telegram-бота: русский и английский",
-    href: "#telegram-bots",
-  },
-  { value: "GitHub", label: "код и инструкции", href: "#public-repos" },
-]
+  const queryLang = new URLSearchParams(window.location.search).get("lang")
+  if (queryLang === "en" || queryLang === "ru") {
+    return queryLang
+  }
 
-const telegramBots = [
-  {
-    badge: "Русский голосовой бот",
-    title: "Бизнес-Навигатор Голосом",
-    description:
-      "Telegram-бот принимает голосовую или текстовую бизнес-идею и возвращает структуру: путь клиента, гипотезы и следующие шаги.",
-    handle: "@cjm_voice_strategy_0530_bot",
-    check: "голос или текст -> путь клиента -> следующие шаги",
-    status: "Проверено: ссылка на Telegram и публичный GitHub открываются, 14.06.2026.",
-    qr: "./assets/qr-cjm-voice-strategy.svg",
-    qrAlt: "QR для Telegram-бота Бизнес-Навигатор Голосом",
-    telegramUrl: russianVoiceBotUrl,
-    telegramLabel: "t.me/cjm_voice_strategy_0530_bot",
-    caseUrl: `${voiceBotsPageUrl}#russian-bot`,
-    repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
-  },
-  {
-    badge: "Английская версия",
-    title: "Business Voice Navigator",
-    description:
-      "Англоязычная версия Telegram-бота для структурирования бизнес-заметок и следующих действий.",
-    handle: "@BusinessNavigatorVoiceEnBot",
-    check: "заметка -> структура -> следующий шаг",
-    status: "Проверено: ссылка на Telegram и публичный GitHub открываются, 14.06.2026.",
-    qr: "./assets/qr-business-voice-navigator.svg",
-    qrAlt: "QR для английского Telegram-бота Business Voice Navigator",
-    telegramUrl: englishVoiceBotUrl,
-    telegramLabel: "t.me/BusinessNavigatorVoiceEnBot",
-    caseUrl: `${voiceBotsPageUrl}#english-bot`,
-    repoUrl:
-      "https://github.com/egoriklok/telegram-voice-business-navigator-en",
-  },
-]
+  const storedLang = window.localStorage.getItem(languageStorageKey)
+  if (storedLang === "en" || storedLang === "ru") {
+    return storedLang
+  }
 
-const projects = [
-  {
-    badge: "CRM-демо",
-    title: "Caloristika CRM",
-    description:
-      "CRM-демо без логина: клиенты, воронка, каталог и состояние сделки. Можно открыть в браузере.",
-    image: "./assets/caloristika-crm.png",
-    alt: "Экран CRM Caloristika",
-    caseUrl: "./projects/caloristika-crm-render-demo/",
-    primaryUrl: liveCrmUrl,
-    primaryLabel: "Открыть демо",
-    repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
-    contribution: "собрал CRM-демо с воронкой, каталогом и следующими действиями по сделке",
-    verify: "открыть демо и GitHub",
-    status: "Проверено: демо открывается, 14.06.2026.",
-  },
-  {
-    badge: "Платежная готовность",
-    title: "Agent Fiscal Autonomy Pack",
-    description:
-      "Аудит готовности сервиса к безопасной оплате ИИ-агентом: цена, лимит, чек, журнал действий и отзыв доступа.",
-    image: "./assets/agent-fiscal-autonomy-pack.png",
-    alt: "Скриншот Agent Fiscal Autonomy Pack",
-    caseUrl: "./projects/agent-fiscal-autonomy-pack/",
-    primaryUrl:
-      "https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html",
-    primaryLabel: "Открыть продукт",
-    repoUrl: "https://github.com/egoriklok/agent-fiscal-autonomy-pack",
-    contribution:
-      "упаковал R1-аудит платежного пути для сервисов, которые готовятся продавать доступ ИИ-агентам",
-    verify: "открыть продукт, русскую страницу кейса и публичный GitHub",
-    status: "Проверено: продуктовая страница и GitHub открываются, 14.06.2026.",
-  },
-  {
-    badge: "CRM-контекст",
-    title: "Lunch Up CRM: передача контекста",
-    description:
-      "Прототип передачи контекста между заказом, клиентом, CRM и ИИ-ассистентом. Код доступен на GitHub.",
-    image: "./assets/lunch-up-crm.png",
-    alt: "Интерфейс Lunch Up CRM",
-    caseUrl: "./projects/lunch-up-crm-agent-handoff/",
-    primaryUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
-    primaryLabel: "Открыть GitHub",
-    repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
-    contribution:
-      "описал передачу контекста между заказом, CRM и ИИ-ассистентом",
-    verify: "посмотреть кейс и публичный GitHub",
-    status: "Проверено: публичный GitHub открывается, 14.06.2026.",
-  },
-  {
-    badge: "Голосовой бот",
-    title: "Бизнес-Навигатор Голосом",
-    description:
-      "Telegram-бот для превращения голосовой заметки в путь клиента, гипотезы и следующие действия.",
-    image: "./assets/voice-bot-ru-menu.png",
-    imageFit: "contain",
-    alt: "Интерфейс русского Telegram-бота Бизнес-Навигатор Голосом",
-    caseUrl: `${voiceBotsPageUrl}#russian-bot`,
-    primaryUrl: russianVoiceBotUrl,
-    primaryLabel: "Открыть бота",
-    repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
-    contribution: "связал голосовую заметку с картой клиента, гипотезами и планом действий",
-    verify: "открыть Telegram-бота или GitHub",
-    status: "Проверено: Telegram и публичный GitHub открываются, 14.06.2026.",
-  },
-  {
-    badge: "Английский бот",
-    title: "Английский Бизнес-Навигатор",
-    description:
-      "Англоязычный Telegram-бот: из бизнес-заметки в структуру, выводы и следующий шаг.",
-    image: "./assets/voice-bot-en-menu.png",
-    imageFit: "contain",
-    alt: "Интерфейс английского Telegram-бота Business Voice Navigator",
-    caseUrl: `${voiceBotsPageUrl}#english-bot`,
-    primaryUrl: englishVoiceBotUrl,
-    primaryLabel: "Открыть бота",
-    repoUrl:
-      "https://github.com/egoriklok/telegram-voice-business-navigator-en",
-    contribution: "собрал англоязычный сценарий для структурирования бизнес-идей",
-    verify: "открыть Telegram-бота или GitHub",
-    status: "Проверено: Telegram и публичный GitHub открываются, 14.06.2026.",
-  },
-  {
-    badge: "Шаблон ботов",
-    title: "Шаблон для новых голосовых ботов",
-    description:
-      "Описание повторяемого подхода к созданию Telegram-ботов на базе похожих сценариев.",
-    image: "./assets/voice-bot-product-interface.png",
-    imageFit: "contain",
-    alt: "Экран продукта с голосовым Telegram-ботом",
-    caseUrl: `${voiceBotsPageUrl}#factory`,
-    primaryUrl:
-      "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
-    primaryLabel: "Открыть GitHub",
-    repoUrl: "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
-    contribution:
-      "оформил подход к повторяемому созданию голосовых Telegram-ботов",
-    verify: "посмотреть описание и публичный GitHub",
-    status: "Проверено: публичный GitHub открывается, 14.06.2026.",
-  },
-]
+  return "ru"
+}
 
-const checkRoute = [
-  {
-    label: "Открыть CRM-демо",
-    detail: "воронка, клиенты, каталог",
-  },
-  {
-    label: "Запустить Telegram-бота",
-    detail: "голос или текст -> структура",
-  },
-  {
-    label: "Посмотреть GitHub",
-    detail: "код, инструкции, история",
-  },
-]
+function localizedHref(href: string, lang: Lang) {
+  if (
+    lang === "ru" ||
+    href.startsWith("#") ||
+    href.startsWith("http") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:")
+  ) {
+    return href
+  }
 
-const verificationSteps = [
-  {
-    title: "CRM и веб-интерфейсы",
-    description:
-      "Собираю рабочие экраны, где видно клиентов, сделки, каталог и следующий шаг.",
+  const [withoutHash, hash] = href.split("#")
+  const separator = withoutHash.includes("?") ? "&" : "?"
+  return `${withoutHash}${separator}lang=en${hash ? `#${hash}` : ""}`
+}
+
+const copy = {
+  ru: {
+    documentTitle: "Егор Локтионов | ИИ-прототипы, CRM и Telegram-боты",
+    skip: "К основному содержанию",
+    languageLabel: "Язык страницы",
+    nav: {
+      mark: "ИИ",
+      brand: "Егор Локтионов",
+      bots: "Боты",
+      verification: "Проверка",
+      projects: "Проекты",
+      github: "GitHub",
+    },
+    hero: {
+      badge: "ИИ-прототипы для бизнеса",
+      name: "Егор Локтионов",
+      lead:
+        "Собираю ИИ-прототипы для бизнеса: CRM-демо, Telegram-ботов и голосовые сценарии, которые можно открыть и проверить сразу.",
+      goalPrefix: "Цель:",
+      goal:
+        "роль в продуктовой или ИИ-команде: прототипирование, автоматизация, CRM, Telegram-боты, React и TypeScript.",
+      verifyButton: "Проверить за 3 минуты",
+      crmButton: "Открыть CRM-демо",
+      githubButton: "Посмотреть GitHub",
+      alertTitle: "Проверка для рекрутера за 3 минуты",
+      cardTitle: "Егор Локтионов + ИИ-агент",
+      cardDescription:
+        "Совместная сборка продуктов, страниц, демо и проверочных материалов",
+      cardBadge: "Человек + ИИ-агент",
+      notePrefix: "Для рекрутера:",
+      note:
+        "CRM-демо, Telegram-боты, публичный GitHub и вклад ИИ-агента в упаковку этой страницы.",
+      openDemo: "Открыть демо",
+    },
+    roleKeywords: ["CRM-прототипы", "Telegram-боты", "ИИ-сценарии"],
+    stats: [
+      { value: "CRM", label: "демо без логина", href: liveCrmUrl },
+      {
+        value: "2",
+        label: "Telegram-бота: русский и английский",
+        href: "#telegram-bots",
+      },
+      { value: "GitHub", label: "код и инструкции", href: "#public-repos" },
+    ] satisfies LinkItem[],
+    checkRoute: [
+      { label: "Открыть CRM-демо", detail: "воронка, клиенты, каталог" },
+      { label: "Запустить Telegram-бота", detail: "голос или текст -> структура" },
+      { label: "Посмотреть GitHub", detail: "код, инструкции, история" },
+    ],
+    verification: {
+      eyebrow: "Проверка за 3 минуты",
+      title: "Что можно проверить без доступа",
+      description:
+        "Откройте CRM-демо без логина, запустите Telegram-бота и посмотрите код на GitHub. Так проверяются не обещания, а готовые артефакты.",
+      tabs: {
+        crm: "CRM-демо",
+        bots: "Боты",
+        github: "GitHub",
+      },
+      crmTitle: "CRM-демо в браузере",
+      crmDescription:
+        "Демоверсия открывается без логина и показывает воронку, каталог, клиентов, контекст сделки и следующие действия.",
+      botsTitle: "Голосовой сценарий в Telegram",
+      botsDescription:
+        "Откройте Telegram-бота, отправьте голосовую или текстовую бизнес-идею и посмотрите, как она превращается в структуру.",
+      openRuBot: "Открыть русского бота",
+      openEnBot: "Открыть английского бота",
+      botsDescriptionButton: "Описание ботов",
+      githubTitle: "Публичный GitHub",
+      githubDescription:
+        "Репозитории открыты: можно проверить код, документацию, скриншоты, инструкции запуска и историю упаковки проекта.",
+      openGithub: "Открыть GitHub",
+    },
+    telegramBotsHeading: {
+      eyebrow: "Голосовые Telegram-боты",
+      title: "Telegram-боты: голос -> структура -> следующий шаг",
+      description:
+        "Эти боты показывают, как голосовая или текстовая идея превращается в структуру: план, гипотезы и следующие действия.",
+    },
+    botLabels: {
+      handle: "Адрес",
+      link: "Ссылка",
+      check: "Проверить",
+      status: "Статус",
+      qr: "QR-код для запуска бота",
+      openBot: "Открыть бота",
+      openCase: "Открыть кейс",
+      viewCode: "Посмотреть код",
+    },
+    telegramBots: [
+      {
+        badge: "Русский голосовой бот",
+        title: "Бизнес-Навигатор Голосом",
+        description:
+          "Telegram-бот принимает голосовую или текстовую бизнес-идею и возвращает структуру: путь клиента, гипотезы и следующие шаги.",
+        handle: "@cjm_voice_strategy_0530_bot",
+        check: "голос или текст -> путь клиента -> следующие шаги",
+        status:
+          "Проверено: ссылка на Telegram и публичный GitHub открываются, 14.06.2026.",
+        qr: "./assets/qr-cjm-voice-strategy.svg",
+        qrAlt: "QR для Telegram-бота Бизнес-Навигатор Голосом",
+        telegramUrl: russianVoiceBotUrl,
+        telegramLabel: "t.me/cjm_voice_strategy_0530_bot",
+        caseUrl: `${voiceBotsPageUrl}#russian-bot`,
+        repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
+      },
+      {
+        badge: "Английская версия",
+        title: "Business Voice Navigator",
+        description:
+          "Англоязычная версия Telegram-бота для структурирования бизнес-заметок и следующих действий.",
+        handle: "@BusinessNavigatorVoiceEnBot",
+        check: "заметка -> структура -> следующий шаг",
+        status:
+          "Проверено: ссылка на Telegram и публичный GitHub открываются, 14.06.2026.",
+        qr: "./assets/qr-business-voice-navigator.svg",
+        qrAlt: "QR для английского Telegram-бота Business Voice Navigator",
+        telegramUrl: englishVoiceBotUrl,
+        telegramLabel: "t.me/BusinessNavigatorVoiceEnBot",
+        caseUrl: `${voiceBotsPageUrl}#english-bot`,
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+      },
+    ] satisfies TelegramBot[],
+    projectsHeading: {
+      eyebrow: "Проверяемые продукты",
+      title: "Демо, боты и код, которые можно открыть",
+      description:
+        "Здесь не макеты, а проверяемые артефакты: демоверсии, боты, код и короткие страницы с объяснением результата.",
+    },
+    projectLabels: {
+      contribution: "Вклад:",
+      verify: "Проверить:",
+      status: "Статус:",
+      openCase: "Открыть кейс",
+      viewCode: "Посмотреть код",
+    },
+    projects: [
+      {
+        id: "caloristika-crm",
+        badge: "CRM-демо",
+        title: "Caloristika CRM",
+        description:
+          "CRM-демо без логина: клиенты, воронка, каталог и состояние сделки. Можно открыть в браузере.",
+        image: "./assets/caloristika-crm.png",
+        alt: "Экран CRM Caloristika",
+        caseUrl: "./projects/caloristika-crm-render-demo/",
+        primaryUrl: liveCrmUrl,
+        primaryLabel: "Открыть демо",
+        repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
+        contribution:
+          "собрал CRM-демо с воронкой, каталогом и следующими действиями по сделке",
+        verify: "открыть демо и GitHub",
+        status: "Проверено: демо открывается, 14.06.2026.",
+      },
+      {
+        id: "agent-fiscal-autonomy-pack",
+        badge: "Платежная готовность",
+        title: "Agent Fiscal Autonomy Pack",
+        description:
+          "Аудит готовности сервиса к безопасной оплате ИИ-агентом: цена, лимит, чек, журнал действий и отзыв доступа.",
+        image: "./assets/agent-fiscal-autonomy-pack.png",
+        alt: "Скриншот Agent Fiscal Autonomy Pack",
+        caseUrl: "./projects/agent-fiscal-autonomy-pack/",
+        primaryUrl:
+          "https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html",
+        primaryLabel: "Открыть продукт",
+        repoUrl: "https://github.com/egoriklok/agent-fiscal-autonomy-pack",
+        contribution:
+          "упаковал R1-аудит платежного пути для сервисов, которые готовятся продавать доступ ИИ-агентам",
+        verify: "открыть продукт, русскую страницу кейса и публичный GitHub",
+        status:
+          "Проверено: продуктовая страница и GitHub открываются, 14.06.2026.",
+      },
+      {
+        id: "lunch-up-crm",
+        badge: "CRM-контекст",
+        title: "Lunch Up CRM: передача контекста",
+        description:
+          "Прототип передачи контекста между заказом, клиентом, CRM и ИИ-ассистентом. Код доступен на GitHub.",
+        image: "./assets/lunch-up-crm.png",
+        alt: "Интерфейс Lunch Up CRM",
+        caseUrl: "./projects/lunch-up-crm-agent-handoff/",
+        primaryUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
+        primaryLabel: "Открыть GitHub",
+        repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
+        contribution:
+          "описал передачу контекста между заказом, CRM и ИИ-ассистентом",
+        verify: "посмотреть кейс и публичный GitHub",
+        status: "Проверено: публичный GitHub открывается, 14.06.2026.",
+      },
+      {
+        id: "voice-cjm-bot",
+        badge: "Голосовой бот",
+        title: "Бизнес-Навигатор Голосом",
+        description:
+          "Telegram-бот для превращения голосовой заметки в путь клиента, гипотезы и следующие действия.",
+        image: "./assets/voice-bot-ru-menu.png",
+        imageFit: "contain",
+        alt: "Интерфейс русского Telegram-бота Бизнес-Навигатор Голосом",
+        caseUrl: `${voiceBotsPageUrl}#russian-bot`,
+        primaryUrl: russianVoiceBotUrl,
+        primaryLabel: "Открыть бота",
+        repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
+        contribution:
+          "связал голосовую заметку с картой клиента, гипотезами и планом действий",
+        verify: "открыть Telegram-бота или GitHub",
+        status: "Проверено: Telegram и публичный GitHub открываются, 14.06.2026.",
+      },
+      {
+        id: "business-voice-navigator",
+        badge: "Английский бот",
+        title: "Английский Бизнес-Навигатор",
+        description:
+          "Англоязычный Telegram-бот: из бизнес-заметки в структуру, выводы и следующий шаг.",
+        image: "./assets/voice-bot-en-menu.png",
+        imageFit: "contain",
+        alt: "Интерфейс английского Telegram-бота Business Voice Navigator",
+        caseUrl: `${voiceBotsPageUrl}#english-bot`,
+        primaryUrl: englishVoiceBotUrl,
+        primaryLabel: "Открыть бота",
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+        contribution:
+          "собрал англоязычный сценарий для структурирования бизнес-идей",
+        verify: "открыть Telegram-бота или GitHub",
+        status: "Проверено: Telegram и публичный GitHub открываются, 14.06.2026.",
+      },
+      {
+        id: "voice-agent-factory",
+        badge: "Шаблон ботов",
+        title: "Шаблон для новых голосовых ботов",
+        description:
+          "Описание повторяемого подхода к созданию Telegram-ботов на базе похожих сценариев.",
+        image: "./assets/voice-bot-product-interface.png",
+        imageFit: "contain",
+        alt: "Экран продукта с голосовым Telegram-ботом",
+        caseUrl: `${voiceBotsPageUrl}#factory`,
+        primaryUrl:
+          "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+        primaryLabel: "Открыть GitHub",
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+        contribution:
+          "оформил подход к повторяемому созданию голосовых Telegram-ботов",
+        verify: "посмотреть описание и публичный GitHub",
+        status: "Проверено: публичный GitHub открывается, 14.06.2026.",
+      },
+    ] satisfies Project[],
+    agentSection: {
+      eyebrow: "Упаковка ИИ-агентом",
+      title: "Как ИИ-агент помог с этой страницей",
+      alertTitle: "Эту страницу подготовил ИИ-агент",
+      alertDescription:
+        "Егор сделал продукты и решения. ИИ-агент помог собрать ссылки, QR-коды, демо и GitHub в понятный маршрут проверки для рекрутера.",
+      egorTitle: "Егор",
+      egorDescription:
+        "Превращает идею в веб-интерфейс, CRM-прототип, Telegram-бота или сценарий с ИИ-ассистентом.",
+      agentTitle: "ИИ-агент",
+      agentDescription:
+        "Упаковал открытые ссылки, QR-коды, демо, GitHub и короткие проверки в одну страницу для рекрутера.",
+    },
+    workHeading: {
+      eyebrow: "Что я делаю",
+      title: "Какие задачи закрываю",
+    },
+    verificationSteps: [
+      {
+        title: "CRM и веб-интерфейсы",
+        description:
+          "Собираю рабочие экраны, где видно клиентов, сделки, каталог и следующий шаг.",
+      },
+      {
+        title: "Голосовые Telegram-боты",
+        description:
+          "Проектирую сценарий, где голосовая или текстовая идея превращается в понятную структуру.",
+      },
+      {
+        title: "Публичная упаковка проекта",
+        description:
+          "Готовлю страницу, ссылки, QR-коды, краткое описание, GitHub и маршрут проверки.",
+      },
+      {
+        title: "Честные границы",
+        description:
+          "Не заявляю выручку, внедрение или партнерства без отдельного подтверждения.",
+      },
+    ],
+    reposHeading: {
+      eyebrow: "Код, демо и прямые ссылки",
+      title: "Все ссылки для проверки",
+      description:
+        "Все ссылки открываются без внутреннего доступа. Страница дает короткий путь от резюме к демо, ботам, GitHub и страницам проектов.",
+      projectPages: "Страницы проектов",
+      projectPagesDescription:
+        "Отдельные страницы с коротким описанием каждого артефакта.",
+      repositories: "GitHub-репозитории",
+      repositoriesDescription:
+        "Код, документация и инструкции запуска для технической проверки.",
+    },
+    footer: {
+      text:
+        "Страница подготовлена ИИ-агентом, которому Егор Локтионов делегировал упаковку доказательств. Продукты и решения принадлежат Егору.",
+      proof: "Публичная проверка",
+      bots: "Голосовые боты",
+    },
   },
-  {
-    title: "Голосовые Telegram-боты",
-    description:
-      "Проектирую сценарий, где голосовая или текстовая идея превращается в понятную структуру.",
+  en: {
+    documentTitle:
+      "Egor Loktionov | AI Product Engineer, CRM Automation and Telegram Voice AI",
+    skip: "Skip to main content",
+    languageLabel: "Page language",
+    nav: {
+      mark: "AI",
+      brand: "Egor Loktionov",
+      bots: "Bots",
+      verification: "Proof",
+      projects: "Projects",
+      github: "GitHub",
+    },
+    hero: {
+      badge: "AI-native product proof",
+      name: "Egor Loktionov",
+      lead:
+        "I build AI-native product prototypes for CRM, Telegram voice agents and workflow automation, with public demos, source trails and recruiter-friendly proof paths.",
+      goalPrefix: "Target:",
+      goal:
+        "AI Product Engineer / AI Agent Builder roles focused on rapid prototyping, CRM automation, Telegram AI, React and TypeScript.",
+      verifyButton: "3-minute proof check",
+      crmButton: "Open CRM demo",
+      githubButton: "View GitHub",
+      alertTitle: "3-minute proof path for recruiters",
+      cardTitle: "Egor Loktionov + AI Agent",
+      cardDescription:
+        "A human-and-agent collaboration across products, demos, pages and verification assets",
+      cardBadge: "Human + AI agent",
+      notePrefix: "For recruiters:",
+      note:
+        "Live CRM demo, Telegram voice bots, public GitHub and a transparent AI-agent packaging workflow.",
+      openDemo: "Open demo",
+    },
+    roleKeywords: [
+      "AI Product Engineering",
+      "CRM Automation",
+      "Telegram Voice AI",
+    ],
+    stats: [
+      { value: "CRM", label: "public demo, no login", href: liveCrmUrl },
+      {
+        value: "2",
+        label: "Telegram voice agents: RU + EN",
+        href: "#telegram-bots",
+      },
+      { value: "GitHub", label: "source, docs and setup traces", href: "#public-repos" },
+    ] satisfies LinkItem[],
+    checkRoute: [
+      { label: "Open CRM demo", detail: "pipeline, clients, catalog" },
+      { label: "Run Telegram bot", detail: "voice or text -> structured output" },
+      { label: "Inspect GitHub", detail: "source, docs, implementation history" },
+    ],
+    verification: {
+      eyebrow: "3-minute verification",
+      title: "What a hiring team can verify without private access",
+      description:
+        "Open the live CRM demo, run the Telegram voice bot and inspect public GitHub repositories. The page is built around artifacts, not claims.",
+      tabs: {
+        crm: "CRM demo",
+        bots: "Bots",
+        github: "GitHub",
+      },
+      crmTitle: "Browser-based CRM demo",
+      crmDescription:
+        "A no-login CRM demo showing pipeline, catalog, client context, deal state and next actions.",
+      botsTitle: "Telegram voice workflow",
+      botsDescription:
+        "Open the bot, send a voice or text business note, and review how it becomes structured product context.",
+      openRuBot: "Open Russian bot",
+      openEnBot: "Open English bot",
+      botsDescriptionButton: "Voice bot product page",
+      githubTitle: "Public GitHub",
+      githubDescription:
+        "Repositories expose source code, documentation, screenshots, setup notes and product packaging history.",
+      openGithub: "Open GitHub",
+    },
+    telegramBotsHeading: {
+      eyebrow: "Telegram Voice AI",
+      title: "Voice -> structure -> next action",
+      description:
+        "These Telegram agents turn a spoken or typed business idea into customer context, hypotheses and actionable next steps.",
+    },
+    botLabels: {
+      handle: "Handle",
+      link: "Link",
+      check: "How to test",
+      status: "Status",
+      qr: "QR code to launch the bot",
+      openBot: "Open bot",
+      openCase: "Open case",
+      viewCode: "View code",
+    },
+    telegramBots: [
+      {
+        badge: "Russian voice agent",
+        title: "Business Navigator by Voice",
+        description:
+          "Telegram bot that turns a voice or text business idea into customer journey context, hypotheses and next actions.",
+        handle: "@cjm_voice_strategy_0530_bot",
+        check: "voice or text -> customer journey -> next steps",
+        status:
+          "Verified: Telegram link and public GitHub are accessible, 14 Jun 2026.",
+        qr: "./assets/qr-cjm-voice-strategy.svg",
+        qrAlt: "QR code for Business Navigator by Voice Telegram bot",
+        telegramUrl: russianVoiceBotUrl,
+        telegramLabel: "t.me/cjm_voice_strategy_0530_bot",
+        caseUrl: `${voiceBotsPageUrl}#russian-bot`,
+        repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
+      },
+      {
+        badge: "English version",
+        title: "Business Voice Navigator",
+        description:
+          "English Telegram voice agent for business-note discovery, structured outputs and next-step planning.",
+        handle: "@BusinessNavigatorVoiceEnBot",
+        check: "note -> structure -> next action",
+        status:
+          "Verified: Telegram link and public GitHub are accessible, 14 Jun 2026.",
+        qr: "./assets/qr-business-voice-navigator.svg",
+        qrAlt: "QR code for Business Voice Navigator Telegram bot",
+        telegramUrl: englishVoiceBotUrl,
+        telegramLabel: "t.me/BusinessNavigatorVoiceEnBot",
+        caseUrl: `${voiceBotsPageUrl}#english-bot`,
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+      },
+    ] satisfies TelegramBot[],
+    projectsHeading: {
+      eyebrow: "Proof-backed products",
+      title: "Demos, bots and repositories a hiring team can open",
+      description:
+        "This is a portfolio of working artifacts: live demos, Telegram bots, source code and concise product pages explaining the result.",
+    },
+    projectLabels: {
+      contribution: "Contribution:",
+      verify: "Verify:",
+      status: "Status:",
+      openCase: "Open case",
+      viewCode: "View code",
+    },
+    projects: [
+      {
+        id: "caloristika-crm",
+        badge: "CRM demo",
+        title: "Caloristika CRM",
+        description:
+          "No-login CRM demo with clients, pipeline, product catalog and deal state visible in the browser.",
+        image: "./assets/caloristika-crm.png",
+        alt: "Caloristika CRM screen",
+        caseUrl: "./projects/caloristika-crm-render-demo/",
+        primaryUrl: liveCrmUrl,
+        primaryLabel: "Open demo",
+        repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
+        contribution:
+          "built a CRM demo that connects pipeline, catalog and next actions in one browser-first workflow",
+        verify: "open the live demo and public GitHub repository",
+        status: "Verified: demo opens, 14 Jun 2026.",
+      },
+      {
+        id: "agent-fiscal-autonomy-pack",
+        badge: "Agent payments readiness",
+        title: "Agent Fiscal Autonomy Pack",
+        description:
+          "Readiness audit for safe AI-agent payments: price, budget limit, receipt/status, action log and revocation path.",
+        image: "./assets/agent-fiscal-autonomy-pack.png",
+        alt: "Agent Fiscal Autonomy Pack screenshot",
+        caseUrl: "./projects/agent-fiscal-autonomy-pack/",
+        primaryUrl:
+          "https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html",
+        primaryLabel: "Open product",
+        repoUrl: "https://github.com/egoriklok/agent-fiscal-autonomy-pack",
+        contribution:
+          "packaged an R1 payment-path audit for services preparing to sell access to AI agents",
+        verify: "open the product page, bilingual case page and public GitHub",
+        status: "Verified: product page and GitHub open, 14 Jun 2026.",
+      },
+      {
+        id: "lunch-up-crm",
+        badge: "CRM context handoff",
+        title: "Lunch Up CRM: Agent Handoff",
+        description:
+          "Prototype for handing off context between an order, a client, CRM and an AI assistant.",
+        image: "./assets/lunch-up-crm.png",
+        alt: "Lunch Up CRM interface",
+        caseUrl: "./projects/lunch-up-crm-agent-handoff/",
+        primaryUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
+        primaryLabel: "Open GitHub",
+        repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
+        contribution:
+          "defined the context bridge between order flow, CRM state and AI assistant next actions",
+        verify: "open the case page and public GitHub",
+        status: "Verified: public GitHub opens, 14 Jun 2026.",
+      },
+      {
+        id: "voice-cjm-bot",
+        badge: "Voice bot",
+        title: "Business Navigator by Voice",
+        description:
+          "Telegram voice agent that turns a spoken business note into customer journey context, hypotheses and next actions.",
+        image: "./assets/voice-bot-ru-menu.png",
+        imageFit: "contain",
+        alt: "Russian Telegram voice bot interface",
+        caseUrl: `${voiceBotsPageUrl}#russian-bot`,
+        primaryUrl: russianVoiceBotUrl,
+        primaryLabel: "Open bot",
+        repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
+        contribution:
+          "connected voice input with customer journey mapping, hypotheses and action planning",
+        verify: "open the Telegram bot or GitHub repository",
+        status: "Verified: Telegram and public GitHub open, 14 Jun 2026.",
+      },
+      {
+        id: "business-voice-navigator",
+        badge: "English bot",
+        title: "Business Voice Navigator",
+        description:
+          "English Telegram bot that turns a business note into structured output, review and next steps.",
+        image: "./assets/voice-bot-en-menu.png",
+        imageFit: "contain",
+        alt: "English Telegram bot interface",
+        caseUrl: `${voiceBotsPageUrl}#english-bot`,
+        primaryUrl: englishVoiceBotUrl,
+        primaryLabel: "Open bot",
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+        contribution:
+          "built the English product discovery workflow for business-note structuring",
+        verify: "open the Telegram bot or GitHub repository",
+        status: "Verified: Telegram and public GitHub open, 14 Jun 2026.",
+      },
+      {
+        id: "voice-agent-factory",
+        badge: "Bot factory pattern",
+        title: "Voice Agent Factory Skill",
+        description:
+          "Reusable approach for creating new Telegram voice bots from similar interview and output patterns.",
+        image: "./assets/voice-bot-product-interface.png",
+        imageFit: "contain",
+        alt: "Voice bot product proof screen",
+        caseUrl: `${voiceBotsPageUrl}#factory`,
+        primaryUrl:
+          "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+        primaryLabel: "Open GitHub",
+        repoUrl:
+          "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+        contribution:
+          "converted one-off voice bot delivery into a reusable agent skill and project intake pattern",
+        verify: "review the product description and public GitHub",
+        status: "Verified: public GitHub opens, 14 Jun 2026.",
+      },
+    ] satisfies Project[],
+    agentSection: {
+      eyebrow: "AI-agent packaging",
+      title: "How the AI agent helped package this page",
+      alertTitle: "This page was prepared by an AI agent",
+      alertDescription:
+        "Egor built the products and product decisions. The AI agent packaged links, QR codes, demos and GitHub evidence into a clean verification path.",
+      egorTitle: "Egor",
+      egorDescription:
+        "Turns an idea into a web interface, CRM prototype, Telegram bot or AI-assisted workflow.",
+      agentTitle: "AI agent",
+      agentDescription:
+        "Packaged open links, QR codes, demos, GitHub repositories and short checks into one recruiter-friendly proof page.",
+    },
+    workHeading: {
+      eyebrow: "Work surface",
+      title: "Problems I can own",
+    },
+    verificationSteps: [
+      {
+        title: "CRM and web interfaces",
+        description:
+          "Build working screens that expose clients, deals, catalog state and next actions.",
+      },
+      {
+        title: "Telegram voice agents",
+        description:
+          "Design flows where voice or text input becomes structured business context.",
+      },
+      {
+        title: "Public product packaging",
+        description:
+          "Prepare pages, links, QR codes, concise product framing, GitHub and verification routes.",
+      },
+      {
+        title: "Honest boundaries",
+        description:
+          "Avoid revenue, deployment or partnership claims without direct proof.",
+      },
+    ],
+    reposHeading: {
+      eyebrow: "Code, demos and direct links",
+      title: "All verification links",
+      description:
+        "All links are public or no-login. The page gives a short path from resume to demo, bots, GitHub and product pages.",
+      projectPages: "Project pages",
+      projectPagesDescription:
+        "Concise bilingual pages explaining each artifact and its product value.",
+      repositories: "GitHub repositories",
+      repositoriesDescription:
+        "Source code, documentation and launch instructions for technical review.",
+    },
+    footer: {
+      text:
+        "This page was prepared by an AI agent delegated by Egor Loktionov to package proof artifacts. Products and product decisions belong to Egor.",
+      proof: "Public proof",
+      bots: "Voice bots",
+    },
   },
-  {
-    title: "Публичная упаковка проекта",
-    description:
-      "Готовлю страницу, ссылки, QR-коды, краткое описание, GitHub и маршрут проверки.",
-  },
-  {
-    title: "Честные границы",
-    description:
-      "Не заявляю выручку, внедрение или партнерства без отдельного подтверждения.",
-  },
-]
+} as const
 
 function SectionHeading({
   eyebrow,
@@ -276,14 +781,62 @@ function ExternalButton({
   )
 }
 
+function LanguageToggle({
+  lang,
+  setLang,
+  label,
+}: {
+  lang: Lang
+  setLang: (lang: Lang) => void
+  label: string
+}) {
+  return (
+    <div
+      className="inline-flex rounded-lg border bg-background p-1"
+      role="group"
+      aria-label={label}
+    >
+      {(["ru", "en"] as const).map((item) => (
+        <Button
+          key={item}
+          type="button"
+          size="sm"
+          variant={lang === item ? "default" : "ghost"}
+          aria-pressed={lang === item}
+          onClick={() => setLang(item)}
+        >
+          {item.toUpperCase()}
+        </Button>
+      ))}
+    </div>
+  )
+}
+
 function App() {
+  const [lang, setLang] = useState<Lang>(getInitialLanguage)
+  const t = copy[lang]
+
+  useEffect(() => {
+    document.documentElement.lang = lang
+    document.title = t.documentTitle
+    window.localStorage.setItem(languageStorageKey, lang)
+
+    const url = new URL(window.location.href)
+    if (lang === "en") {
+      url.searchParams.set("lang", "en")
+    } else {
+      url.searchParams.delete("lang")
+    }
+    window.history.replaceState(null, "", url)
+  }, [lang, t.documentTitle])
+
   return (
     <div className="it-shell min-h-svh bg-background text-foreground">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
       >
-        К основному содержанию
+        {t.skip}
       </a>
       <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <nav className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-6">
@@ -292,23 +845,28 @@ function App() {
             className="flex items-center gap-3 font-semibold no-underline"
           >
             <span className="grid size-9 place-items-center rounded-md border border-primary/30 bg-secondary text-sm text-primary">
-              ИИ
+              {t.nav.mark}
             </span>
-            <span className="hidden sm:inline">Егор Локтионов</span>
+            <span className="hidden sm:inline">{t.nav.brand}</span>
           </a>
           <div className="flex flex-wrap items-center gap-1">
             <Button asChild variant="ghost" size="sm">
-              <a href="#telegram-bots">Боты</a>
+              <a href="#telegram-bots">{t.nav.bots}</a>
             </Button>
             <Button asChild variant="ghost" size="sm">
-              <a href="#verification">Проверка</a>
+              <a href="#verification">{t.nav.verification}</a>
             </Button>
             <Button asChild variant="ghost" size="sm">
-              <a href="#projects">Проекты</a>
+              <a href="#projects">{t.nav.projects}</a>
             </Button>
             <Button asChild variant="ghost" size="sm">
-              <a href="#public-repos">GitHub</a>
+              <a href="#public-repos">{t.nav.github}</a>
             </Button>
+            <LanguageToggle
+              lang={lang}
+              setLang={setLang}
+              label={t.languageLabel}
+            />
           </div>
         </nav>
       </header>
@@ -322,27 +880,24 @@ function App() {
                   variant="outline"
                   className="w-fit border-primary/30 bg-background text-primary"
                 >
-                  ИИ-прототипы для бизнеса
+                  {t.hero.badge}
                 </Badge>
                 <h1 className="max-w-5xl text-5xl leading-none font-semibold tracking-normal text-balance md:text-7xl">
-                  Егор Локтионов
+                  {t.hero.name}
                 </h1>
                 <p className="max-w-3xl text-lg leading-8 text-slate-700 md:text-2xl">
-                  Собираю ИИ-прототипы для бизнеса: CRM-демо,
-                  Telegram-ботов и голосовые сценарии, которые можно открыть и
-                  проверить сразу.
+                  {t.hero.lead}
                 </p>
                 <div className="flex max-w-3xl flex-wrap gap-2">
-                  {roleKeywords.map((keyword) => (
+                  {t.roleKeywords.map((keyword) => (
                     <Badge key={keyword} variant="secondary">
                       {keyword}
                     </Badge>
                   ))}
                 </div>
                 <p className="max-w-3xl text-sm leading-6 text-slate-700">
-                  <b className="text-foreground">Цель:</b> роль в продуктовой
-                  или ИИ-команде: прототипирование, автоматизация, CRM,
-                  Telegram-боты, React и TypeScript.
+                  <b className="text-foreground">{t.hero.goalPrefix}</b>{" "}
+                  {t.hero.goal}
                 </p>
               </div>
 
@@ -353,7 +908,7 @@ function App() {
                       aria-hidden="true"
                       data-icon="inline-start"
                     />
-                    Проверить за 3 минуты
+                    {t.hero.verifyButton}
                   </a>
                 </Button>
                 <ExternalButton href={liveCrmUrl} variant="secondary">
@@ -361,25 +916,23 @@ function App() {
                     aria-hidden="true"
                     data-icon="inline-start"
                   />
-                  Открыть CRM-демо
+                  {t.hero.crmButton}
                 </ExternalButton>
                 <ExternalButton href={githubProfileUrl}>
                   <Code2Icon aria-hidden="true" data-icon="inline-start" />
-                  Посмотреть GitHub
+                  {t.hero.githubButton}
                 </ExternalButton>
               </div>
 
               <Alert className="border-lime-300 bg-lime-50 text-slate-950 [&>svg]:text-primary">
                 <ShieldCheckIcon aria-hidden="true" />
-                <AlertTitle>Проверка для рекрутера за 3 минуты</AlertTitle>
+                <AlertTitle>{t.hero.alertTitle}</AlertTitle>
                 <AlertDescription className="text-slate-700">
                   <ol className="mt-2 grid gap-1 sm:grid-cols-3">
-                    {checkRoute.map((item, index) => (
+                    {t.checkRoute.map((item, index) => (
                       <li key={item.label}>
                         {index + 1}. {item.label}:{" "}
-                        <span className="text-slate-700">
-                          {item.detail}
-                        </span>
+                        <span className="text-slate-700">{item.detail}</span>
                       </li>
                     ))}
                   </ol>
@@ -394,7 +947,7 @@ function App() {
                     <Avatar className="size-24 border-2 border-background">
                       <AvatarImage
                         src="./assets/egor-loktionov-photo.jpg"
-                        alt="Портрет Егора Локтионова"
+                        alt={t.hero.name}
                         width={96}
                         height={96}
                         fetchPriority="high"
@@ -404,22 +957,19 @@ function App() {
                     <Avatar className="size-24 border-2 border-background bg-secondary">
                       <AvatarImage
                         src="./assets/ai-agent-avatar.svg"
-                        alt="Аватар ИИ-агента Codex"
+                        alt="Codex AI agent avatar"
                         width={96}
                         height={96}
                         fetchPriority="high"
                       />
-                      <AvatarFallback>ИИ</AvatarFallback>
+                      <AvatarFallback>AI</AvatarFallback>
                     </Avatar>
                   </div>
                   <div className="flex min-w-0 flex-col gap-2">
-                    <CardTitle>Егор Локтионов + ИИ-агент</CardTitle>
-                    <CardDescription>
-                      Совместная сборка продуктов, страниц, демо и проверочных
-                      материалов
-                    </CardDescription>
+                    <CardTitle>{t.hero.cardTitle}</CardTitle>
+                    <CardDescription>{t.hero.cardDescription}</CardDescription>
                     <Badge variant="outline" className="w-fit">
-                      Человек + ИИ-агент
+                      {t.hero.cardBadge}
                     </Badge>
                   </div>
                 </div>
@@ -427,10 +977,10 @@ function App() {
               <CardContent className="flex flex-col gap-4">
                 <Separator />
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {stats.map((item) => (
+                  {t.stats.map((item) => (
                     <a
                       key={item.label}
-                      href={item.href}
+                      href={localizedHref(item.href, lang)}
                       target={
                         item.href.startsWith("http") ? "_blank" : undefined
                       }
@@ -449,14 +999,13 @@ function App() {
                   ))}
                 </div>
                 <div className="rounded-md border border-lime-300 bg-lime-50 p-4 text-sm leading-6 text-slate-700">
-                  <b className="text-foreground">Для рекрутера:</b>{" "}
-                  CRM-демо, Telegram-боты, публичный GitHub и вклад
-                  ИИ-агента в упаковку этой страницы.
+                  <b className="text-foreground">{t.hero.notePrefix}</b>{" "}
+                  {t.hero.note}
                 </div>
               </CardContent>
               <CardFooter className="flex flex-wrap gap-2">
                 <ExternalButton href={liveCrmUrl} variant="secondary">
-                  Открыть демо
+                  {t.hero.openDemo}
                 </ExternalButton>
               </CardFooter>
             </Card>
@@ -465,29 +1014,30 @@ function App() {
 
         <section id="verification" className="border-y bg-secondary/60 py-12">
           <SectionHeading
-            eyebrow="Проверка за 3 минуты"
-            title="Что можно проверить без доступа"
-            description="Откройте CRM-демо без логина, запустите Telegram-бота и посмотрите код на GitHub. Так проверяются не обещания, а готовые артефакты."
+            eyebrow={t.verification.eyebrow}
+            title={t.verification.title}
+            description={t.verification.description}
           />
           <div className="mx-auto mt-6 w-full max-w-6xl px-4">
             <Tabs defaultValue="crm">
               <TabsList className="flex h-auto flex-wrap justify-start">
-                <TabsTrigger value="crm">CRM-демо</TabsTrigger>
-                <TabsTrigger value="bots">Боты</TabsTrigger>
-                <TabsTrigger value="github">GitHub</TabsTrigger>
+                <TabsTrigger value="crm">{t.verification.tabs.crm}</TabsTrigger>
+                <TabsTrigger value="bots">{t.verification.tabs.bots}</TabsTrigger>
+                <TabsTrigger value="github">
+                  {t.verification.tabs.github}
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="crm">
                 <Card>
                   <CardHeader>
-                    <CardTitle>CRM-демо в браузере</CardTitle>
+                    <CardTitle>{t.verification.crmTitle}</CardTitle>
                     <CardDescription>
-                      Демоверсия открывается без логина и показывает воронку,
-                      каталог, клиентов, контекст сделки и следующие действия.
+                      {t.verification.crmDescription}
                     </CardDescription>
                   </CardHeader>
                   <CardFooter>
                     <ExternalButton href={liveCrmUrl}>
-                      Открыть CRM-демо
+                      {t.hero.crmButton}
                     </ExternalButton>
                   </CardFooter>
                 </Card>
@@ -495,22 +1045,20 @@ function App() {
               <TabsContent value="bots">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Голосовой сценарий в Telegram</CardTitle>
+                    <CardTitle>{t.verification.botsTitle}</CardTitle>
                     <CardDescription>
-                      Откройте Telegram-бота, отправьте голосовую или текстовую
-                      бизнес-идею и посмотрите, как она превращается в
-                      структуру.
+                      {t.verification.botsDescription}
                     </CardDescription>
                   </CardHeader>
                   <CardFooter className="flex flex-wrap gap-2">
                     <ExternalButton href={russianVoiceBotUrl}>
-                      Открыть русского бота
+                      {t.verification.openRuBot}
                     </ExternalButton>
                     <ExternalButton href={englishVoiceBotUrl}>
-                      Открыть английского бота
+                      {t.verification.openEnBot}
                     </ExternalButton>
-                    <ExternalButton href={voiceBotsPageUrl}>
-                      Описание ботов
+                    <ExternalButton href={localizedHref(voiceBotsPageUrl, lang)}>
+                      {t.verification.botsDescriptionButton}
                     </ExternalButton>
                   </CardFooter>
                 </Card>
@@ -518,15 +1066,14 @@ function App() {
               <TabsContent value="github">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Публичный GitHub</CardTitle>
+                    <CardTitle>{t.verification.githubTitle}</CardTitle>
                     <CardDescription>
-                      Репозитории открыты: можно проверить код, документацию,
-                      скриншоты, инструкции запуска и историю упаковки проекта.
+                      {t.verification.githubDescription}
                     </CardDescription>
                   </CardHeader>
                   <CardFooter>
                     <ExternalButton href={githubProfileUrl}>
-                      Открыть GitHub
+                      {t.verification.openGithub}
                     </ExternalButton>
                   </CardFooter>
                 </Card>
@@ -537,12 +1084,12 @@ function App() {
 
         <section id="telegram-bots" className="py-12">
           <SectionHeading
-            eyebrow="Голосовые Telegram-боты"
-            title="Telegram-боты: голос -> структура -> следующий шаг"
-            description="Эти боты показывают, как голосовая или текстовая идея превращается в структуру: план, гипотезы и следующие действия."
+            eyebrow={t.telegramBotsHeading.eyebrow}
+            title={t.telegramBotsHeading.title}
+            description={t.telegramBotsHeading.description}
           />
           <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4">
-            {telegramBots.map((bot) => (
+            {t.telegramBots.map((bot) => (
               <Card key={bot.handle}>
                 <CardHeader>
                   <div className="flex flex-wrap items-start justify-between gap-4">
@@ -564,14 +1111,14 @@ function App() {
                 <CardContent className="grid gap-6 md:grid-cols-[1fr_190px]">
                   <div className="grid gap-3 text-sm">
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
-                      <span className="font-medium">Адрес</span>
+                      <span className="font-medium">{t.botLabels.handle}</span>
                       <span className="break-words text-muted-foreground">
                         {bot.handle}
                       </span>
                     </div>
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
-                      <span className="font-medium">Ссылка</span>
+                      <span className="font-medium">{t.botLabels.link}</span>
                       <a
                         href={bot.telegramUrl}
                         target="_blank"
@@ -583,12 +1130,12 @@ function App() {
                     </div>
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
-                      <span className="font-medium">Проверить</span>
+                      <span className="font-medium">{t.botLabels.check}</span>
                       <span className="text-muted-foreground">{bot.check}</span>
                     </div>
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
-                      <span className="font-medium">Статус</span>
+                      <span className="font-medium">{t.botLabels.status}</span>
                       <span className="text-muted-foreground">
                         {bot.status}
                       </span>
@@ -605,19 +1152,19 @@ function App() {
                       decoding="async"
                     />
                     <figcaption className="text-sm text-muted-foreground">
-                      QR-код для запуска бота
+                      {t.botLabels.qr}
                     </figcaption>
                   </figure>
                 </CardContent>
                 <CardFooter className="flex flex-wrap gap-2">
                   <ExternalButton href={bot.telegramUrl}>
-                    Открыть бота
+                    {t.botLabels.openBot}
                   </ExternalButton>
-                  <ExternalButton href={bot.caseUrl}>
-                    Открыть кейс
+                  <ExternalButton href={localizedHref(bot.caseUrl, lang)}>
+                    {t.botLabels.openCase}
                   </ExternalButton>
                   <ExternalButton href={bot.repoUrl}>
-                    Посмотреть код
+                    {t.botLabels.viewCode}
                   </ExternalButton>
                 </CardFooter>
               </Card>
@@ -627,14 +1174,14 @@ function App() {
 
         <section id="projects" className="py-12">
           <SectionHeading
-            eyebrow="Проверяемые продукты"
-            title="Демо, боты и код, которые можно открыть"
-            description="Здесь не макеты, а проверяемые артефакты: демоверсии, боты, код и короткие страницы с объяснением результата."
+            eyebrow={t.projectsHeading.eyebrow}
+            title={t.projectsHeading.title}
+            description={t.projectsHeading.description}
           />
           <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4 md:grid-cols-2">
-            {projects.map((project, index) => (
+            {t.projects.map((project, index) => (
               <Card
-                key={project.title}
+                key={project.id}
                 className={cn(
                   "overflow-hidden",
                   index === 0 && "border-primary/30 md:col-span-2"
@@ -669,25 +1216,31 @@ function App() {
                       <CardDescription>{project.description}</CardDescription>
                     </div>
                     <div className="rounded-md border bg-muted/45 p-3 text-sm leading-6 text-muted-foreground">
-                      <b className="text-foreground">Вклад:</b>{" "}
+                      <b className="text-foreground">
+                        {t.projectLabels.contribution}
+                      </b>{" "}
                       {project.contribution}
                       <br />
-                      <b className="text-foreground">Проверить:</b>{" "}
+                      <b className="text-foreground">
+                        {t.projectLabels.verify}
+                      </b>{" "}
                       {project.verify}
                       <br />
-                      <b className="text-foreground">Статус:</b>{" "}
+                      <b className="text-foreground">
+                        {t.projectLabels.status}
+                      </b>{" "}
                       {project.status}
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <ExternalButton href={project.primaryUrl}>
                         {project.primaryLabel}
                       </ExternalButton>
-                      <ExternalButton href={project.caseUrl}>
-                        Открыть кейс
+                      <ExternalButton href={localizedHref(project.caseUrl, lang)}>
+                        {t.projectLabels.openCase}
                       </ExternalButton>
                       {project.primaryUrl !== project.repoUrl ? (
                         <ExternalButton href={project.repoUrl}>
-                          Посмотреть код
+                          {t.projectLabels.viewCode}
                         </ExternalButton>
                       ) : null}
                     </div>
@@ -700,35 +1253,31 @@ function App() {
 
         <section className="border-y bg-secondary/60 py-12">
           <SectionHeading
-            eyebrow="Упаковка ИИ-агентом"
-            title="Как ИИ-агент помог с этой страницей"
+            eyebrow={t.agentSection.eyebrow}
+            title={t.agentSection.title}
           />
           <div className="mx-auto mt-6 flex w-full max-w-6xl flex-col gap-4 px-4">
             <Alert className="border-primary/30 bg-accent/15 [&>svg]:text-primary">
               <SparklesIcon aria-hidden="true" />
-              <AlertTitle>Эту страницу подготовил ИИ-агент</AlertTitle>
+              <AlertTitle>{t.agentSection.alertTitle}</AlertTitle>
               <AlertDescription>
-                Егор сделал продукты и решения. ИИ-агент помог собрать ссылки,
-                QR-коды, демо и GitHub в понятный маршрут проверки для
-                рекрутера.
+                {t.agentSection.alertDescription}
               </AlertDescription>
             </Alert>
             <div className="grid gap-4 md:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Егор</CardTitle>
+                  <CardTitle>{t.agentSection.egorTitle}</CardTitle>
                   <CardDescription>
-                    Превращает идею в веб-интерфейс, CRM-прототип,
-                    Telegram-бота или сценарий с ИИ-ассистентом.
+                    {t.agentSection.egorDescription}
                   </CardDescription>
                 </CardHeader>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>ИИ-агент</CardTitle>
+                  <CardTitle>{t.agentSection.agentTitle}</CardTitle>
                   <CardDescription>
-                    Упаковал открытые ссылки, QR-коды, демо, GitHub и короткие
-                    проверки в одну страницу для рекрутера.
+                    {t.agentSection.agentDescription}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -738,11 +1287,11 @@ function App() {
 
         <section id="work" className="py-12">
           <SectionHeading
-            eyebrow="Что я делаю"
-            title="Какие задачи закрываю"
+            eyebrow={t.workHeading.eyebrow}
+            title={t.workHeading.title}
           />
           <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4 md:grid-cols-4">
-            {verificationSteps.map((step, index) => (
+            {t.verificationSteps.map((step, index) => (
               <Card key={step.title}>
                 <CardHeader>
                   <Badge variant="outline" className="w-fit">
@@ -758,36 +1307,37 @@ function App() {
 
         <section id="public-repos" className="border-t bg-secondary/60 py-12">
           <SectionHeading
-            eyebrow="Код, демо и прямые ссылки"
-            title="Все ссылки для проверки"
-            description="Все ссылки открываются без внутреннего доступа. Страница дает короткий путь от резюме к демо, ботам, GitHub и страницам проектов."
+            eyebrow={t.reposHeading.eyebrow}
+            title={t.reposHeading.title}
+            description={t.reposHeading.description}
           />
           <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4 md:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle>Страницы проектов</CardTitle>
+                <CardTitle>{t.reposHeading.projectPages}</CardTitle>
                 <CardDescription>
-                  Отдельные страницы с коротким описанием каждого артефакта.
+                  {t.reposHeading.projectPagesDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                {projects.map((project) => (
+                {t.projects.map((project) => (
                   <Button key={project.caseUrl} asChild variant="outline">
-                    <a href={project.caseUrl}>{project.title}</a>
+                    <a href={localizedHref(project.caseUrl, lang)}>
+                      {project.title}
+                    </a>
                   </Button>
                 ))}
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>GitHub-репозитории</CardTitle>
+                <CardTitle>{t.reposHeading.repositories}</CardTitle>
                 <CardDescription>
-                  Код, документация и инструкции запуска для технической
-                  проверки.
+                  {t.reposHeading.repositoriesDescription}
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                {projects.map((project) => (
+                {t.projects.map((project) => (
                   <ExternalButton key={project.repoUrl} href={project.repoUrl}>
                     {project.badge}
                   </ExternalButton>
@@ -800,19 +1350,15 @@ function App() {
 
       <footer className="border-t">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>
-            Страница подготовлена ИИ-агентом, которому Егор Локтионов
-            делегировал упаковку доказательств. Продукты и решения принадлежат
-            Егору.
-          </p>
+          <p>{t.footer.text}</p>
           <div className="flex flex-wrap gap-2">
             <Badge variant="outline">
               <ShieldCheckIcon aria-hidden="true" />
-              Публичная проверка
+              {t.footer.proof}
             </Badge>
             <Badge variant="outline">
               <AudioLinesIcon aria-hidden="true" />
-              Голосовые боты
+              {t.footer.bots}
             </Badge>
           </div>
         </div>

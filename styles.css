@@ -30,6 +30,45 @@ body {
   line-height: 1.55;
 }
 
+html[data-lang="ru"] [data-lang="en"],
+html[data-lang="en"] [data-lang="ru"] {
+  display: none !important;
+}
+
+.language-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 30;
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(21, 25, 31, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(16, 20, 24, 0.15);
+  backdrop-filter: blur(14px);
+}
+
+.language-toggle button {
+  min-width: 42px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--dark);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.language-toggle button[data-active] {
+  background: var(--dark);
+  color: #fff;
+}
+
 a {
   color: inherit;
   text-decoration-color: rgba(34, 87, 214, 0.28);

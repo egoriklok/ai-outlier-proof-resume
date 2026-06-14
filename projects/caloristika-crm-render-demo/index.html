@@ -1,60 +1,119 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Caloristika CRM Render Demo proof page for Egor Loktionov." />
     <title>Caloristika CRM Render Demo | Egor Loktionov proof</title>
     <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../language.js" defer></script>
   </head>
   <body>
-    <header class="project-page-hero">
-      <nav class="topbar">
-        <a class="brand" href="../../">Egor Loktionov</a>
-        <div class="navlinks">
-          <a href="../../#projects">Все проекты</a>
-          <a href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Repo</a>
-          <a href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Live demo</a>
-        </div>
-      </nav>
-      <section class="project-page-grid">
-        <div>
-          <p class="eyebrow">Project proof page</p>
-          <h1>Caloristika CRM Render Demo</h1>
-          <p class="lead">
-            Проверяемый CRM-прототип для B2B/sales демонстрации: pipeline, клиенты,
-            каталог, demo-first упаковка и публичный source trail.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Открыть demo</a>
-            <a class="button secondary" href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Открыть repo</a>
-          </div>
-        </div>
-        <img src="../../assets/caloristika-crm.png" alt="Caloristika CRM dashboard screenshot" />
-      </section>
-    </header>
+    <div class="language-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+      <button type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+    </div>
 
-    <main class="project-page-main">
-      <section class="section proof-list">
-        <div class="proof-grid">
-          <article>
-            <h3>Что проверять</h3>
-            <p>Live CRM demo, публичный repo, интерфейс продаж и связку demo -> artifact -> source.</p>
-          </article>
-          <article>
-            <h3>Роль Егора</h3>
-            <p>Продуктовая упаковка AI-assisted CRM-прототипа для быстрой проверки гипотезы командой.</p>
-          </article>
-          <article>
-            <h3>Бизнес-смысл</h3>
-            <p>Показывает, как CRM может объяснять клиентскую базу, сделки и next actions без долгого onboarding.</p>
-          </article>
-          <article>
-            <h3>AI agent note</h3>
-            <p>Эта страница подготовлена агентом, чтобы human не рассказывал, а показывал проверяемый результат.</p>
-          </article>
-        </div>
-      </section>
-    </main>
+    <div data-lang="ru">
+      <header class="project-page-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Егор Локтионов</a>
+          <div class="navlinks">
+            <a href="../../#projects">Все проекты</a>
+            <a href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Repo</a>
+            <a href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Live demo</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">Страница продукта</p>
+            <h1>Caloristika CRM Render Demo</h1>
+            <p class="lead">
+              Проверяемый CRM-прототип для B2B/sales демонстрации: pipeline, клиенты,
+              каталог, demo-first упаковка и публичный source trail.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Открыть demo</a>
+              <a class="button secondary" href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Открыть repo</a>
+            </div>
+          </div>
+          <img src="../../assets/caloristika-crm.png" alt="Скриншот Caloristika CRM" />
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section class="section proof-list">
+          <div class="proof-grid">
+            <article>
+              <h3>Что проверять</h3>
+              <p>Live CRM demo, публичный repo, интерфейс продаж и связку demo -> artifact -> source.</p>
+            </article>
+            <article>
+              <h3>Роль Егора</h3>
+              <p>Продуктовая упаковка AI-assisted CRM-прототипа для быстрой проверки гипотезы командой.</p>
+            </article>
+            <article>
+              <h3>Бизнес-смысл</h3>
+              <p>Показывает, как CRM может объяснять клиентскую базу, сделки и next actions без долгого onboarding.</p>
+            </article>
+            <article>
+              <h3>AI agent note</h3>
+              <p>Эта страница подготовлена агентом, чтобы human не рассказывал, а показывал проверяемый результат.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div data-lang="en">
+      <header class="project-page-hero">
+        <nav class="topbar">
+          <a class="brand" href="../../">Egor Loktionov</a>
+          <div class="navlinks">
+            <a href="../../#projects">All projects</a>
+            <a href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">Repo</a>
+            <a href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Live demo</a>
+          </div>
+        </nav>
+        <section class="project-page-grid">
+          <div>
+            <p class="eyebrow">Product proof page</p>
+            <h1>Caloristika CRM Render Demo</h1>
+            <p class="lead">
+              A browser-first CRM prototype for B2B food sales: pipeline, accounts,
+              contacts, product catalog, demo-first packaging and public source evidence.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="https://caloristika-crm-demo.onrender.com/demo" target="_blank" rel="noreferrer">Open demo</a>
+              <a class="button secondary" href="https://github.com/egoriklok/caloristika-crm-render-demo" target="_blank" rel="noreferrer">View repo</a>
+            </div>
+          </div>
+          <img src="../../assets/caloristika-crm.png" alt="Caloristika CRM dashboard screenshot" />
+        </section>
+      </header>
+
+      <main class="project-page-main">
+        <section class="section proof-list">
+          <div class="proof-grid">
+            <article>
+              <h3>What to verify</h3>
+              <p>Live CRM demo, public source repository, sales interface and demo-to-source traceability.</p>
+            </article>
+            <article>
+              <h3>Egor's role</h3>
+              <p>Packaged an AI-assisted CRM prototype into a quickly verifiable product artifact.</p>
+            </article>
+            <article>
+              <h3>Product value</h3>
+              <p>Shows how CRM can clarify clients, deals and next actions without a long onboarding flow.</p>
+            </article>
+            <article>
+              <h3>AI-agent angle</h3>
+              <p>The page turns a prototype into a proof path: open demo, inspect repo, verify artifact.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

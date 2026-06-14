@@ -1,16 +1,30 @@
 # AI Outlier Proof Resume
 
-Employer-facing proof page for Egor Loktionov.
+Bilingual proof portfolio for Egor Loktionov.
 
-This repository exists separately from the commercial RouteOps landing. It contains a shadcn/Vite GitHub Pages resume dossier with:
+## English
 
-- public project repository links;
-- profile photo and Telegram account ID `209498707`;
-- screenshots and visual proof artifacts;
-- deep links for each project section;
-- an explicit note that the resume packaging was prepared by an AI agent delegated by Egor.
+This repository contains a GitHub Pages portfolio that presents Egor as an
+AI-native Product Engineer / AI Agent Builder. The site is bilingual: the main
+portfolio and every project page can be switched between Russian and English
+with one language toggle.
 
-The shadcn source app lives in `app/`. The production build is committed to the repository root so GitHub Pages can keep serving:
+The English copy is written for LinkedIn-style professional review: concise
+product framing, public proof links, clear technical context, and honest
+boundaries around what is verified.
+
+Included proof surfaces:
+
+- main AI outlier proof portfolio;
+- Caloristika CRM browser demo;
+- Lunch Up CRM agent handoff;
+- Telegram Voice CJM Bot;
+- Business Voice Navigator EN;
+- Telegram Voice Agent Factory Skill;
+- Agent Fiscal Autonomy Pack.
+
+The shadcn/Vite source app lives in `app/`. The production build is committed
+to the repository root so GitHub Pages can serve the site directly.
 
 ```bash
 cd app
@@ -21,22 +35,44 @@ Published URL:
 
 https://egoriklok.github.io/ai-outlier-proof-resume/
 
-Public proof links:
+## Русский
+
+Этот репозиторий содержит двуязычное proof-портфолио Егора Локтионова на
+GitHub Pages. Главная страница и все страницы проектов переключаются между
+русским и английским одной кнопкой.
+
+Русская версия объясняет продукты простым языком, а английская версия
+упакована в профессиональном IT/LinkedIn стиле: продуктовый смысл, публичные
+артефакты, техническая проверка и честные границы заявлений.
+
+В портфолио входят:
+
+- основная страница AI outlier proof resume;
+- Caloristika CRM browser demo;
+- Lunch Up CRM agent handoff;
+- Telegram Voice CJM Bot;
+- Business Voice Navigator EN;
+- Telegram Voice Agent Factory Skill;
+- Agent Fiscal Autonomy Pack.
+
+Публичные страницы:
 
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/voice-bots-product-proof/
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/agent-fiscal-autonomy-pack/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/caloristika-crm-render-demo/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/lunch-up-crm-agent-handoff/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-cjm-bot/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-business-navigator-en/
 - https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-agent-factory-skill/
 
-Telegram test entrypoints for Business Voice Navigator:
+Telegram test entrypoints:
 
 - https://t.me/cjm_voice_strategy_0530_bot
 - https://t.me/BusinessNavigatorVoiceEnBot
 
 Public repositories:
 
+- https://github.com/egoriklok/agent-fiscal-autonomy-pack
 - https://github.com/egoriklok/caloristika-crm-render-demo
 - https://github.com/egoriklok/lunch-up-crm-agent-handoff
 - https://github.com/egoriklok/telegram-voice-cjm-bot
