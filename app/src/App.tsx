@@ -213,7 +213,7 @@ function ExternalButton({
 
 function App() {
   return (
-    <div className="caloristika-shell min-h-svh bg-background text-foreground">
+    <div className="it-shell min-h-svh bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <nav className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-6">
           <a
