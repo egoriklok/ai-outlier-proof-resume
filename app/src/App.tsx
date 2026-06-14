@@ -99,6 +99,23 @@ const projects = [
     status: "Проверено: демо открывается, 14.06.2026.",
   },
   {
+    badge: "Платежная готовность",
+    title: "Agent Fiscal Autonomy Pack",
+    description:
+      "Аудит готовности сервиса к безопасной оплате ИИ-агентом: цена, лимит, чек, журнал действий и отзыв доступа.",
+    image: "./assets/agent-fiscal-autonomy-pack.png",
+    alt: "Скриншот Agent Fiscal Autonomy Pack",
+    caseUrl: "./projects/agent-fiscal-autonomy-pack/",
+    primaryUrl:
+      "https://egoriklok.github.io/agent-fiscal-autonomy-pack/portfolio-r1-ru.html",
+    primaryLabel: "Открыть продукт",
+    repoUrl: "https://github.com/egoriklok/agent-fiscal-autonomy-pack",
+    contribution:
+      "упаковал R1-аудит платежного пути для сервисов, которые готовятся продавать доступ ИИ-агентам",
+    verify: "открыть продукт, русскую страницу кейса и публичный GitHub",
+    status: "Проверено: продуктовая страница и GitHub открываются, 14.06.2026.",
+  },
+  {
     badge: "CRM-контекст",
     title: "Lunch Up CRM: передача контекста",
     description:
