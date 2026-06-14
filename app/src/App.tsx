@@ -308,7 +308,7 @@ function App() {
                 <h1 className="max-w-5xl text-5xl leading-none font-semibold tracking-normal text-balance md:text-7xl">
                   Егор Локтионов
                 </h1>
-                <p className="max-w-3xl text-lg leading-8 text-muted-foreground md:text-2xl">
+                <p className="max-w-3xl text-lg leading-8 text-slate-700 md:text-2xl">
                   Собираю browser CRM demos и Telegram voice agents, которые
                   превращают бизнес-заметки в структурированные workflows.
                   Проверяется через live demo, бота и публичные repo.
@@ -320,7 +320,7 @@ function App() {
                     </Badge>
                   ))}
                 </div>
-                <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+                <p className="max-w-3xl text-sm leading-6 text-slate-700">
                   <b className="text-foreground">Цель:</b> AI Product Engineer /
                   AI Automation role для B2B, CRM, Telegram/voice agents и
                   быстрых продуктовых прототипов на React/Vite + TypeScript.
@@ -350,15 +350,15 @@ function App() {
                 </ExternalButton>
               </div>
 
-              <Alert className="border-primary/30 bg-accent/15 [&>svg]:text-primary">
+              <Alert className="border-lime-300 bg-lime-50 text-slate-950 [&>svg]:text-primary">
                 <ShieldCheckIcon aria-hidden="true" />
                 <AlertTitle>3-minute recruiter check</AlertTitle>
-                <AlertDescription>
+                <AlertDescription className="text-slate-700">
                   <ol className="mt-2 grid gap-1 sm:grid-cols-3">
                     {proofRoute.map((item, index) => (
                       <li key={item.label}>
                         {index + 1}. {item.label}:{" "}
-                        <span className="text-muted-foreground">
+                        <span className="text-slate-700">
                           {item.proof}
                         </span>
                       </li>
@@ -416,7 +416,7 @@ function App() {
                     </a>
                   ))}
                 </div>
-                <div className="rounded-md border bg-accent/25 p-4 text-sm leading-6 text-muted-foreground">
+                <div className="rounded-md border border-lime-300 bg-lime-50 p-4 text-sm leading-6 text-slate-700">
                   <b className="text-foreground">Для рекрутера:</b> роль,
                   Telegram voice agents, live CRM demo, публичные repo и вклад
                   AI agent в упаковку proof-page.
