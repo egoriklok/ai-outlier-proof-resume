@@ -1,6 +1,5 @@
 import {
   AudioLinesIcon,
-  BotIcon,
   Code2Icon,
   ExternalLinkIcon,
   MonitorCheckIcon,
@@ -27,14 +26,25 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
 
-const proofPageUrl = "https://egoriklok.github.io/ai-outlier-proof-resume/"
 const githubProfileUrl = "https://github.com/egoriklok"
 const liveCrmUrl = "https://caloristika-crm-demo.onrender.com/demo"
 
+const roleKeywords = [
+  "AI Product Engineer",
+  "AI Agent Builder",
+  "CRM Automation",
+  "Telegram Voice AI",
+  "WebUI Prototyping",
+]
+
 const stats = [
-  { value: "5", label: "public AI / CRM / Telegram repos" },
-  { value: "2", label: "voice Business Navigator languages" },
-  { value: "1", label: "live CRM demo without login" },
+  { value: "5", label: "публичных repo и кейсов", href: "#public-repos" },
+  {
+    value: "2",
+    label: "Telegram voice agents: RU + EN",
+    href: "#telegram-bots",
+  },
+  { value: "1", label: "live CRM demo без логина", href: liveCrmUrl },
 ]
 
 const telegramBots = [
@@ -44,8 +54,8 @@ const telegramBots = [
     description:
       "Проговорите идею и получите CJM-план: самый быстрый тест voice-first мышления и AI-native упаковки.",
     handle: "@cjm_voice_strategy_0530_bot",
-    check: "voice note -> CJM -> hypotheses/action items",
-    status: "Telegram page verified 2026-06-14",
+    check: "голосовая заметка -> CJM -> действия",
+    status: "Last verified: Telegram page reachable 2026-06-14",
     qr: "./assets/qr-cjm-voice-strategy.svg",
     qrAlt: "QR для Telegram-бота Бизнес-Навигатор Голосом",
     telegramUrl: "https://t.me/cjm_voice_strategy_0530_bot",
@@ -59,7 +69,7 @@ const telegramBots = [
       "Англоязычный voice-first бот для business notes, structured output and next step.",
     handle: "@business_voice_navigator_bot",
     check: "business question -> structured recommendation",
-    status: "Public repo + setup docs",
+    status: "Last verified: Telegram page and public repo reachable 2026-06-14",
     qr: "./assets/qr-business-voice-navigator.svg",
     qrAlt: "QR для Business Voice Navigator Telegram bot",
     telegramUrl: "https://t.me/business_voice_navigator_bot",
@@ -79,8 +89,11 @@ const projects = [
     alt: "Caloristika CRM dashboard",
     caseUrl: "./projects/caloristika-crm-render-demo/",
     primaryUrl: liveCrmUrl,
-    primaryLabel: "Live demo",
+    primaryLabel: "Open live demo",
     repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
+    contribution: "упаковал CRM demo с pipeline, каталогом и next actions",
+    verify: "открыть live demo и repo",
+    status: "Last verified: live demo reachable 2026-06-14",
   },
   {
     badge: "Agent handoff",
@@ -91,8 +104,12 @@ const projects = [
     alt: "Lunch Up CRM interface",
     caseUrl: "./projects/lunch-up-crm-agent-handoff/",
     primaryUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
-    primaryLabel: "GitHub",
+    primaryLabel: "Inspect source",
     repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
+    contribution:
+      "собрал CRM handoff-логику между заказом, контекстом и agent flow",
+    verify: "посмотреть кейс и публичный GitHub",
+    status: "Last verified: public repo reachable 2026-06-14",
   },
   {
     badge: "Voice CJM",
@@ -103,8 +120,11 @@ const projects = [
     alt: "Telegram voice CJM bot setup",
     caseUrl: "./projects/telegram-voice-cjm-bot/",
     primaryUrl: "https://t.me/cjm_voice_strategy_0530_bot",
-    primaryLabel: "Telegram",
+    primaryLabel: "Try Telegram bot",
     repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
+    contribution: "связал голосовую заметку с CJM, гипотезами и действиями",
+    verify: "открыть Telegram bot или repo",
+    status: "Last verified: Telegram page and public repo reachable 2026-06-14",
   },
   {
     badge: "Business navigator",
@@ -115,9 +135,12 @@ const projects = [
     alt: "Telegram business navigator mini-app cabinet",
     caseUrl: "./projects/telegram-voice-business-navigator-en/",
     primaryUrl: "https://t.me/business_voice_navigator_bot",
-    primaryLabel: "Telegram",
+    primaryLabel: "Try Telegram bot",
     repoUrl:
       "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+    contribution: "собрал англоязычный voice-first business navigator",
+    verify: "открыть Telegram bot или repo",
+    status: "Last verified: Telegram page and public repo reachable 2026-06-14",
   },
   {
     badge: "Reusable skill",
@@ -129,21 +152,40 @@ const projects = [
     caseUrl: "./projects/telegram-voice-agent-factory-skill/",
     primaryUrl:
       "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
-    primaryLabel: "GitHub",
+    primaryLabel: "Inspect source",
     repoUrl: "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+    contribution:
+      "оформил подход к повторяемому созданию Telegram voice agents",
+    verify: "посмотреть skill repo",
+    status: "Last verified: public repo reachable 2026-06-14",
+  },
+]
+
+const proofRoute = [
+  {
+    label: "Open CRM demo",
+    proof: "pipeline, clients, catalog",
+  },
+  {
+    label: "Try voice bot",
+    proof: "CJM or recommendation output",
+  },
+  {
+    label: "Inspect GitHub",
+    proof: "source, docs, setup traces",
   },
 ]
 
 const verificationSteps = [
   {
-    title: "Откройте бота",
-    description:
-      "Сканируйте QR, нажмите Start и проверьте, как голосовая или текстовая идея превращается в структуру.",
-  },
-  {
     title: "Откройте CRM demo",
     description:
-      "Посмотрите WebUI: pipeline, клиенты, каталог, next actions и продуктовую упаковку для продаж.",
+      "Проверьте no-login WebUI: pipeline, клиенты, каталог, контекст сделки и next actions.",
+  },
+  {
+    title: "Откройте бота",
+    description:
+      "Нажмите Start и проверьте, как голосовая или текстовая идея превращается в структуру.",
   },
   {
     title: "Откройте GitHub",
@@ -205,7 +247,7 @@ function ExternalButton({
         rel={isExternal ? "noreferrer" : undefined}
       >
         {children}
-        <ExternalLinkIcon data-icon="inline-end" />
+        <ExternalLinkIcon aria-hidden="true" data-icon="inline-end" />
       </a>
     </Button>
   )
@@ -214,6 +256,12 @@ function ExternalButton({
 function App() {
   return (
     <div className="it-shell min-h-svh bg-background text-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground"
+      >
+        К основному содержанию
+      </a>
       <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <nav className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-6">
           <a
@@ -223,7 +271,7 @@ function App() {
             <span className="grid size-9 place-items-center rounded-md border border-primary/30 bg-secondary text-sm text-primary">
               AI
             </span>
-            <span>Егор Локтионов</span>
+            <span className="hidden sm:inline">Егор Локтионов</span>
           </a>
           <div className="flex flex-wrap items-center gap-1">
             <Button asChild variant="ghost" size="sm">
@@ -242,7 +290,7 @@ function App() {
         </nav>
       </header>
 
-      <main>
+      <main id="main">
         <section id="top" className="border-b px-4 py-12 lg:px-6 lg:py-20">
           <div className="mx-auto grid w-full max-w-7xl gap-10 md:grid-cols-[1.12fr_0.88fr]">
             <div className="flex flex-col justify-center gap-7">
@@ -251,40 +299,67 @@ function App() {
                   variant="outline"
                   className="w-fit border-primary/30 bg-background text-primary"
                 >
-                  AI-native product builder
+                  AI Product Engineer / AI Agent Builder
                 </Badge>
                 <h1 className="max-w-5xl text-5xl leading-none font-semibold tracking-normal text-balance md:text-7xl">
                   Егор Локтионов
                 </h1>
                 <p className="max-w-3xl text-lg leading-8 text-muted-foreground md:text-2xl">
-                  AI-native специалист: собираю WebUI, CRM и Telegram-ботов,
-                  делегирую рутину агентам и довожу идеи до работающих демо.
+                  Собираю browser CRM demos и Telegram voice agents, которые
+                  превращают бизнес-заметки в структурированные workflows.
+                  Проверяется через live demo, бота и публичные repo.
+                </p>
+                <div className="flex max-w-3xl flex-wrap gap-2">
+                  {roleKeywords.map((keyword) => (
+                    <Badge key={keyword} variant="secondary">
+                      {keyword}
+                    </Badge>
+                  ))}
+                </div>
+                <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+                  <b className="text-foreground">Цель:</b> AI Product Engineer /
+                  AI Automation role для B2B, CRM, Telegram/voice agents и
+                  быстрых продуктовых прототипов на React/Vite + TypeScript.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-2">
+                <ExternalButton href={liveCrmUrl} variant="default">
+                  <MonitorCheckIcon
+                    aria-hidden="true"
+                    data-icon="inline-start"
+                  />
+                  Live CRM demo
+                </ExternalButton>
                 <Button asChild variant="secondary">
-                  <a href="#telegram-bots">
-                    <BotIcon data-icon="inline-start" />
-                    Проверить ботов
+                  <a href="#verification">
+                    <ShieldCheckIcon
+                      aria-hidden="true"
+                      data-icon="inline-start"
+                    />
+                    3-минутная проверка
                   </a>
                 </Button>
                 <ExternalButton href={githubProfileUrl}>
-                  <Code2Icon data-icon="inline-start" />
+                  <Code2Icon aria-hidden="true" data-icon="inline-start" />
                   GitHub профиль
-                </ExternalButton>
-                <ExternalButton href={liveCrmUrl}>
-                  <MonitorCheckIcon data-icon="inline-start" />
-                  Live CRM demo
                 </ExternalButton>
               </div>
 
               <Alert className="border-primary/30 bg-accent/15 [&>svg]:text-primary">
-                <SparklesIcon />
-                <AlertTitle>Это proof-page подготовил AI agent</AlertTitle>
+                <ShieldCheckIcon aria-hidden="true" />
+                <AlertTitle>3-minute recruiter check</AlertTitle>
                 <AlertDescription>
-                  Не вместо работы, а чтобы собрать ссылки, QR и проверяемые
-                  артефакты в один маршрут для работодателя.
+                  <ol className="mt-2 grid gap-1 sm:grid-cols-3">
+                    {proofRoute.map((item, index) => (
+                      <li key={item.label}>
+                        {index + 1}. {item.label}:{" "}
+                        <span className="text-muted-foreground">
+                          {item.proof}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
                 </AlertDescription>
               </Alert>
             </div>
@@ -296,14 +371,19 @@ function App() {
                     <AvatarImage
                       src="./assets/egor-loktionov-photo.jpg"
                       alt="Портрет Егора Локтионова"
+                      width={96}
+                      height={96}
+                      fetchPriority="high"
                     />
                     <AvatarFallback>ЕЛ</AvatarFallback>
                   </Avatar>
                   <div className="flex min-w-0 flex-col gap-2">
                     <CardTitle>Егор Локтионов</CardTitle>
-                    <CardDescription>AI-native product builder</CardDescription>
+                    <CardDescription>
+                      AI Product Engineer / AI Agent Builder
+                    </CardDescription>
                     <Badge variant="outline" className="w-fit">
-                      Telegram ID: 209498707
+                      Public proof portfolio
                     </Badge>
                   </div>
                 </div>
@@ -312,9 +392,16 @@ function App() {
                 <Separator />
                 <div className="grid gap-3 sm:grid-cols-2">
                   {stats.map((item) => (
-                    <div
+                    <a
                       key={item.label}
-                      className="rounded-md border bg-muted/45 p-4"
+                      href={item.href}
+                      target={
+                        item.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        item.href.startsWith("http") ? "noreferrer" : undefined
+                      }
+                      className="rounded-md border bg-muted/45 p-4 no-underline transition-colors hover:bg-muted"
                     >
                       <span className="text-4xl font-semibold tracking-normal">
                         {item.value}
@@ -322,48 +409,53 @@ function App() {
                       <span className="mt-1 block text-sm text-muted-foreground">
                         {item.label}
                       </span>
-                    </div>
+                    </a>
                   ))}
                 </div>
                 <div className="rounded-md border bg-accent/25 p-4 text-sm leading-6 text-muted-foreground">
-                  <b className="text-foreground">Что проверить:</b> Telegram
-                  voice agents, CRM demo, публичные repo и агентскую упаковку
-                  proof-page.
+                  <b className="text-foreground">Для рекрутера:</b> роль,
+                  Telegram voice agents, live CRM demo, публичные repo и вклад
+                  AI agent в упаковку proof-page.
                 </div>
               </CardContent>
               <CardFooter className="flex flex-wrap gap-2">
-                <ExternalButton href={proofPageUrl} variant="secondary">
-                  Proof-page
+                <ExternalButton href={liveCrmUrl} variant="secondary">
+                  Open live proof
                 </ExternalButton>
               </CardFooter>
             </Card>
           </div>
         </section>
 
-        <section className="mx-auto grid w-full max-w-7xl gap-3 px-4 pb-12 md:grid-cols-3 lg:px-6">
-          {stats.map((item) => (
-            <Card key={item.label}>
-              <CardHeader>
-                <CardTitle>{item.value}</CardTitle>
-                <CardDescription>{item.label}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
-        </section>
-
         <section id="verification" className="border-y bg-secondary/60 py-12">
           <SectionHeading
             eyebrow="3-minute check"
             title="Как проверить, что Егор AI-native"
-            description="Страница спроектирована как короткий маршрут проверки: бот, CRM, repo, затем разбор вклада human и AI agent."
+            description="Страница спроектирована как короткий маршрут проверки: CRM demo, бот, repo, затем разбор вклада human и AI agent."
           />
           <div className="mx-auto mt-6 w-full max-w-6xl px-4">
-            <Tabs defaultValue="bots">
+            <Tabs defaultValue="crm">
               <TabsList className="flex h-auto flex-wrap justify-start">
-                <TabsTrigger value="bots">Боты</TabsTrigger>
                 <TabsTrigger value="crm">CRM demo</TabsTrigger>
+                <TabsTrigger value="bots">Боты</TabsTrigger>
                 <TabsTrigger value="github">GitHub</TabsTrigger>
               </TabsList>
+              <TabsContent value="crm">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Browser-first продукт</CardTitle>
+                    <CardDescription>
+                      CRM demo открывается без логина и показывает pipeline,
+                      каталог, клиентов, контекст сделки и next actions.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter>
+                    <ExternalButton href={liveCrmUrl}>
+                      Open live demo
+                    </ExternalButton>
+                  </CardFooter>
+                </Card>
+              </TabsContent>
               <TabsContent value="bots">
                 <Card>
                   <CardHeader>
@@ -376,26 +468,10 @@ function App() {
                   </CardHeader>
                   <CardFooter className="flex flex-wrap gap-2">
                     <ExternalButton href="https://t.me/cjm_voice_strategy_0530_bot">
-                      Русский бот
+                      Try Russian bot
                     </ExternalButton>
                     <ExternalButton href="https://t.me/business_voice_navigator_bot">
-                      English bot
-                    </ExternalButton>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-              <TabsContent value="crm">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Browser-first продукт</CardTitle>
-                    <CardDescription>
-                      CRM demo открывается без логина и показывает pipeline,
-                      каталог, клиентов, контекст сделки и next actions.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardFooter>
-                    <ExternalButton href={liveCrmUrl}>
-                      Открыть CRM
+                      Try English bot
                     </ExternalButton>
                   </CardFooter>
                 </Card>
@@ -411,7 +487,7 @@ function App() {
                   </CardHeader>
                   <CardFooter>
                     <ExternalButton href={githubProfileUrl}>
-                      Открыть GitHub
+                      Inspect GitHub
                     </ExternalButton>
                   </CardFooter>
                 </Card>
@@ -450,7 +526,7 @@ function App() {
                   <div className="grid gap-3 text-sm">
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
                       <span className="font-medium">Handle</span>
-                      <span className="text-muted-foreground">
+                      <span className="break-words text-muted-foreground">
                         {bot.handle}
                       </span>
                     </div>
@@ -467,11 +543,15 @@ function App() {
                       </span>
                     </div>
                   </div>
-                  <figure className="m-0 grid justify-items-center gap-3">
+                  <figure className="m-0 hidden justify-items-center gap-3 sm:grid">
                     <img
                       className="size-40 rounded-lg border bg-card object-contain p-3"
                       src={bot.qr}
                       alt={bot.qrAlt}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      decoding="async"
                     />
                     <figcaption className="text-sm text-muted-foreground">
                       QR to Telegram bot
@@ -480,10 +560,14 @@ function App() {
                 </CardContent>
                 <CardFooter className="flex flex-wrap gap-2">
                   <ExternalButton href={bot.telegramUrl}>
-                    Открыть в Telegram
+                    Try Telegram bot
                   </ExternalButton>
-                  <ExternalButton href={bot.caseUrl}>Кейс</ExternalButton>
-                  <ExternalButton href={bot.repoUrl}>GitHub</ExternalButton>
+                  <ExternalButton href={bot.caseUrl}>
+                    Read proof page
+                  </ExternalButton>
+                  <ExternalButton href={bot.repoUrl}>
+                    Inspect source
+                  </ExternalButton>
                 </CardFooter>
               </Card>
             ))}
@@ -495,25 +579,35 @@ function App() {
             eyebrow="Agent note"
             title="Что здесь сделал AI agent"
           />
-          <div className="mx-auto mt-6 grid w-full max-w-6xl gap-4 px-4 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Human</CardTitle>
-                <CardDescription>
-                  Егор Локтионов. Быстро превращает идею в WebUI, CRM,
-                  Telegram-flow или agent workflow.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>AI agent</CardTitle>
-                <CardDescription>
-                  Собрал ссылки, QR, repo, demo и короткий маршрут проверки,
-                  чтобы работодатель смотрел открываемые артефакты.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+          <div className="mx-auto mt-6 flex w-full max-w-6xl flex-col gap-4 px-4">
+            <Alert className="border-primary/30 bg-accent/15 [&>svg]:text-primary">
+              <SparklesIcon aria-hidden="true" />
+              <AlertTitle>AI agent подготовил эту proof-page</AlertTitle>
+              <AlertDescription>
+                Это демонстрация делегирования: human сделал продукты, agent
+                собрал ссылки, QR, demo и repo в проверяемый маршрут.
+              </AlertDescription>
+            </Alert>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Human</CardTitle>
+                  <CardDescription>
+                    Егор Локтионов. Быстро превращает идею в WebUI, CRM,
+                    Telegram-flow или agent workflow.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>AI agent</CardTitle>
+                  <CardDescription>
+                    Собрал ссылки, QR, repo, demo и короткий маршрут проверки,
+                    чтобы работодатель смотрел открываемые артефакты.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
           </div>
         </section>
 
@@ -535,10 +629,16 @@ function App() {
                   <img
                     className={cn(
                       "w-full rounded-lg border object-cover",
-                      index === 0 ? "h-80 md:h-96" : "h-64 md:h-72"
+                      index === 0
+                        ? "h-44 sm:h-64 md:h-96"
+                        : "h-44 sm:h-56 md:h-72"
                     )}
                     src={project.image}
                     alt={project.alt}
+                    width={index === 0 ? 900 : 520}
+                    height={index === 0 ? 520 : 360}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="flex min-w-0 flex-col gap-4">
                     <div className="flex flex-col gap-2">
@@ -551,16 +651,28 @@ function App() {
                       <CardTitle>{project.title}</CardTitle>
                       <CardDescription>{project.description}</CardDescription>
                     </div>
+                    <div className="rounded-md border bg-muted/45 p-3 text-sm leading-6 text-muted-foreground">
+                      <b className="text-foreground">Вклад:</b>{" "}
+                      {project.contribution}
+                      <br />
+                      <b className="text-foreground">Проверить:</b>{" "}
+                      {project.verify}
+                      <br />
+                      <b className="text-foreground">Статус:</b>{" "}
+                      {project.status}
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       <ExternalButton href={project.caseUrl}>
-                        Кейс
+                        Read proof page
                       </ExternalButton>
                       <ExternalButton href={project.primaryUrl}>
                         {project.primaryLabel}
                       </ExternalButton>
-                      <ExternalButton href={project.repoUrl}>
-                        GitHub
-                      </ExternalButton>
+                      {project.primaryUrl !== project.repoUrl ? (
+                        <ExternalButton href={project.repoUrl}>
+                          Inspect source
+                        </ExternalButton>
+                      ) : null}
                     </div>
                   </div>
                 </CardContent>

@@ -127,9 +127,27 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "tnum" 1;
+    overflow-x: hidden;
   }
   html {
     @apply font-sans;
+  }
+  a,
+  button {
+    touch-action: manipulation;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  @media (pointer: coarse) {
+    [data-slot="button"] {
+      min-height: 40px;
+    }
   }
 }
 
