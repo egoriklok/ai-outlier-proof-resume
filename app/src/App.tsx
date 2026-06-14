@@ -220,7 +220,7 @@ function App() {
             href="#top"
             className="flex items-center gap-3 font-semibold no-underline"
           >
-            <span className="grid size-9 place-items-center rounded-md bg-primary text-sm text-primary-foreground">
+            <span className="grid size-9 place-items-center rounded-md border border-primary/30 bg-secondary text-sm text-primary">
               AI
             </span>
             <span>Егор Локтионов</span>
@@ -263,7 +263,7 @@ function App() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <Button asChild>
+                <Button asChild variant="secondary">
                   <a href="#telegram-bots">
                     <BotIcon data-icon="inline-start" />
                     Проверить ботов
