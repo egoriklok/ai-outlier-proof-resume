@@ -139,7 +139,7 @@ const copy = {
       cardBadge: "Человек + ИИ-агент",
       notePrefix: "Для рекрутера:",
       note:
-        "CRM-демо, Telegram-боты, публичный GitHub и вклад ИИ-агента в упаковку этой страницы. В CRM отдельно показан подход к базе: 2GIS, ФНС/DaData, source history и маршрутная проверка.",
+        "CRM-демо, Telegram-боты, публичный GitHub и вклад ИИ-агента в упаковку этой страницы. В CRM отдельно показан подход к базе: 2GIS, ФНС/DaData, история источников и маршрутная проверка через Яндекс.Карты/открытые карты.",
       openDemo: "Открыть демо",
     },
     roleKeywords: ["CRM-прототипы", "Telegram-боты", "ИИ-сценарии"],
@@ -169,7 +169,7 @@ const copy = {
       },
       crmTitle: "CRM-демо в браузере",
       crmDescription:
-        "Демоверсия открывается без логина и показывает воронку, каталог, клиентов, контекст сделки, следующие действия и логику локальной базы лидов: 2GIS search, ФНС/DaData enrichment, source history и маршрутная проверка от производства.",
+        "Демоверсия открывается без логина и показывает воронку, каталог, клиентов, контекст сделки, следующие действия и логику локальной базы лидов: 2GIS search, ФНС/DaData enrichment, история источников и маршрутная проверка от производства через Яндекс.Карты/открытые карты.",
       botsTitle: "Голосовой сценарий в Telegram",
       botsDescription:
         "Откройте Telegram-бота, отправьте голосовую или текстовую бизнес-идею и посмотрите, как она превращается в структуру.",
@@ -251,7 +251,7 @@ const copy = {
         badge: "CRM-демо",
         title: "Caloristika CRM",
         description:
-          "CRM-демо без логина: локальные B2B-лиды от производства, 2GIS search, ФНС/DaData enrichment, маршрутная проверка, клиенты, воронка и каталог.",
+          "CRM-демо без логина: локальные B2B-лиды от производства, 2GIS search, ФНС/DaData enrichment, история источников, Яндекс.Карты/открытые карты, клиенты, воронка и каталог.",
         image: "./assets/caloristika-crm.png",
         alt: "Экран CRM Caloristika",
         caseUrl: "./projects/caloristika-crm-render-demo/",
@@ -259,7 +259,7 @@ const copy = {
         primaryLabel: "Открыть демо",
         repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
         contribution:
-          "собрал CRM-демо, где локальная база лидов идет через защищенный 2GIS search, ФНС/DaData enrichment, dry-run и сохранение источников",
+          "собрал CRM-демо, где локальная база лидов идет через защищенный 2GIS search, ФНС/DaData enrichment, dry-run, историю источников и проверку маршрута через Яндекс.Карты/открытые карты",
         verify: "открыть демо и GitHub",
         status: "Проверено: демо открывается, 14.06.2026.",
       },
@@ -287,7 +287,7 @@ const copy = {
         badge: "CRM-контекст",
         title: "Lunch Up CRM: передача контекста",
         description:
-          "CRM-контур для локальных B2B-лидов: 2GIS search от производства, ФНС/DaData enrichment, ручная маршрутная проверка и handoff в CRM/ИИ-ассистента.",
+          "CRM-контур для локальных B2B-лидов: 2GIS search от производства, ФНС/DaData enrichment, история источников, Яндекс.Карты/открытые карты и handoff в CRM/ИИ-ассистента.",
         image: "./assets/lunch-up-crm.png",
         alt: "Интерфейс Lunch Up CRM",
         caseUrl: "./projects/lunch-up-crm-agent-handoff/",
@@ -295,7 +295,7 @@ const copy = {
         primaryLabel: "Открыть GitHub",
         repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
         contribution:
-          "описал связку из документации Lunch Up: dry-run поиска лидов -> confirmed import -> source history -> CRM-состояние -> следующий шаг ИИ-ассистента",
+          "описал связку из документации Lunch Up: dry-run поиска лидов -> confirmed import -> история источников -> маршрутная проверка -> CRM-состояние -> следующий шаг ИИ-ассистента",
         verify: "посмотреть кейс и публичный GitHub",
         status: "Проверено: публичный GitHub открывается, 14.06.2026.",
       },
@@ -446,7 +446,7 @@ const copy = {
       cardBadge: "Human + AI agent",
       notePrefix: "For recruiters:",
       note:
-        "Live CRM demo, Telegram voice bots, public GitHub and a transparent AI-agent packaging workflow. The CRM proof includes local lead sourcing via 2GIS, FNS/DaData, source history and route checks.",
+        "Live CRM demo, Telegram voice bots, public GitHub and a transparent AI-agent packaging workflow. The CRM proof includes local lead sourcing via 2GIS, FNS/DaData, source history and route checks through Yandex Maps/open maps.",
       openDemo: "Open demo",
     },
     roleKeywords: [
@@ -480,7 +480,7 @@ const copy = {
       },
       crmTitle: "Browser-based CRM demo",
       crmDescription:
-        "A no-login CRM demo showing pipeline, catalog, client context, deal state, next actions and local lead-sourcing logic: 2GIS search, FNS/DaData enrichment, source history and route checks from production.",
+        "A no-login CRM demo showing pipeline, catalog, client context, deal state, next actions and local lead-sourcing logic: 2GIS search, FNS/DaData enrichment, source history and route checks from production through Yandex Maps/open maps.",
       botsTitle: "Telegram voice workflow",
       botsDescription:
         "Open the bot, send a voice or text business note, and review how it becomes structured product context.",
@@ -562,7 +562,7 @@ const copy = {
         badge: "CRM demo",
         title: "Caloristika CRM",
         description:
-          "No-login CRM demo with local B2B leads from production, 2GIS search, FNS/DaData enrichment, route checks, clients, pipeline and catalog.",
+          "No-login CRM demo with local B2B leads from production, 2GIS search, FNS/DaData enrichment, source history, Yandex Maps/open maps, clients, pipeline and catalog.",
         image: "./assets/caloristika-crm.png",
         alt: "Caloristika CRM screen",
         caseUrl: "./projects/caloristika-crm-render-demo/",
@@ -570,7 +570,7 @@ const copy = {
         primaryLabel: "Open demo",
         repoUrl: "https://github.com/egoriklok/caloristika-crm-render-demo",
         contribution:
-          "built a CRM demo where local lead sourcing uses protected 2GIS search, FNS/DaData enrichment, dry-run and source records",
+          "built a CRM demo where local lead sourcing uses protected 2GIS search, FNS/DaData enrichment, dry-run, source records and route checks through Yandex Maps/open maps",
         verify: "open the live demo and public GitHub repository",
         status: "Verified: demo opens, 14 Jun 2026.",
       },
@@ -597,7 +597,7 @@ const copy = {
         badge: "CRM context handoff",
         title: "Lunch Up CRM: Agent Handoff",
         description:
-          "CRM workflow for local B2B leads: production-based 2GIS search, FNS/DaData enrichment, route checks, then CRM and AI-agent handoff.",
+          "CRM workflow for local B2B leads: production-based 2GIS search, FNS/DaData enrichment, source history, Yandex Maps/open maps, then CRM and AI-agent handoff.",
         image: "./assets/lunch-up-crm.png",
         alt: "Lunch Up CRM interface",
         caseUrl: "./projects/lunch-up-crm-agent-handoff/",
@@ -605,7 +605,7 @@ const copy = {
         primaryLabel: "Open GitHub",
         repoUrl: "https://github.com/egoriklok/lunch-up-crm-agent-handoff",
         contribution:
-          "defined the documented Lunch Up chain: lead-search dry-run, confirmed import, source history, CRM state and AI-assistant next action",
+          "defined the documented Lunch Up chain: lead-search dry-run, confirmed import, source history, route checks through Yandex Maps/open maps, CRM state and AI-assistant next action",
         verify: "open the case page and public GitHub",
         status: "Verified: public GitHub opens, 14 Jun 2026.",
       },

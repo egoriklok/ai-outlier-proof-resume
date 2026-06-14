@@ -29,7 +29,7 @@
             <h1>Lunch Up CRM Agent Handoff</h1>
             <p class="lead">
               CRM + локальные лиды + AI handoff: проект показывает, как искать кандидатов от производства
-              через защищенный 2GIS search, ФНС/DaData enrichment и открытую маршрутную проверку, а затем не терять контекст между CRM и agent runtime.
+              через защищенный 2GIS search, ФНС/DaData enrichment, историю источников и проверку маршрута через Яндекс.Карты/открытые карты, а затем не терять контекст между CRM и agent runtime.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">Открыть repo</a>
@@ -49,11 +49,11 @@
             </article>
             <article>
               <h3>Источник базы</h3>
-              <p>Ключевой слой Lunch Up CRM из документации: 2GIS lead search сначала работает как dry-run, импорт требует confirmed import, затем `/api/companies` сохраняет enrichment, источники и следующий шаг.</p>
+              <p>Ключевой слой Lunch Up CRM из документации: 2GIS lead search сначала работает как dry-run, импорт требует confirmed import, затем `/api/companies` сохраняет enrichment, историю источников и следующий шаг. Маршрут проверяется через Яндекс.Карты/открытые карты.</p>
             </article>
             <article>
               <h3>Роль Егора</h3>
-              <p>Сборка продуктового handoff между локальным поиском компаний, ФНС/DaData-проверкой, CRM-состоянием и AI-ассистентом.</p>
+              <p>Сборка продуктового handoff между локальным поиском компаний, ФНС/DaData-проверкой, историей источников, маршрутной проверкой и AI-ассистентом.</p>
             </article>
             <article>
               <h3>Бизнес-смысл</h3>
@@ -83,7 +83,7 @@
             <h1>Lunch Up CRM Agent Handoff</h1>
             <p class="lead">
               A CRM, local lead-sourcing and sales workflow prototype: search candidates from production
-              through protected 2GIS search, FNS/DaData enrichment and open route checks, then keep CRM and agent context intact.
+              through protected 2GIS search, FNS/DaData enrichment, source history and Yandex Maps/open maps route checks, then keep CRM and agent context intact.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="https://github.com/egoriklok/lunch-up-crm-agent-handoff" target="_blank" rel="noreferrer">View repo</a>
@@ -103,11 +103,11 @@
             </article>
             <article>
               <h3>Lead-base source</h3>
-              <p>The documented Lunch Up layer runs 2GIS lead search as dry-run first, requires confirm_import for writes, then `/api/companies` stores enrichment, source records and the next action.</p>
+              <p>The documented Lunch Up layer runs 2GIS lead search as dry-run first, requires confirm_import for writes, then `/api/companies` stores enrichment, source records and the next action. Routes are checked through Yandex Maps/open maps.</p>
             </article>
             <article>
               <h3>Egor's role</h3>
-              <p>Designed the product handoff between local company sourcing, FNS/DaData checks, CRM state and AI-assistant next actions.</p>
+              <p>Designed the product handoff between local company sourcing, FNS/DaData checks, source history, route checks and AI-assistant next actions.</p>
             </article>
             <article>
               <h3>Product value</h3>
