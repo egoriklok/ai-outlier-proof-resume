@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Русская proof-страница голосовых Telegram-ботов Егора Локтионова: Business Navigator, CJM, Mini App, HTML, Excel, source repo и factory skill."
+    />
+    <link
+      rel="icon"
+      href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%2315191f"/><path d="M10 52h44v4H10z" fill="%2312a172"/><text x="32" y="40" text-anchor="middle" font-size="22" font-family="Arial" font-weight="700" fill="white">AI</text></svg>'
+    />
+    <title>Голосовые Telegram-боты | Egor Loktionov proof</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="project-page-hero voice-proof-hero">
+      <nav class="topbar">
+        <a class="brand" href="../../">Egor Loktionov</a>
+        <div class="navlinks">
+          <a href="#check">Проверка</a>
+          <a href="#russian-bot">RU bot</a>
+          <a href="#english-bot">EN bot</a>
+          <a href="#factory">Factory</a>
+          <a href="../../#verification">Resume proof</a>
+        </div>
+      </nav>
+      <section class="project-page-grid">
+        <div>
+          <p class="eyebrow">Voice Bot Product Proof</p>
+          <h1>Голосовые Telegram-боты для бизнес-интервью, CJM и next actions</h1>
+          <p class="lead">
+            Егор собирает voice-first продукты: пользователь проговаривает идею
+            в Telegram, бот ведет интервью, структурирует ответы и возвращает
+            результат в Mini App, HTML и Excel.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Попробовать RU бота</a>
+            <a class="button secondary" href="https://t.me/BusinessNavigatorVoiceEnBot" target="_blank" rel="noreferrer">Попробовать EN бота</a>
+            <a class="button secondary" href="#evidence">Проверить source</a>
+          </div>
+        </div>
+        <aside class="voice-hero-card" aria-label="30-second voice bot proof">
+          <p class="tag">30-second proof</p>
+          <div>
+            <strong>Input</strong>
+            <span>голосовая заметка или текстовая бизнес-идея</span>
+          </div>
+          <div>
+            <strong>Agent flow</strong>
+            <span>интервью, временная память, adaptive next question, review</span>
+          </div>
+          <div>
+            <strong>Output</strong>
+            <span>CJM, гипотезы, roadmap, Mini App, HTML и Excel</span>
+          </div>
+          <div>
+            <strong>Proof</strong>
+            <span>Telegram entrypoint, QR, public repo, tests, docs</span>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main class="project-page-main">
+      <section id="check" class="section">
+        <div class="section-title">
+          <p class="eyebrow">3-minute recruiter check</p>
+          <h2>Как проверить продукт без созвона</h2>
+          <p>
+            Маршрут сделан для работодателя, партнера или technical reviewer:
+            сначала открывается бот, потом проверяется source и границы claims.
+          </p>
+        </div>
+        <div class="proof-grid proof-grid-wide">
+          <article>
+            <span class="step-number">1</span>
+            <h3>Откройте Telegram</h3>
+            <p>Запустите RU или EN бота, отправьте короткую бизнес-идею голосом или текстом.</p>
+          </article>
+          <article>
+            <span class="step-number">2</span>
+            <h3>Проверьте сценарий</h3>
+            <p>Команды `/mode`, `/memory`, `/edit`, `/review`, `/finish` показывают, что это интервью, а не простой чат.</p>
+          </article>
+          <article>
+            <span class="step-number">3</span>
+            <h3>Сверьте артефакты</h3>
+            <p>Результат описан как Mini App для телефона, HTML для чтения и Excel для глубокой работы.</p>
+          </article>
+          <article>
+            <span class="step-number">4</span>
+            <h3>Откройте GitHub</h3>
+            <p>README, спецификация, tests, setup scripts и factory skill показывают воспроизводимость подхода.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="detail">
+          <div class="detail-copy">
+            <p class="eyebrow">Product workflow</p>
+            <h2>Из сырого голоса в бизнес-структуру</h2>
+            <p>
+              Voice bot принимает человеческий контекст в самой естественной
+              форме: владелец бизнеса говорит, что хочет сделать, для кого,
+              какую проблему видит и что уже пробовал. Агент превращает это не
+              в transcript, а в рабочую карту: клиент, боль, сегменты, CJM,
+              проверка спроса, метрики, риски и следующий шаг.
+            </p>
+            <ul>
+              <li>Голос или текст в Telegram как low-friction вход.</li>
+              <li>Распознавание через Vosk и structured interview вместо формы.</li>
+              <li>OmniRoute/Sonnet формулирует следующий вопрос по уже собранным ответам.</li>
+              <li>`/review` показывает пропуски и подозрительно склеенные ответы до финала.</li>
+              <li>`/finish` собирает один результат в несколько рабочих представлений.</li>
+            </ul>
+          </div>
+          <img src="../../assets/telegram-api-setup.png" alt="Telegram voice bot setup proof screenshot" />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <p class="eyebrow">Architecture map</p>
+          <h2>Что именно делает агентный pipeline</h2>
+        </div>
+        <div class="voice-flow">
+          <article>
+            <span>01</span>
+            <h3>Voice/text input</h3>
+            <p>Пользователь отвечает голосом или текстом в Telegram.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Recognition + memory</h3>
+            <p>Ответ сохраняется во временной project memory; голос распознается локальной моделью.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Adaptive interview</h3>
+            <p>Следующий вопрос зависит от собранного контекста, режима quick/full/expert и пропусков.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Review gate</h3>
+            <p>Перед генерацией пользователь видит проверку заполненности и может исправить ответы.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Strategy export</h3>
+            <p>CJM, roadmap, validation plan, metrics, risks и recommendations выходят в Mini App/HTML/Excel.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="russian-bot" class="section bot-proof-section">
+        <div class="section-title">
+          <p class="eyebrow">RU product</p>
+          <h2>Бизнес-Навигатор Голосом</h2>
+          <p>
+            Русский Telegram-бот для владельца, эксперта, фрилансера или ранней
+            команды: проговорить идею и получить стратегическую карту бизнеса.
+          </p>
+        </div>
+        <article class="bot-card primary-bot bot-proof-card">
+          <div class="bot-copy">
+            <p class="tag">Telegram entrypoint</p>
+            <h3>Из идеи в CJM-карту</h3>
+            <p>
+              Бот ведет интервью о клиенте, продукте и customer journey.
+              Финальный результат включает миссию, аудиторию, CJM-фокус,
+              30/60/90 roadmap, content plan, метрики, риски и лист
+              `12 AI рекомендации`.
+            </p>
+            <dl class="test-flow">
+              <div>
+                <dt>Handle</dt>
+                <dd>@cjm_voice_strategy_0530_bot</dd>
+              </div>
+              <div>
+                <dt>Команды</dt>
+                <dd>/preview, /mode, /memory, /edit, /review, /finish, /privacy, /export_data, /delete_me</dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd>README, спецификация интервью, Vosk setup, Mini App docs, tests и workbook generator.</dd>
+              </div>
+            </dl>
+            <div class="card-links">
+              <a href="https://t.me/cjm_voice_strategy_0530_bot" target="_blank" rel="noreferrer">Открыть Telegram</a>
+              <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">Открыть repo</a>
+            </div>
+          </div>
+          <figure class="qr-box">
+            <img src="../../assets/qr-cjm-voice-strategy.svg" alt="QR для Telegram-бота Бизнес-Навигатор Голосом" />
+            <figcaption>QR to RU Telegram bot</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section id="english-bot" class="section bot-proof-section">
+        <div class="section-title">
+          <p class="eyebrow">EN product</p>
+          <h2>Business Voice Navigator</h2>
+          <p>
+            Английская версия того же voice-first подхода: founder проговаривает
+            business idea, а бот возвращает structured strategy output.
+          </p>
+        </div>
+        <article class="bot-card bot-proof-card">
+          <div class="bot-copy">
+            <p class="tag">International surface</p>
+            <h3>Business idea -> structured recommendation</h3>
+            <p>
+              Репозиторий фиксирует English copy, quick/full/expert режимы,
+              temporary memory, adaptive OmniRoute questions, review/edit перед
+              генерацией, SQLite telemetry и три output surface: Mini App, HTML
+              report, Excel workbook.
+            </p>
+            <dl class="test-flow">
+              <div>
+                <dt>Handle</dt>
+                <dd>@BusinessNavigatorVoiceEnBot</dd>
+              </div>
+              <div>
+                <dt>Paid surface</dt>
+                <dd>Stars donations, Plus review и B2B pilot invoice существуют в коде, но скрыты по умолчанию флагом.</dd>
+              </div>
+              <div>
+                <dt>Boundary</dt>
+                <dd>Live deployment требует токен, OmniRoute endpoint/key, HTTPS Mini App URL и проверку Telegram transaction.</dd>
+              </div>
+            </dl>
+            <div class="card-links">
+              <a href="https://t.me/BusinessNavigatorVoiceEnBot" target="_blank" rel="noreferrer">Открыть Telegram</a>
+              <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">Открыть repo</a>
+            </div>
+          </div>
+          <figure class="qr-box">
+            <img src="../../assets/qr-business-voice-navigator.svg" alt="QR для Business Voice Navigator Telegram bot" />
+            <figcaption>QR to EN Telegram bot</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="detail reverse-detail">
+          <div class="detail-copy">
+            <p class="eyebrow">Product artifacts</p>
+            <h2>Mini App, HTML и Excel не дублируют друг друга</h2>
+            <p>
+              В исходных repo результат описан как три разных взгляда на одну
+              стратегию. Это важный продуктовый выбор: человек получает быстрый
+              мобильный вид в Telegram, читаемый отчет для партнера и
+              редактируемую таблицу для глубокой работы.
+            </p>
+            <ul>
+              <li><b>Mini App:</b> mobile-first strategy view внутри Telegram.</li>
+              <li><b>HTML:</b> report для браузера, печати или показа партнеру.</li>
+              <li><b>Excel:</b> workbook с brief, CJM, validation plan, metrics, risks и evidence.</li>
+              <li><b>Privacy:</b> `/privacy`, `/export_data`, `/delete_me` описаны как локальная data boundary.</li>
+            </ul>
+          </div>
+          <img src="../../assets/miniapp-cabinet.png" alt="Telegram Mini App strategy cabinet screenshot" />
+        </div>
+      </section>
+
+      <section id="factory" class="section">
+        <div class="section-title">
+          <p class="eyebrow">Reusable skill</p>
+          <h2>Telegram Voice Agent Factory Skill</h2>
+          <p>
+            Третий repo показывает, что опыт превращен не только в один бот, а
+            в повторяемый агентный паттерн для новых доменов.
+          </p>
+        </div>
+        <div class="proof-grid proof-grid-wide">
+          <article>
+            <h3>Skill for AI agents</h3>
+            <p>Агент загружает skill и адаптирует Telegram voice interview bot под новый content domain.</p>
+          </article>
+          <article>
+            <h3>Intake form</h3>
+            <p>Machine-readable и human-readable формы фиксируют domain, outputs, monetization, VPS и verification.</p>
+          </article>
+          <article>
+            <h3>Deterministic plan</h3>
+            <p>`render_agent_plan.py` превращает заполненную форму в implementation plan.</p>
+          </article>
+          <article>
+            <h3>Verifier</h3>
+            <p>`validate_agent_kit.py` проверяет состав skill kit перед публикацией или изменением.</p>
+          </article>
+        </div>
+        <div class="card-links wide-links">
+          <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">Открыть factory repo</a>
+          <a href="../telegram-voice-agent-factory-skill/">Короткая proof page</a>
+        </div>
+      </section>
+
+      <section id="evidence" class="section repo-section">
+        <div class="section-title">
+          <p class="eyebrow">Evidence and honesty</p>
+          <h2>Что эта страница доказывает, а что не заявляет</h2>
+          <p>
+            Цель страницы — дать проверяемый маршрут для работодателя. Claims
+            ограничены тем, что видно в Telegram entrypoints, README, source,
+            tests, docs и setup traces.
+          </p>
+        </div>
+        <div class="evidence-grid">
+          <article>
+            <h3>Что доказывает</h3>
+            <ul>
+              <li>AI-native product thinking: voice input превращается в структурированный бизнес-output.</li>
+              <li>End-to-end packaging: Telegram UX, LLM reasoning, Mini App, HTML, Excel.</li>
+              <li>Public artifact trail: source repos, specs, tests, setup scripts и QR entrypoints.</li>
+              <li>Agentic reuse: отдельный factory skill для новых voice interview bots.</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Что не заявляет</h3>
+            <ul>
+              <li>Это не enterprise SaaS с SLA и мониторингом 24/7.</li>
+              <li>Это не доказательство выручки или paying users без отдельной метрики.</li>
+              <li>Это не realtime phone agent; интерфейс здесь Telegram voice/text.</li>
+              <li>Production deployment и платежи требуют live credentials и отдельной проверки.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="repo-list page-list">
+          <a href="https://github.com/egoriklok/telegram-voice-cjm-bot" target="_blank" rel="noreferrer">RU source repo</a>
+          <a href="https://github.com/egoriklok/telegram-voice-business-navigator-en" target="_blank" rel="noreferrer">EN source repo</a>
+          <a href="https://github.com/egoriklok/telegram-voice-agent-factory-skill" target="_blank" rel="noreferrer">Factory skill repo</a>
+          <a href="../../#telegram-bots">Back to portfolio bots</a>
+        </div>
+        <p class="source-note">
+          Last verified: GitHub repos reachable 2026-06-14. Source HEADs:
+          RU `b8fdb54`, EN `6b689c1`, Factory `601bd59`.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Proof page prepared by AI agent delegated by Egor Loktionov. Human owns
+        product direction; agent packaged the verification route.
+      </p>
+    </footer>
+  </body>
+</html>

@@ -30,6 +30,7 @@ const githubProfileUrl = "https://github.com/egoriklok"
 const liveCrmUrl = "https://caloristika-crm-demo.onrender.com/demo"
 const russianVoiceBotUrl = "https://t.me/cjm_voice_strategy_0530_bot"
 const englishVoiceBotUrl = "https://t.me/BusinessNavigatorVoiceEnBot"
+const voiceBotsProofUrl = "./projects/voice-bots-product-proof/"
 
 const roleKeywords = [
   "AI Product Engineer",
@@ -62,7 +63,7 @@ const telegramBots = [
     qrAlt: "QR для Telegram-бота Бизнес-Навигатор Голосом",
     telegramUrl: russianVoiceBotUrl,
     telegramLabel: "t.me/cjm_voice_strategy_0530_bot",
-    caseUrl: "./projects/telegram-voice-cjm-bot/",
+    caseUrl: `${voiceBotsProofUrl}#russian-bot`,
     repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
   },
   {
@@ -77,7 +78,7 @@ const telegramBots = [
     qrAlt: "QR для Business Voice Navigator Telegram bot",
     telegramUrl: englishVoiceBotUrl,
     telegramLabel: "t.me/BusinessNavigatorVoiceEnBot",
-    caseUrl: "./projects/telegram-voice-business-navigator-en/",
+    caseUrl: `${voiceBotsProofUrl}#english-bot`,
     repoUrl:
       "https://github.com/egoriklok/telegram-voice-business-navigator-en",
   },
@@ -122,7 +123,7 @@ const projects = [
       "Telegram voice bot для превращения голосовых заметок в customer journey, гипотезы и действия.",
     image: "./assets/telegram-api-setup.png",
     alt: "Telegram voice CJM bot setup",
-    caseUrl: "./projects/telegram-voice-cjm-bot/",
+    caseUrl: `${voiceBotsProofUrl}#russian-bot`,
     primaryUrl: russianVoiceBotUrl,
     primaryLabel: "Try Telegram bot",
     repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
@@ -137,7 +138,7 @@ const projects = [
       "Англоязычный voice-first навигатор: из разговора в структурированное решение, notes and next step.",
     image: "./assets/miniapp-cabinet.png",
     alt: "Telegram business navigator mini-app cabinet",
-    caseUrl: "./projects/telegram-voice-business-navigator-en/",
+    caseUrl: `${voiceBotsProofUrl}#english-bot`,
     primaryUrl: englishVoiceBotUrl,
     primaryLabel: "Try Telegram bot",
     repoUrl:
@@ -153,7 +154,7 @@ const projects = [
       "Skill-подход к созданию voice agents: не один бот, а воспроизводимая фабрика сценариев и ассистентов.",
     image: "./assets/portfolio-demo.png",
     alt: "AI portfolio proof interface",
-    caseUrl: "./projects/telegram-voice-agent-factory-skill/",
+    caseUrl: `${voiceBotsProofUrl}#factory`,
     primaryUrl:
       "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
     primaryLabel: "Inspect source",
@@ -476,6 +477,9 @@ function App() {
                     </ExternalButton>
                     <ExternalButton href={englishVoiceBotUrl}>
                       Try English bot
+                    </ExternalButton>
+                    <ExternalButton href={voiceBotsProofUrl}>
+                      Product proof page
                     </ExternalButton>
                   </CardFooter>
                 </Card>
