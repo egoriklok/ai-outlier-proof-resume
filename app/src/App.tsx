@@ -10,16 +10,8 @@ import {
 } from "lucide-react"
 import type { ComponentProps, ReactNode } from "react"
 
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -32,12 +24,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
 
 const proofPageUrl = "https://egoriklok.github.io/ai-outlier-proof-resume/"
@@ -77,7 +64,8 @@ const telegramBots = [
     qrAlt: "QR для Business Voice Navigator Telegram bot",
     telegramUrl: "https://t.me/business_voice_navigator_bot",
     caseUrl: "./projects/telegram-voice-business-navigator-en/",
-    repoUrl: "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+    repoUrl:
+      "https://github.com/egoriklok/telegram-voice-business-navigator-en",
   },
 ]
 
@@ -128,7 +116,8 @@ const projects = [
     caseUrl: "./projects/telegram-voice-business-navigator-en/",
     primaryUrl: "https://t.me/business_voice_navigator_bot",
     primaryLabel: "Telegram",
-    repoUrl: "https://github.com/egoriklok/telegram-voice-business-navigator-en",
+    repoUrl:
+      "https://github.com/egoriklok/telegram-voice-business-navigator-en",
   },
   {
     badge: "Reusable skill",
@@ -138,7 +127,8 @@ const projects = [
     image: "./assets/portfolio-demo.png",
     alt: "AI portfolio proof interface",
     caseUrl: "./projects/telegram-voice-agent-factory-skill/",
-    primaryUrl: "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
+    primaryUrl:
+      "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
     primaryLabel: "GitHub",
     repoUrl: "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
   },
@@ -178,7 +168,10 @@ function SectionHeading({
 }) {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4">
-      <Badge variant="secondary" className="w-fit">
+      <Badge
+        variant="outline"
+        className="w-fit border-primary/30 bg-background text-primary"
+      >
         {eyebrow}
       </Badge>
       <h2 className="max-w-3xl text-3xl font-medium tracking-tight text-balance md:text-5xl">
@@ -220,11 +213,17 @@ function ExternalButton({
 
 function App() {
   return (
-    <div className="min-h-svh bg-background text-foreground">
-      <header className="sticky top-0 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <nav className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-          <a href="#top" className="text-sm font-medium no-underline">
-            Егор Локтионов
+    <div className="caloristika-shell min-h-svh bg-background text-foreground">
+      <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <nav className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 lg:px-6">
+          <a
+            href="#top"
+            className="flex items-center gap-3 font-semibold no-underline"
+          >
+            <span className="grid size-9 place-items-center rounded-md bg-primary text-sm text-primary-foreground">
+              AI
+            </span>
+            <span>Егор Локтионов</span>
           </a>
           <div className="flex flex-wrap items-center gap-1">
             <Button asChild variant="ghost" size="sm">
@@ -244,99 +243,104 @@ function App() {
       </header>
 
       <main>
-        <section
-          id="top"
-          className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-8 md:grid-cols-[1.12fr_0.88fr] md:py-14"
-        >
-          <div className="flex flex-col justify-center gap-6">
-            <div className="flex flex-col gap-4">
-              <Badge variant="secondary" className="w-fit">
-                AI-native product builder
-              </Badge>
-              <h1 className="text-5xl font-medium tracking-tight text-balance md:text-7xl">
-                Егор Локтионов
-              </h1>
-              <p className="max-w-3xl text-lg text-muted-foreground md:text-xl">
-                AI-native специалист: собираю WebUI, CRM и Telegram-ботов,
-                делегирую рутину агентам и довожу идеи до работающих демо.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              <Button asChild>
-                <a href="#telegram-bots">
-                  <BotIcon data-icon="inline-start" />
-                  Проверить ботов
-                </a>
-              </Button>
-              <ExternalButton href={githubProfileUrl}>
-                <Code2Icon data-icon="inline-start" />
-                GitHub профиль
-              </ExternalButton>
-              <ExternalButton href={liveCrmUrl}>
-                <MonitorCheckIcon data-icon="inline-start" />
-                Live CRM demo
-              </ExternalButton>
-            </div>
-
-            <Alert>
-              <SparklesIcon />
-              <AlertTitle>Это proof-page подготовил AI agent</AlertTitle>
-              <AlertDescription>
-                Не вместо работы, а чтобы собрать ссылки, QR и проверяемые
-                артефакты в один маршрут для работодателя.
-              </AlertDescription>
-            </Alert>
-          </div>
-
-          <Card>
-            <CardHeader>
-              <div className="flex items-start gap-4">
-                <Avatar className="size-24">
-                  <AvatarImage
-                    src="./assets/egor-loktionov-photo.jpg"
-                    alt="Портрет Егора Локтионова"
-                  />
-                  <AvatarFallback>ЕЛ</AvatarFallback>
-                </Avatar>
-                <div className="flex min-w-0 flex-col gap-2">
-                  <CardTitle>Егор Локтионов</CardTitle>
-                  <CardDescription>
-                    AI-native product builder
-                  </CardDescription>
-                  <Badge variant="outline" className="w-fit">
-                    Telegram ID: 209498707
-                  </Badge>
-                </div>
+        <section id="top" className="border-b px-4 py-12 lg:px-6 lg:py-20">
+          <div className="mx-auto grid w-full max-w-7xl gap-10 md:grid-cols-[1.12fr_0.88fr]">
+            <div className="flex flex-col justify-center gap-7">
+              <div className="flex flex-col gap-4">
+                <Badge
+                  variant="outline"
+                  className="w-fit border-primary/30 bg-background text-primary"
+                >
+                  AI-native product builder
+                </Badge>
+                <h1 className="max-w-5xl text-5xl leading-none font-semibold tracking-normal text-balance md:text-7xl">
+                  Егор Локтионов
+                </h1>
+                <p className="max-w-3xl text-lg leading-8 text-muted-foreground md:text-2xl">
+                  AI-native специалист: собираю WebUI, CRM и Telegram-ботов,
+                  делегирую рутину агентам и довожу идеи до работающих демо.
+                </p>
               </div>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <Separator />
-              <div className="grid gap-3">
-                {stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-baseline justify-between gap-4"
-                  >
-                    <span className="text-4xl font-medium tracking-tight">
-                      {item.value}
-                    </span>
-                    <span className="max-w-56 text-right text-sm text-muted-foreground">
-                      {item.label}
-                    </span>
+
+              <div className="flex flex-wrap gap-2">
+                <Button asChild>
+                  <a href="#telegram-bots">
+                    <BotIcon data-icon="inline-start" />
+                    Проверить ботов
+                  </a>
+                </Button>
+                <ExternalButton href={githubProfileUrl}>
+                  <Code2Icon data-icon="inline-start" />
+                  GitHub профиль
+                </ExternalButton>
+                <ExternalButton href={liveCrmUrl}>
+                  <MonitorCheckIcon data-icon="inline-start" />
+                  Live CRM demo
+                </ExternalButton>
+              </div>
+
+              <Alert className="border-primary/30 bg-accent/15 [&>svg]:text-primary">
+                <SparklesIcon />
+                <AlertTitle>Это proof-page подготовил AI agent</AlertTitle>
+                <AlertDescription>
+                  Не вместо работы, а чтобы собрать ссылки, QR и проверяемые
+                  артефакты в один маршрут для работодателя.
+                </AlertDescription>
+              </Alert>
+            </div>
+
+            <Card className="overflow-hidden border-primary/30">
+              <CardHeader>
+                <div className="flex items-start gap-4">
+                  <Avatar className="size-24">
+                    <AvatarImage
+                      src="./assets/egor-loktionov-photo.jpg"
+                      alt="Портрет Егора Локтионова"
+                    />
+                    <AvatarFallback>ЕЛ</AvatarFallback>
+                  </Avatar>
+                  <div className="flex min-w-0 flex-col gap-2">
+                    <CardTitle>Егор Локтионов</CardTitle>
+                    <CardDescription>AI-native product builder</CardDescription>
+                    <Badge variant="outline" className="w-fit">
+                      Telegram ID: 209498707
+                    </Badge>
                   </div>
-                ))}
-              </div>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2">
-              <ExternalButton href={proofPageUrl} variant="secondary">
-                Proof-page
-              </ExternalButton>
-            </CardFooter>
-          </Card>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4">
+                <Separator />
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {stats.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-md border bg-muted/45 p-4"
+                    >
+                      <span className="text-4xl font-semibold tracking-normal">
+                        {item.value}
+                      </span>
+                      <span className="mt-1 block text-sm text-muted-foreground">
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="rounded-md border bg-accent/25 p-4 text-sm leading-6 text-muted-foreground">
+                  <b className="text-foreground">Что проверить:</b> Telegram
+                  voice agents, CRM demo, публичные repo и агентскую упаковку
+                  proof-page.
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-wrap gap-2">
+                <ExternalButton href={proofPageUrl} variant="secondary">
+                  Proof-page
+                </ExternalButton>
+              </CardFooter>
+            </Card>
+          </div>
         </section>
 
-        <section className="mx-auto grid w-full max-w-6xl gap-3 px-4 pb-12 md:grid-cols-3">
+        <section className="mx-auto grid w-full max-w-7xl gap-3 px-4 pb-12 md:grid-cols-3 lg:px-6">
           {stats.map((item) => (
             <Card key={item.label}>
               <CardHeader>
@@ -347,7 +351,7 @@ function App() {
           ))}
         </section>
 
-        <section id="verification" className="py-12">
+        <section id="verification" className="border-y bg-secondary/60 py-12">
           <SectionHeading
             eyebrow="3-minute check"
             title="Как проверить, что Егор AI-native"
@@ -366,7 +370,8 @@ function App() {
                     <CardTitle>Voice-first проверка</CardTitle>
                     <CardDescription>
                       Откройте Telegram-бота, отправьте голосовую или текстовую
-                      бизнес-идею и посмотрите, как она превращается в структуру.
+                      бизнес-идею и посмотрите, как она превращается в
+                      структуру.
                     </CardDescription>
                   </CardHeader>
                   <CardFooter className="flex flex-wrap gap-2">
@@ -389,7 +394,9 @@ function App() {
                     </CardDescription>
                   </CardHeader>
                   <CardFooter>
-                    <ExternalButton href={liveCrmUrl}>Открыть CRM</ExternalButton>
+                    <ExternalButton href={liveCrmUrl}>
+                      Открыть CRM
+                    </ExternalButton>
                   </CardFooter>
                 </Card>
               </TabsContent>
@@ -425,7 +432,10 @@ function App() {
                 <CardHeader>
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="flex max-w-3xl flex-col gap-2">
-                      <Badge variant="secondary" className="w-fit">
+                      <Badge
+                        variant="outline"
+                        className="w-fit border-primary/30 bg-background text-primary"
+                      >
                         {bot.badge}
                       </Badge>
                       <CardTitle>{bot.title}</CardTitle>
@@ -447,9 +457,7 @@ function App() {
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
                       <span className="font-medium">Проверить</span>
-                      <span className="text-muted-foreground">
-                        {bot.check}
-                      </span>
+                      <span className="text-muted-foreground">{bot.check}</span>
                     </div>
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
@@ -461,7 +469,7 @@ function App() {
                   </div>
                   <figure className="m-0 grid justify-items-center gap-3">
                     <img
-                      className="size-40 rounded-lg border bg-background object-contain p-3"
+                      className="size-40 rounded-lg border bg-card object-contain p-3"
                       src={bot.qr}
                       alt={bot.qrAlt}
                     />
@@ -482,7 +490,7 @@ function App() {
           </div>
         </section>
 
-        <section className="py-12">
+        <section className="border-y bg-secondary/60 py-12">
           <SectionHeading
             eyebrow="Agent note"
             title="Что здесь сделал AI agent"
@@ -518,7 +526,10 @@ function App() {
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={index === 0 ? "md:col-span-2" : undefined}
+                className={cn(
+                  "overflow-hidden",
+                  index === 0 && "border-primary/30 md:col-span-2"
+                )}
               >
                 <CardContent className="grid gap-5 pt-0 md:grid-cols-[0.9fr_1fr]">
                   <img
@@ -531,20 +542,25 @@ function App() {
                   />
                   <div className="flex min-w-0 flex-col gap-4">
                     <div className="flex flex-col gap-2">
-                      <Badge variant="secondary" className="w-fit">
+                      <Badge
+                        variant="outline"
+                        className="w-fit border-primary/30 bg-background text-primary"
+                      >
                         {project.badge}
                       </Badge>
                       <CardTitle>{project.title}</CardTitle>
-                      <CardDescription>
-                        {project.description}
-                      </CardDescription>
+                      <CardDescription>{project.description}</CardDescription>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <ExternalButton href={project.caseUrl}>Кейс</ExternalButton>
+                      <ExternalButton href={project.caseUrl}>
+                        Кейс
+                      </ExternalButton>
                       <ExternalButton href={project.primaryUrl}>
                         {project.primaryLabel}
                       </ExternalButton>
-                      <ExternalButton href={project.repoUrl}>GitHub</ExternalButton>
+                      <ExternalButton href={project.repoUrl}>
+                        GitHub
+                      </ExternalButton>
                     </div>
                   </div>
                 </CardContent>
@@ -573,7 +589,7 @@ function App() {
           </div>
         </section>
 
-        <section id="public-repos" className="py-12">
+        <section id="public-repos" className="border-t bg-secondary/60 py-12">
           <SectionHeading
             eyebrow="Public repo index"
             title="Прямые ссылки для проверки"
