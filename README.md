@@ -15,6 +15,14 @@ https://egoriklok.github.io/ai-outlier-proof-resume/
 
 Public proof links:
 
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/caloristika-crm-render-demo/
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/lunch-up-crm-agent-handoff/
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-cjm-bot/
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-business-navigator-en/
+- https://egoriklok.github.io/ai-outlier-proof-resume/projects/telegram-voice-agent-factory-skill/
+
+Public repositories:
+
 - https://github.com/egoriklok/caloristika-crm-render-demo
 - https://github.com/egoriklok/lunch-up-crm-agent-handoff
 - https://github.com/egoriklok/telegram-voice-cjm-bot

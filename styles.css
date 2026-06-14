@@ -395,6 +395,41 @@ h3 {
   gap: 12px;
 }
 
+.page-list {
+  margin-bottom: 18px;
+}
+
+.project-page-hero {
+  min-height: 74vh;
+  background:
+    linear-gradient(115deg, rgba(21, 25, 31, 0.92), rgba(21, 25, 31, 0.74)),
+    url("./assets/caloristika-crm.png") center / cover no-repeat;
+  color: #fff;
+}
+
+.project-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  gap: 42px;
+  align-items: center;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 76px 0 78px;
+}
+
+.project-page-grid img {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.project-page-main {
+  padding-bottom: 86px;
+}
+
 footer {
   padding: 32px 16px 46px;
   background: var(--dark);
@@ -410,7 +445,8 @@ footer p {
 @media (max-width: 900px) {
   .hero-grid,
   .agent-note,
-  .detail {
+  .detail,
+  .project-page-grid {
     grid-template-columns: 1fr;
   }
 
