@@ -49,6 +49,9 @@
 }
 
 :root {
+  --shell-start: #f7fbff;
+  --shell-mid: #edf7ff;
+  --shell-end: #f6fff2;
   --background: #f7fbff;
   --foreground: #0b1020;
   --card: #ffffff;
@@ -60,7 +63,7 @@
   --secondary: #ecfeff;
   --secondary-foreground: #0b1020;
   --muted: #eef4ff;
-  --muted-foreground: #526071;
+  --muted-foreground: #475569;
   --accent: #c8ff00;
   --accent-foreground: #0b1020;
   --destructive: #dc2626;
@@ -84,6 +87,9 @@
 }
 
 .dark {
+  --shell-start: #070b14;
+  --shell-mid: #0d1424;
+  --shell-end: #101a2f;
   --background: #070b14;
   --foreground: #f7fbff;
   --card: #101624;
@@ -95,7 +101,7 @@
   --secondary: #142033;
   --secondary-foreground: #f7fbff;
   --muted: #182235;
-  --muted-foreground: #a7b3c4;
+  --muted-foreground: #c8d3e1;
   --accent: #c8ff00;
   --accent-foreground: #07111f;
   --destructive: #f87171;
@@ -153,11 +159,12 @@
 
 @layer components {
   .it-shell {
+    background-color: var(--background);
     background-image: linear-gradient(
       180deg,
-      #f7fbff 0%,
-      #edf7ff 44%,
-      #f6fff2 100%
+      var(--shell-start) 0%,
+      var(--shell-mid) 44%,
+      var(--shell-end) 100%
     );
   }
 }
