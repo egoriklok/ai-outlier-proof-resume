@@ -32,7 +32,7 @@ Public proof links:
 Telegram test entrypoints for Business Voice Navigator:
 
 - https://t.me/cjm_voice_strategy_0530_bot
-- https://t.me/business_voice_navigator_bot
+- https://t.me/BusinessNavigatorVoiceEnBot
 
 Public repositories:
 

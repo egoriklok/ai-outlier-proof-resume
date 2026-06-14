@@ -28,6 +28,8 @@ import { cn } from "@/lib/utils"
 
 const githubProfileUrl = "https://github.com/egoriklok"
 const liveCrmUrl = "https://caloristika-crm-demo.onrender.com/demo"
+const russianVoiceBotUrl = "https://t.me/cjm_voice_strategy_0530_bot"
+const englishVoiceBotUrl = "https://t.me/BusinessNavigatorVoiceEnBot"
 
 const roleKeywords = [
   "AI Product Engineer",
@@ -58,7 +60,8 @@ const telegramBots = [
     status: "Last verified: Telegram page reachable 2026-06-14",
     qr: "./assets/qr-cjm-voice-strategy.svg",
     qrAlt: "QR для Telegram-бота Бизнес-Навигатор Голосом",
-    telegramUrl: "https://t.me/cjm_voice_strategy_0530_bot",
+    telegramUrl: russianVoiceBotUrl,
+    telegramLabel: "t.me/cjm_voice_strategy_0530_bot",
     caseUrl: "./projects/telegram-voice-cjm-bot/",
     repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
   },
@@ -67,12 +70,13 @@ const telegramBots = [
     title: "Business Voice Navigator",
     description:
       "Англоязычный voice-first бот для business notes, structured output and next step.",
-    handle: "@business_voice_navigator_bot",
+    handle: "@BusinessNavigatorVoiceEnBot",
     check: "business question -> structured recommendation",
     status: "Last verified: Telegram page and public repo reachable 2026-06-14",
     qr: "./assets/qr-business-voice-navigator.svg",
     qrAlt: "QR для Business Voice Navigator Telegram bot",
-    telegramUrl: "https://t.me/business_voice_navigator_bot",
+    telegramUrl: englishVoiceBotUrl,
+    telegramLabel: "t.me/BusinessNavigatorVoiceEnBot",
     caseUrl: "./projects/telegram-voice-business-navigator-en/",
     repoUrl:
       "https://github.com/egoriklok/telegram-voice-business-navigator-en",
@@ -119,7 +123,7 @@ const projects = [
     image: "./assets/telegram-api-setup.png",
     alt: "Telegram voice CJM bot setup",
     caseUrl: "./projects/telegram-voice-cjm-bot/",
-    primaryUrl: "https://t.me/cjm_voice_strategy_0530_bot",
+    primaryUrl: russianVoiceBotUrl,
     primaryLabel: "Try Telegram bot",
     repoUrl: "https://github.com/egoriklok/telegram-voice-cjm-bot",
     contribution: "связал голосовую заметку с CJM, гипотезами и действиями",
@@ -134,7 +138,7 @@ const projects = [
     image: "./assets/miniapp-cabinet.png",
     alt: "Telegram business navigator mini-app cabinet",
     caseUrl: "./projects/telegram-voice-business-navigator-en/",
-    primaryUrl: "https://t.me/business_voice_navigator_bot",
+    primaryUrl: englishVoiceBotUrl,
     primaryLabel: "Try Telegram bot",
     repoUrl:
       "https://github.com/egoriklok/telegram-voice-business-navigator-en",
@@ -467,10 +471,10 @@ function App() {
                     </CardDescription>
                   </CardHeader>
                   <CardFooter className="flex flex-wrap gap-2">
-                    <ExternalButton href="https://t.me/cjm_voice_strategy_0530_bot">
+                    <ExternalButton href={russianVoiceBotUrl}>
                       Try Russian bot
                     </ExternalButton>
-                    <ExternalButton href="https://t.me/business_voice_navigator_bot">
+                    <ExternalButton href={englishVoiceBotUrl}>
                       Try English bot
                     </ExternalButton>
                   </CardFooter>
@@ -529,6 +533,18 @@ function App() {
                       <span className="break-words text-muted-foreground">
                         {bot.handle}
                       </span>
+                    </div>
+                    <Separator />
+                    <div className="grid gap-1 md:grid-cols-[140px_1fr]">
+                      <span className="font-medium">Telegram page</span>
+                      <a
+                        href={bot.telegramUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="break-words text-primary underline-offset-4 hover:underline"
+                      >
+                        {bot.telegramLabel}
+                      </a>
                     </div>
                     <Separator />
                     <div className="grid gap-1 md:grid-cols-[140px_1fr]">
