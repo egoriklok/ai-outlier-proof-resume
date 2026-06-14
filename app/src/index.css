@@ -134,12 +134,60 @@
 }
 
 @layer components {
-  .it-shell {
+  .crm-shell {
     background-image: linear-gradient(
       180deg,
       #f7fbff 0%,
       #edf7ff 44%,
       #f6fff2 100%
     );
+  }
+
+  .crm-workspace {
+    @apply mx-auto flex w-full max-w-[1500px] flex-col gap-4 px-4 py-4 md:px-6;
+  }
+
+  .crm-command-bar {
+    @apply sticky top-3 rounded-lg border bg-card/95 shadow-sm backdrop-blur;
+  }
+
+  .crm-kpi-grid {
+    @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-5;
+  }
+
+  .crm-kpi-card {
+    @apply rounded-lg shadow-sm;
+  }
+
+  .crm-tabs {
+    @apply flex flex-col gap-4;
+  }
+
+  .crm-tabs-list {
+    @apply flex h-auto w-full flex-wrap justify-start gap-1 rounded-lg border bg-card p-1;
+  }
+
+  .crm-pipeline-board {
+    @apply grid min-w-0 gap-3 lg:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .crm-pipeline-column {
+    @apply flex min-w-0 flex-col gap-3 rounded-lg border bg-secondary/50 p-3;
+  }
+
+  .crm-proof-card {
+    @apply overflow-hidden rounded-lg shadow-sm;
+  }
+
+  .crm-side-panel {
+    @apply flex min-w-0 flex-col gap-4;
+  }
+
+  .crm-footer {
+    @apply flex flex-col gap-3 border-t py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between;
+  }
+
+  .dense-label {
+    @apply text-xs font-medium uppercase tracking-normal text-muted-foreground;
   }
 }
