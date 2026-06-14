@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">ИИ-агент Codex</title>
+  <desc id="desc">Графический аватар ИИ-агента для совместной работы с Егором Локтионовым.</desc>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="20" x2="232" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset=".52" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#12a172"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="64" y1="60" x2="192" y2="196" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="52" fill="url(#bg)"/>
+  <path d="M42 184c28 22 62 34 101 34 27 0 51-6 72-17" fill="none" stroke="#c8ff00" stroke-width="10" stroke-linecap="round"/>
+  <rect x="58" y="62" width="140" height="116" rx="28" fill="url(#panel)" stroke="#bfdbfe" stroke-width="6"/>
+  <circle cx="98" cy="119" r="14" fill="#0f172a"/>
+  <circle cx="158" cy="119" r="14" fill="#0f172a"/>
+  <path d="M101 151c17 12 37 12 54 0" fill="none" stroke="#0f172a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M128 62V34" stroke="#c8ff00" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="128" cy="28" r="12" fill="#c8ff00"/>
+  <path d="M58 111H36M220 111h-22" stroke="#bfdbfe" stroke-width="10" stroke-linecap="round"/>
+  <text x="128" y="226" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="800" fill="#fff">AI AGENT</text>
+</svg>

@@ -136,8 +136,9 @@ const projects = [
     title: "Бизнес-Навигатор Голосом",
     description:
       "Telegram-бот для превращения голосовой заметки в путь клиента, гипотезы и следующие действия.",
-    image: "./assets/telegram-api-setup.png",
-    alt: "Настройка Telegram-бота",
+    image: "./assets/voice-bot-ru-menu.png",
+    imageFit: "contain",
+    alt: "Интерфейс русского Telegram-бота Бизнес-Навигатор Голосом",
     caseUrl: `${voiceBotsPageUrl}#russian-bot`,
     primaryUrl: russianVoiceBotUrl,
     primaryLabel: "Открыть бота",
@@ -151,8 +152,9 @@ const projects = [
     title: "Английский Бизнес-Навигатор",
     description:
       "Англоязычный Telegram-бот: из бизнес-заметки в структуру, выводы и следующий шаг.",
-    image: "./assets/miniapp-cabinet.png",
-    alt: "Мобильная страница Business Voice Navigator",
+    image: "./assets/voice-bot-en-menu.png",
+    imageFit: "contain",
+    alt: "Интерфейс английского Telegram-бота Business Voice Navigator",
     caseUrl: `${voiceBotsPageUrl}#english-bot`,
     primaryUrl: englishVoiceBotUrl,
     primaryLabel: "Открыть бота",
@@ -167,8 +169,9 @@ const projects = [
     title: "Шаблон для новых голосовых ботов",
     description:
       "Описание повторяемого подхода к созданию Telegram-ботов на базе похожих сценариев.",
-    image: "./assets/portfolio-demo.png",
-    alt: "Страница портфолио с проектами",
+    image: "./assets/voice-bot-product-interface.png",
+    imageFit: "contain",
+    alt: "Экран продукта с голосовым Telegram-ботом",
     caseUrl: `${voiceBotsPageUrl}#factory`,
     primaryUrl:
       "https://github.com/egoriklok/telegram-voice-agent-factory-skill",
@@ -387,23 +390,36 @@ function App() {
             <Card className="overflow-hidden border-primary/30">
               <CardHeader>
                 <div className="flex items-start gap-4">
-                  <Avatar className="size-24">
-                    <AvatarImage
-                      src="./assets/egor-loktionov-photo.jpg"
-                      alt="Портрет Егора Локтионова"
-                      width={96}
-                      height={96}
-                      fetchPriority="high"
-                    />
-                    <AvatarFallback>ЕЛ</AvatarFallback>
-                  </Avatar>
+                  <div className="flex shrink-0 -space-x-4">
+                    <Avatar className="size-24 border-2 border-background">
+                      <AvatarImage
+                        src="./assets/egor-loktionov-photo.jpg"
+                        alt="Портрет Егора Локтионова"
+                        width={96}
+                        height={96}
+                        fetchPriority="high"
+                      />
+                      <AvatarFallback>ЕЛ</AvatarFallback>
+                    </Avatar>
+                    <Avatar className="size-24 border-2 border-background bg-secondary">
+                      <AvatarImage
+                        src="./assets/ai-agent-avatar.svg"
+                        alt="Аватар ИИ-агента Codex"
+                        width={96}
+                        height={96}
+                        fetchPriority="high"
+                      />
+                      <AvatarFallback>ИИ</AvatarFallback>
+                    </Avatar>
+                  </div>
                   <div className="flex min-w-0 flex-col gap-2">
-                    <CardTitle>Егор Локтионов</CardTitle>
+                    <CardTitle>Егор Локтионов + ИИ-агент</CardTitle>
                     <CardDescription>
-                      Разработчик ИИ-прототипов, CRM и Telegram-ботов
+                      Совместная сборка продуктов, страниц, демо и проверочных
+                      материалов
                     </CardDescription>
                     <Badge variant="outline" className="w-fit">
-                      Публичное портфолио
+                      Человек + ИИ-агент
                     </Badge>
                   </div>
                 </div>
@@ -628,6 +644,8 @@ function App() {
                   <img
                     className={cn(
                       "w-full rounded-lg border object-cover",
+                      project.imageFit === "contain" &&
+                        "bg-muted object-contain p-2",
                       index === 0
                         ? "h-44 sm:h-64 md:h-96"
                         : "h-44 sm:h-56 md:h-72"
