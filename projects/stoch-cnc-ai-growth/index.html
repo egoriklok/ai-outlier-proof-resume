@@ -8,4 +8,4 @@
 <script src="part-07.js"></script>
 <script src="part-08.js"></script>
 <script src="part-09.js"></script>
-<script>const base=window.__STOCH_HTML_PARTS__.join('');const html=base.replace('<script src="app.js"></script>','<script src="sales-v5.js"></script><script src="app.js"></script>');document.open();document.write(html);document.close();</script></body></html>
+<script>const base=window.__STOCH_HTML_PARTS__.join('');const open='<scr'+'ipt';const close='</scr'+'ipt>';const appTag=open+' src="app.js">'+close;const salesTag=open+' src="sales-v5.js">'+close;const html=base.replace(appTag,salesTag+appTag);document.open();document.write(html);document.close();</script></body></html>
