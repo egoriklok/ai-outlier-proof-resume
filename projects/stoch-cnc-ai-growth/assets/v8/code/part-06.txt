@@ -1,0 +1,7 @@
+nputs','What Egor and STOCH each provide.'],['STOP / GO decision','Stop, prototype or implementation.']];$$('.download-card',downloads).forEach((c,i)=>{if(vals[i])c.innerHTML=`<span>Outcome ${i+1}</span><b>${vals[i][0]}</b><small>${vals[i][1]}</small>`;});}
+    html('.closing','<span class="badge">Next step</span><h2 style="margin-top:16px">Select one process to validate</h2><p>If one of the three growth levers matches a current STOCH priority, I propose a 45-minute working discussion. The outcome is a one-page process map, a baseline metric and a decision: STOP, prototype or implementation.</p><p><strong>Egor Loktionov</strong><br><span class="muted">AI-enabled business development and commercial agentic process design</span></p>');
+    text('footer','Egor Loktionov’s proposal for AI-enabled sales development at STOCH CNC. Prepared from public evidence for a focused business discussion.');
+    if($('#copyLink'))text('#copyLink','Copy link'); const print=$('.header-actions .btn-outline');if(print)print.textContent='Save PDF';
+  }
+  $$('[data-open-tab]').forEach(b=>b.addEventListener('click',()=>{const t=$(`.tab-trigger[data-tab="${b.dataset.openTab}"]`);if(t)t.click();}));
+})();
