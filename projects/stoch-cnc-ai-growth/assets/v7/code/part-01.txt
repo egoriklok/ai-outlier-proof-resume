@@ -1,0 +1,56 @@
+(() => {
+  const q = (selector, root = document) => root.querySelector(selector);
+  const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const setText = (selector, value, root = document) => {
+    const node = q(selector, root);
+    if (node) node.textContent = value;
+  };
+  const setHTML = (selector, value, root = document) => {
+    const node = q(selector, root);
+    if (node) node.innerHTML = value;
+  };
+
+  const params = new URLSearchParams(location.search);
+  const requestedLang = params.get('lang');
+  const lang = requestedLang === 'en' ? 'en' : 'ru';
+  document.documentElement.lang = lang;
+
+  const ASSET_BASE = './assets/v7';
+  const copy = {
+    ru: {
+      heroAlt: 'AI помогает связать станочное оборудование, инженерный анализ, квалификацию запроса и контроль продаж STOCH',
+      growthTitle: 'Три точки роста',
+      growthBody: 'Раньше замечать спрос, быстрее готовить запрос для инженера и сохранять каждый следующий шаг по сделке.',
+      growthAlt: 'Инфографика трёх точек роста: рыночные сигналы, скорость RFQ и контроль CRM',
+      workflowTitle: 'Как Егор встраивается в коммерческий процесс STOCH',
+      workflowBody: 'Подготовка и координация ускоряются с AI. Инженерная применимость, цена, условия и финальное решение остаются за STOCH.',
+      workflowAlt: 'Семь этапов коммерческого процесса от рыночного сигнала до базы знаний с разделением ответственности',
+      roadmapTitle: 'Безопасный путь к проверяемому результату',
+      roadmapBody: '45 минут разговора заканчиваются выбранным процессом, исходной метрикой и решением: STOP, прототип или реализация.',
+      roadmapAlt: 'Roadmap от 45-минутного интервью к одному процессу, метрике, 3–5 кейсам и решению',
+      viewLarge: 'Открыть крупно',
+      languageLabel: 'Язык',
+    },
+    en: {
+      heroAlt: 'AI-assisted workflow connecting CNC equipment, engineering review, request qualification and STOCH sales control',
+      growthTitle: 'Three growth levers',
+      growthBody: 'Detect demand earlier, prepare engineer-ready requests faster, and keep every next step visible.',
+      growthAlt: 'Three growth levers infographic: market signals, RFQ speed and CRM control',
+      workflowTitle: 'How Egor fits into STOCH’s commercial workflow',
+      workflowBody: 'AI accelerates preparation and coordination. Engineering applicability, pricing, terms and the final decision remain with STOCH.',
+      workflowAlt: 'Seven-step commercial workflow from market signal to knowledge loop with clear ownership',
+      roadmapTitle: 'A low-risk path to a measurable result',
+      roadmapBody: 'A 45-minute discussion ends with one selected process, one baseline metric and a decision: STOP, prototype or implementation.',
+      roadmapAlt: 'Roadmap from a 45-minute interview to one process, one metric, 3–5 cases and a decision',
+      viewLarge: 'Open full size',
+      languageLabel: 'Language',
+    },
+  }[lang];
+
+  const style = document.createElement('style');
+  style.id = 'visual-v7-styles';
+  style.textContent = `
+    .brand small{display:block;margin-top:1px;color:hsl(var(--muted-foreground,202 16% 45%));font-size:11px;font-weight:650;letter-spacing:.02em}
+    .lang-switch{display:inline-flex;align-items:center;gap:3px;padding:3px;border:1px solid hsl(var(--border,198 35% 24%));border-radius:999px;background:rgba(255,255,255,.72);box-shadow:0 8px 28px rgba(13,39,57,.08)}
+    .lang-switch button{min-width:42px;height:32px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:#617383;font:750 12px/1 system-ui;cursor:pointer;transition:.18s}
+    
