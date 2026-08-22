@@ -1,0 +1,37 @@
+.lang-switch button:hover{color:#0d2739}.lang-switch button[aria-pressed="true"]{background:#0d2739;color:#fff;box-shadow:0 4px 12px rgba(13,39,57,.22)}
+    .hero-visual-column{display:grid;gap:16px;min-width:0}.hero-visual{overflow:hidden;border:1px solid rgba(21,159,189,.28);border-radius:24px;background:#071620;box-shadow:0 28px 80px rgba(13,39,57,.22)}
+    .hero-visual img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}.hero-visual figcaption{padding:13px 16px;color:#dbe8ed;background:#0d2739;font-size:13px}
+    .visual-section{margin:34px 0 42px}.visual-section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:16px}.visual-section-head h3{margin:0;color:#0d2739;font-size:clamp(23px,3vw,34px);letter-spacing:-.025em}.visual-section-head p{max-width:650px;margin:0;color:#617383}
+    .visual-frame{position:relative;overflow:hidden;border:1px solid rgba(13,39,57,.12);border-radius:24px;background:#071620;box-shadow:0 22px 70px rgba(13,39,57,.16)}.visual-frame img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}.visual-frame .zoom-link{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(7,22,32,.82);color:#fff;text-decoration:none;font-size:12px;font-weight:750;backdrop-filter:blur(10px)}
+    .visual-frame .zoom-link:hover{background:#159fbd;color:#041218}.visual-caption{padding:14px 18px;border-top:1px solid rgba(255,255,255,.12);background:#0d2739;color:#dbe8ed;font-size:14px}
+    .visual-grid-two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.visual-grid-two .visual-frame img{aspect-ratio:16/9}
+    .english-deck-note{margin:0 0 18px;padding:14px 17px;border-left:4px solid #159fbd;border-radius:0 14px 14px 0;background:rgba(21,159,189,.08);color:#344d5e}
+    @media(max-width:980px){.visual-section-head{display:block}.visual-section-head p{margin-top:9px}.visual-grid-two{grid-template-columns:1fr}.hero-visual-column{margin-top:8px}}
+    @media(max-width:680px){.header-inner{align-items:flex-start;padding:10px 0}.header-actions{flex-wrap:wrap;justify-content:flex-end}.lang-switch{order:-1}.hero-visual,.visual-frame{border-radius:18px}.visual-section{margin:26px 0 32px}.visual-frame .zoom-link{display:none}.hero-visual figcaption,.visual-caption{font-size:12px}}
+  `;
+  document.head.appendChild(style);
+
+  function addLanguageSwitch() {
+    const actions = q('.header-actions');
+    if (!actions || q('.lang-switch', actions)) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'lang-switch';
+    wrapper.setAttribute('role', 'group');
+    wrapper.setAttribute('aria-label', copy.languageLabel);
+    wrapper.innerHTML = `<button type="button" data-lang="ru" aria-pressed="${lang === 'ru'}">RU</button><button type="button" data-lang="en" aria-pressed="${lang === 'en'}">EN</button>`;
+    actions.prepend(wrapper);
+    qa('button', wrapper).forEach((button) => {
+      button.addEventListener('click', () => {
+        const next = button.dataset.lang;
+        const url = new URL(location.href);
+        url.searchParams.set('lang', next);
+        url.searchParams.set('v', 'visual-v7-20260822');
+        location.href = url.toString();
+      });
+    });
+  }
+
+  function figure({src, alt, caption, hero = false}) {
+    const fig = document.createElement('figure');
+    fig.className = hero ? 'hero-visual' : 'visual-frame';
+    fig.innerHTML = `<img src="${src}" alt="${alt}" ${hero ? 'fetchpriority="high"
