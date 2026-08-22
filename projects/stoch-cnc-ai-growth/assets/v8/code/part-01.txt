@@ -1,0 +1,28 @@
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const text = (s, v, r = document) => { const n = $(s, r); if (n) n.textContent = v; };
+  const html = (s, v, r = document) => { const n = $(s, r); if (n) n.innerHTML = v; };
+  const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'ru';
+  const A = './assets/v7';
+  document.documentElement.lang = lang;
+
+  const C = lang === 'en' ? {
+    growthTitle:'Three growth levers', growthText:'Detect demand earlier, prepare engineer-ready requests faster, and keep every next step visible.',
+    workflowTitle:'How Egor fits into STOCH’s commercial workflow', workflowText:'AI accelerates preparation and coordination. Engineering applicability, pricing, terms and the final decision remain with STOCH.',
+    roadmapTitle:'A low-risk path to a measurable result', roadmapText:'A 45-minute discussion ends with one selected process, one baseline metric and a decision: STOP, prototype or implementation.',
+    heroCaption:'From market signal and technical request to engineering review and a controlled next step.', open:'Open full size', language:'Language'
+  } : {
+    growthTitle:'Три точки роста', growthText:'Раньше замечать спрос, быстрее готовить запрос для инженера и сохранять каждый следующий шаг по сделке.',
+    workflowTitle:'Как Егор встраивается в коммерческий процесс STOCH', workflowText:'Подготовка и координация ускоряются с AI. Инженерная применимость, цена, условия и финальное решение остаются за STOCH.',
+    roadmapTitle:'Безопасный путь к проверяемому результату', roadmapText:'45 минут разговора заканчиваются выбранным процессом, исходной метрикой и решением: STOP, прототип или реализация.',
+    heroCaption:'От сигнала рынка и технического запроса — к инженерной проверке и управляемому следующему шагу.', open:'Открыть крупно', language:'Язык'
+  };
+
+  const style = document.createElement('style');
+  style.textContent = `
+  .lang-switch{display:inline-flex;gap:3px;padding:3px;border:1px solid #cbd7de;border-radius:999px;background:#fff;box-shadow:0 7px 24px rgba(13,39,57,.1)}
+  .lang-switch button{height:32px;min-width:42px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:#617383;font:750 12px system-ui;cursor:pointer}.lang-switch button[aria-pressed=true]{background:#0d2739;color:#fff}
+  .hero-visual-column{display:grid;gap:15px;min-width:0}.hero-visual,.visual-frame{overflow:hidden;border:1px solid rgba(21,159,189,.25);border-radius:24px;background:#071620;box-shadow:0 24px 70px rgba(13,39,57,.18)}
+  .hero-visual img,.visual-frame img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}.hero-visual figcaption,.visual-caption{padding:13px 17px;background:#0d2739;color:#dce9ee;font-size:13px}
+  .visual-section{margin:34px 0 44px}.visual-head{display:grid;grid-template-columns:1fr minmax(300px,.8fr);gap:25px;align-items:end;margin-bottom:15px}.visual-head h3{margin
