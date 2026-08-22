@@ -1,0 +1,23 @@
+:0;color:#0d2739;font-size:clamp(24px,3vw,36px);letter-spacing:-.025em}.visual-head p{margin:0;color:#617383}
+  .visual-frame{position:relative}.visual-frame a{position:absolute;right:13px;bottom:13px;padding:9px 13px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(7,22,32,.84);color:#fff;text-decoration:none;font-size:12px;font-weight:750}
+  .en-report{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:22px;align-items:start}.en-report-main,.en-report-side{padding:28px}.en-report-side{position:sticky;top:145px}.en-report h3{margin-top:28px}.en-report ul,.en-report ol{padding-left:23px}.en-report li{margin:7px 0}.en-report blockquote{margin:22px 0;padding:18px;border-left:4px solid #159fbd;background:rgba(21,159,189,.07);border-radius:0 14px 14px 0}.en-report details{border-top:1px solid #d7e0e5}.en-report summary{padding:18px 0;font-weight:800;cursor:pointer}.en-report .decision{padding:18px;border-radius:16px;background:linear-gradient(135deg,rgba(21,159,189,.13),rgba(243,154,74,.1));font-weight:800}
+  @media(max-width:980px){.visual-head,.en-report{grid-template-columns:1fr}.en-report-side{position:static}.hero-visual-column{margin-top:8px}}
+  @media(max-width:680px){.header-actions{flex-wrap:wrap}.lang-switch{order:-1}.hero-visual,.visual-frame{border-radius:17px}.visual-section{margin:26px 0 34px}.visual-frame a{display:none}.visual-head{display:block}.visual-head p{margin-top:8px}.en-report-main,.en-report-side{padding:20px}}
+  `;
+  document.head.appendChild(style);
+
+  const actions = $('.header-actions');
+  if (actions && !$('.lang-switch', actions)) {
+    const sw = document.createElement('div'); sw.className='lang-switch'; sw.setAttribute('aria-label',C.language);
+    sw.innerHTML=`<button data-lang="ru" aria-pressed="${lang==='ru'}">RU</button><button data-lang="en" aria-pressed="${lang==='en'}">EN</button>`;
+    actions.prepend(sw);
+    $$('button',sw).forEach(b=>b.onclick=()=>{const u=new URL(location.href);u.searchParams.set('lang',b.dataset.lang);u.searchParams.set('v','visual-v8-20260822');location.href=u;});
+  }
+
+  const fig = (src, alt, caption, hero=false) => {
+    const f=document.createElement('figure'); f.className=hero?'hero-visual':'visual-frame';
+    f.innerHTML=`<img src="${A}/${src}" alt="${alt}" ${hero?'fetchpriority="high"':'loading="lazy" decoding="async"'}><figcaption class="${hero?'':'visual-caption'}">${caption}</figcaption>${hero?'':`<a href="${A}/${src}" target="_blank" rel="noopener">${C.open}</a>`}`; return f;
+  };
+  const heroCard=$('.hero .hero-card');
+  if(heroCard&&!$('.hero-visual-column')){const col=document.createElement('div');col.className='hero-visual-column';heroCard.before(col);col.append(fig('hero.svg','AI-assisted industrial sales workflow',C.heroCaption,true),heroCard);}
+  const addVisual=(anchor,id,title,body,file,alt)=>{if(!anchor||$('#'+id))return;const s=document.createElement('section');s.className='visual-section';s.id=id;s.innerHTML=`<div class="visual-he
