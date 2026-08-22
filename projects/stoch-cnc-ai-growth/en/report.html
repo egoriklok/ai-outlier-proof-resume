@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>STOCH CNC: companion report to the proposal</title><style>*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:#172b3a;font:16px/1.65 Arial,sans-serif}.wrap{width:min(960px,calc(100% - 24px));margin:22px auto}.intro,.report-card{background:#fff;border:1px solid #d9e4e9;border-radius:20px;padding:24px;margin-bottom:16px;box-shadow:0 12px 35px rgba(13,39,57,.08)}h1{font-size:clamp(30px,5vw,48px);line-height:1.1}h2{font-size:26px}h3{color:#0d7891}p,li{max-width:80ch}details{background:#fff;border:1px solid #d9e4e9;border-radius:15px;margin:10px 0;overflow:hidden}summary{cursor:pointer;padding:17px 20px;font-weight:800;color:#0d2739}details[open] summary{background:#eaf7fa}.accordion-content,.accordion-body{padding:0 20px 20px}blockquote{margin:18px 0;padding:16px 18px;border-left:4px solid #20c7e8;background:#eef9fb}.badge{display:inline-block;padding:6px 11px;border-radius:999px;background:#0d2739;color:#fff;font-size:12px;font-weight:800}a{color:#087f99}@media(max-width:600px){.intro,.report-card{padding:18px}summary{padding:15px}}</style></head><body><main class="wrap"><header class="intro"><span class="badge">Full report</span><h1>STOCH CNC: companion report to the proposal</h1><p>Full context for the working collaboration hypothesis.</p></header><section class="shell section" id="report"><div class="report-shell"><div class="report-intro"><div class="kicker">Companion report</div><h3>Full companion report</h3><p><strong>Dear Philip,</strong> We have not met personally, so I am sharing this material through a mutual contact. This report explains the context, work completed, evidence boundaries and the proposed next step.</p></div><details open=""><summary>1. The proposal</summary><div class="report-content">
+<p>My objective is not to automate the engineering decision or replace STOCH specialists. I propose validating a single commercial workflow in which AI performs preparation and coordination while technical and commercial accountability remains with the company.</p>
+<ul>
+<li><strong>Market Signal Agent</strong> identifies companies and procurement events showing evidence of real demand, separates confirmed facts from hypotheses, and creates a qualification card.</li>
+<li><strong>RFQ / Specification Copilot</strong> structures emails, documents and attachments, identifies missing parameters, and prepares an engineer-reviewable brief.</li>
+<li><strong>CRM Control</strong> records the owner, stage, reason for delay, next action and action date so that active opportunities do not disappear into correspondence or individual memory.</li>
+<li><strong>Knowledge Loop</strong> retains selection rationale, customer questions, objections and deal outcomes so company experience becomes a reusable asset.</li>
+</ul>
+<blockquote><strong>Core hypothesis:</strong> STOCH does not need “another chatbot.” It may benefit from an accountable process operator who connects market sources, AI agents, engineering review, CRM, metrics and continuous improvement of one commercial workflow.</blockquote>
+</div></details><details open=""><summary>2. Why this hypothesis fits STOCH</summary><div class="report-content">
+<p>STOCH’s public catalogue presents 61 products: 30 horizontal, 20 vertical, 6 five-axis and multi-axis, 3 gantry machines, plus milling-boring and grinding equipment. The company offers selection by part, material, accuracy, timing and constraints, together with delivery, commissioning, training, warranty and post-warranty support.</p>
+<p>The likely opportunity is therefore not to replace existing expertise, but to improve how quickly and systematically commercial work brings suitable opportunities to that expertise and gives engineering sufficiently complete input. This is a hypothesis to validate on real inquiries, not a claim about STOCH’s current internal problems.</p>
+</div></details><details><summary>3. Work completed before the first conversation</summary><div class="report-content">
+<p>To avoid starting with generic claims about AI, I prepared a limited proof of work using public and test data:</p>
+<ol>
+<li>Reviewed STOCH’s public product and service model.</li>
+<li>Designed the target flow from market signal to CRM and knowledge capture.</li>
+<li>Identified a control example of a short procurement window and prepared a Go / No-Go qualification logic.</li>
+<li>Created a synthetic RFQ showing parameter extraction, gap identification and a deliberate stop before premature machine selection.</li>
+<li>Prepared six questions for a focused 45-minute interview.</li>
+<li>Defined the boundary between demonstrating the method and real work requiring internal data, working agents and integrations.</li>
+</ol>
+</div></details><details><summary>4. What the two practical examples demonstrate</summary><div class="report-content">
+<h3>Example 1. Market Signal Agent</h3>
+<p>The control example is a KUMZ procurement notice for a CNC gantry milling machine, published on 12 August 2026 with a submission deadline of 20 August. The window is closed, so this is explicitly a retrospective example rather than a current lead.</p>
+<p>For a similar event, the agent should assess product fit on the day of publication, identify technical and procurement gaps, assign an owner and deadline, and produce a decision: qualify, monitor or pass.</p>
+<h3>Example 2. RFQ / Specification Copilot</h3>
+<p>A test request for a vertical machining centre for a 40Cr steel housing, 800 × 450 × 350 mm, tolerance ±0.02 mm and 20 units per month was converted into a structured request card. AI documented missing information and compared public parameters for VM1050S, VM1150S and VM1160S.</p>
+<p>The correct result is not automatic machine selection. It is to stop, request the missing data and provide engineering with a reviewable preliminary shortlist.</p>
+<div class="note">Both examples demonstrate the same discipline: AI accelerates research and structuring, but it does not declare a company a qualified lead or select equipment without engineering review.</div>
+</div></details><details><summary>5. Business impact to validate</summary><div class="report-content">
+<p>Before access to internal data, it would be inappropriate to promise revenue growth or a fixed number of leads. The first meeting should select one testable hypothesis and record the baseline metric:</p>
+<ul>
+<li>More qualified technical conversations through timely, correctly filtered market signals.</li>
+<li>Less time from RFQ receipt to an engineer-ready response.</li>
+<li>More active opportunities with an assigned owner, next action and date.</li>
+</ul>
+<p>Value is confirmed only when the change is observed on real cases and a STOCH employee actually uses the result. The number of messages found, texts generated or agents launched is not a business outcome by itself.</p>
+</div></details><details><summary>6. What I take responsibility for</summary><div class="report-content">
+<p>I do not position myself as a machine-tool process engineer and do not propose replacing STOCH’s industry experience. My role is the accountable operator of the AI-enabled commercial workflow:</p>
+<ul>
+<li>researching markets, companies, procurement and investment signals;</li>
+<li>designing agent workflows and rules for gathering, checking and handing off information;</li>
+<li>structuring a knowledge base from verified STOCH materials;</li>
+<li>designing CRM stages, next-action logic and management reporting;</li>
+<li>quality control, source and assumption logging, metric tracking and iterative process improvement.</li>
+</ul>
+<p><strong>STOCH retains technical and commercial truth:</strong> equipment applicability, price, lead time, configuration, commissioning terms, customer relationship and final decision.</p>
+</div></details><details><summary>7. What to discuss in 45 minutes</summary><div class="report-content">
+<p>The first meeting requires no purchase decision, access to confidential drawings or pre-agreed budget. The discussion is grounded in recent real inquiries and active deals.</p>
+<ol>
+<li>Which machine category or customer segment should deliver growth over the next 90 days?</li>
+<li>Which channels produced the last ten genuinely qualified opportunities?</li>
+<li>How long did it take to move from email to an engineer-ready response for the last three RFQs?</li>
+<li>What information is mandatory for engineering, and what is most often missing from incoming requests?</li>
+<li>What share of active deals has an owner, a next action and a date?</li>
+<li>What single measurable improvement would justify continuing the MVP, and who owns that metric?</li>
+</ol>
+<blockquote><strong>Outcome:</strong> one priority process → one owner → one baseline metric → one MVP → STOP / GO criterion.</blockquote>
+</div></details><details><summary>8. What Philip receives after the interview</summary><div class="report-content">
+<p>After the conversation, I document a concise one-page map containing:</p>
+<ul>
+<li>the selected process and its current route;</li>
+<li>the baseline metric and success criterion;</li>
+<li>required data, roles and minimal team involvement;</li>
+<li>risks, constraints and human review points;</li>
+<li>a recommendation: STOP, test a prototype on 3-5 cases, or proceed to a working MVP.</li>
+</ul>
+<p>A STOP decision is also useful: it saves both sides time if the priority, data or economic rationale is not confirmed.</p>
+</div></details><details><summary>9. What the next stage could look like</summary><div class="report-content">
+<p>The specific MVP is selected after the interview. Three preliminary directions are possible:</p>
+<ul>
+<li>Market Signal Agent for one product category or customer segment;</li>
+<li>RFQ / Specification Copilot for one type of incoming request and a verified equipment group;</li>
+<li>CRM Control for active opportunities requiring clear ownership, next action and management visibility.</li>
+</ul>
+<p>Validation begins with 3-5 real, anonymised or test cases. A human-controlled prototype follows. Only after observable usefulness are the working MVP, timing, commercial format and price defined.</p>
+</div></details><details><summary>10. Boundary between the free material and real work</summary><div class="report-content">
+<p><strong>Before a collaboration decision:</strong></p>
+<ul><li>individual research using public and test data;</li><li>two practical examples;</li><li>one working interview and one hypothesis refinement.</li></ul>
+<p><strong>Within an agreed engagement:</strong></p>
+<ul><li>a complete target-account and signal-source database;</li><li>working agents, instructions, verification rules and a regular operating process;</li><li>an internal knowledge base, CRM integrations and management reporting;</li><li>ongoing operation of the workflow and accountability for the agreed metric.</li></ul>
+<p>Customer drawings, commercial terms and internal correspondence are used only after access, confidentiality and storage rules are agreed.</p>
+</div></details><details><summary>11. Proposed next step</summary><div class="report-content">
+<p>If the hypothesis matches at least one current STOCH priority, I propose a 45-minute working interview. Its purpose is to select or reject one specific process for validation - not to discuss AI in general and not to make a purchase decision.</p>
+<p>My broader objective is to become an accountable operator of STOCH’s commercial workflow rather than a supplier of isolated prompts or texts: helping the engineering team process more high-quality opportunities, respond faster and retain knowledge. Such a role makes sense only after a result is demonstrated on real company data.</p>
+<p><strong>Egor Loktionov</strong><br/>AI-enabled business development and commercial agent workflow design</p>
+</div></details><details><summary>12. How to use the report and presentation together</summary><div class="report-content">
+<ul>
+<li>The report explains why the material was prepared, what has already been done, where the evidence boundary lies, and what should be validated.</li>
+<li>Slides 1-2 show the commercial hypothesis and target architecture.</li>
+<li>Slides 3-4 demonstrate the method through one market signal and one disciplined RFQ analysis.</li>
+<li>Slides 5-6 convert the material into a management decision: a 45-minute diagnostic, one MVP and a STOP / GO criterion.</li>
+</ul>
+<p>Together, the materials should support one simple decision: whether there is sufficient reason for a focused conversation without any obligation to purchase a project.</p>
+</div></details><details><summary>Sources and evidence status</summary><div class="report-content">
+<p>Public facts were checked against open sources as of 21 August 2026. Internal processes, current conversions, CRM discipline and economic impact remain hypotheses until the interview and access to STOCH data.</p>
+<ol>
+<li><a href="https://stoch-cnc.ru/catalog" rel="noopener" target="_blank">STOCH CNC official catalogue</a> - product categories, model specifications and selection by technical requirements.</li>
+<li><a href="https://stoch-cnc.ru/podbor" rel="noopener" target="_blank">STOCH CNC selection and service model</a> - commissioning, training, warranty and support.</li>
+<li><a href="https://www.bicotender.ru/masinostroenie/postavka-portalno-frezernogo-stanka-s-cpu-id-kamensk-uralskii-tender338745538.html" rel="noopener" target="_blank">KUMZ procurement No. 338745538</a> - published 12 Aug 2026, deadline 20 Aug 2026.</li>
+</ol>
+</div></details></div></section></main></body></html>
