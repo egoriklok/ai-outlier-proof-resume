@@ -1,0 +1,17 @@
+ad"><h3>${title}</h3><p>${body}</p></div>`;s.append(fig(file,alt,body));anchor.after(s);};
+  const cards=$$('#panel-overview .metric-card, #panel-overview .overview-card').slice(0,3);
+  addVisual(cards[0]?.parentElement,'growth-visual',C.growthTitle,C.growthText,'growth.svg','Three growth levers');
+  addVisual($('#panel-overview .role-grid'),'workflow-visual',C.workflowTitle,C.workflowText,'workflow.svg','Commercial workflow and responsibility split');
+  addVisual($('#panel-overview .meeting-grid'),'roadmap-visual',C.roadmapTitle,C.roadmapText,'roadmap.svg','Decision roadmap');
+
+  if(lang==='en'){
+    document.title='STOCH CNC × Egor — sales growth proposal';
+    text('.hero .eyebrow','Sales development proposal for STOCH');
+    html('.hero h1','Find more suitable buyers and <span>move every request to an engineering response faster</span>');
+    text('.hero .lead','I propose validating three growth levers: detect demand earlier, reduce manual RFQ analysis and keep the next action visible for every opportunity — without replacing engineers and without implementing AI for its own sake.');
+    text('.hero .muted','Start with one commercial process and one baseline metric. Equipment selection, pricing, delivery terms and customer commitments remain under STOCH control.');
+    html('.hero-actions','<a class="btn btn-primary" href="#sales-outcomes">See the 3 growth levers</a><button class="btn btn-outline" data-open-tab="presentation">View the decision deck</button>');
+    text('.hero-card .badge','Outcome of the first meeting'); text('.hero-card blockquote','One selected process, one baseline metric and a clear validation plan across 3–5 real cases.'); text('.hero-card > p','No purchase decision, customer database transfer or access to confidential drawings is required at the first meeting.');
+    const tabs=$$('.tab-trigger');['Opportunity for STOCH','Decision deck','Detailed proposal'].forEach((x,i)=>{if(tabs[i])tabs[i].textContent=x;});
+    text('#panel-overview .section-kicker','Three growth levers to validate'); text('#panel-overview h2','Commercial impact can be created before, during and after engineering selection'); text('#panel-overview .section-note','AI accelerates information preparation and next-step control. STOCH retains the technical and commercial decision.');
+    const cv=[['Detect demand before the window closes','Procurement notices, investment projects and production expansions become prioritized opportunities rather than a generic news feed.','Outcome: company, reason to engage, qualification questions and a Go / No-Go decision.'],['Reduce the path from request to response','Emails, specifications and attachments become an engineer-ready brief with missing inputs and customer questions clearly marked.','Outcome: engineering receives better inputs sooner and spends less time on repeated analysis.'],['Move every opportunity to the next action','Every active deal has an owner, stage, reason for delay, next action and date.','Outco
